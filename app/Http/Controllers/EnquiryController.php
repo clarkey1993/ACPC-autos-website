@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EnquiryReceivedMail;
 use App\Models\Car;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class EnquiryController extends Controller
 {
@@ -16,7 +18,13 @@ class EnquiryController extends Controller
             'message' => ['required', 'string', 'max:2000'],
         ]);
 
-        $car->enquiries()->create($validated);
+        $enquiry = $car->enquiries()->create($validated);
+
+        $enquiry->load('car');
+
+        $recipient = env('MAIL_ENQUIRY_TO', 'admin@example.com');
+
+        Mail::to($recipient)->send(new EnquiryReceivedMail($enquiry));
 
         return redirect()
             ->back()
