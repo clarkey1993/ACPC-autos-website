@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Car extends Model
 {
@@ -21,4 +22,9 @@ class Car extends Model
         'featured_image',
         'slug',
     ];
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(CarImage::class);
+    }
 }
