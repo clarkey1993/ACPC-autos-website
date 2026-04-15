@@ -22,7 +22,8 @@ class EnquiryController extends Controller
 
         $enquiry->load('car');
 
-        $recipient = env('MAIL_ENQUIRY_TO', 'admin@example.com');
+        // Use config instead of env directly (production-safe)
+        $recipient = config('mail.enquiry_to');
 
         Mail::to($recipient)->send(new EnquiryReceivedMail($enquiry));
 
