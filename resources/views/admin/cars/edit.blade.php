@@ -41,12 +41,27 @@
                 <div class="row g-3">
                     @foreach ($car->images as $image)
                         <div class="col-6 col-md-4 col-lg-3">
-                            <img
-                                src="{{ \Illuminate\Support\Facades\Storage::url($image->image_path) }}"
-                                alt="{{ $car->title }} gallery image"
-                                class="img-thumbnail w-100"
-                                style="height: 140px; object-fit: cover;"
-                            >
+                            <div class="position-relative">
+                                <img
+                                    src="{{ \Illuminate\Support\Facades\Storage::url($image->image_path) }}"
+                                    alt="{{ $car->title }} gallery image"
+                                    class="img-thumbnail w-100"
+                                    style="height: 140px; object-fit: cover;"
+                                >
+
+                                <form
+                                    method="POST"
+                                    action="{{ route('admin.car-images.destroy', $image->id) }}"
+                                    class="position-absolute top-0 end-0 m-1"
+                                    onsubmit="return confirm('Delete this gallery image?');"
+                                >
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger rounded-circle p-0 d-flex align-items-center justify-content-center" style="width: 24px; height: 24px; line-height: 1;" aria-label="Delete image">
+                                        &times;
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     @endforeach
                 </div>

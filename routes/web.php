@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\CarImageController;
 use App\Http\Controllers\CarListingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('cars', CarController::class);
+    Route::delete('/car-images/{id}', [CarImageController::class, 'destroy'])->name('car-images.destroy');
 });
 
 require __DIR__.'/auth.php';

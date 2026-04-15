@@ -9,6 +9,7 @@ class CarListingController extends Controller
     public function home()
     {
         $latestCars = Car::query()
+            ->with('images')
             ->where('status', 'available')
             ->latest()
             ->take(3)
@@ -20,6 +21,7 @@ class CarListingController extends Controller
     public function index()
     {
         $cars = Car::query()
+            ->with('images')
             ->where('status', 'available')
             ->latest()
             ->paginate(12);

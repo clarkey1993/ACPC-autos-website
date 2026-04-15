@@ -35,14 +35,43 @@
     <div class="row g-4">
         @forelse ($latestCars as $car)
             <div class="col-md-4">
+                @php
+                    $imagePaths = collect();
+                    if ($car->featured_image) {
+                        $imagePaths->push($car->featured_image);
+                    }
+                    foreach ($car->images as $image) {
+                        $imagePaths->push($image->image_path);
+                    }
+                    $carouselId = 'homeCarCarousel' . $car->id;
+                @endphp
                 <div class="card brand-card h-100 shadow-sm rounded-4 overflow-hidden">
-                    @if ($car->featured_image)
-                        <img
-                            src="{{ \Illuminate\Support\Facades\Storage::url($car->featured_image) }}"
-                            class="card-img-top"
-                            alt="{{ $car->title }}"
-                            style="height: 220px; object-fit: cover;"
-                        >
+                    @if ($imagePaths->isNotEmpty())
+                        <div id="{{ $carouselId }}" class="carousel slide">
+                            <div class="carousel-inner">
+                                @foreach ($imagePaths as $imagePath)
+                                    <div class="carousel-item @if ($loop->first) active @endif">
+                                        <img
+                                            src="{{ \Illuminate\Support\Facades\Storage::url($imagePath) }}"
+                                            class="d-block w-100"
+                                            alt="{{ $car->title }}"
+                                            style="height: 220px; object-fit: cover;"
+                                        >
+                                    </div>
+                                @endforeach
+                            </div>
+
+                            @if ($imagePaths->count() > 1)
+                                <button class="carousel-control-prev" type="button" data-bs-target="#{{ $carouselId }}" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#{{ $carouselId }}" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            @endif
+                        </div>
                     @else
                         <div class="d-flex align-items-center justify-content-center brand-muted" style="height: 220px;">
                             No image
