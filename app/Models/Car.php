@@ -27,4 +27,9 @@ class Car extends Model
     {
         return $this->hasMany(CarImage::class);
     }
+
+    public function enquiries(): HasMany
+    {
+        return $this->hasMany(Enquiry::class);
+    }
 }

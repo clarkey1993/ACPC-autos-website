@@ -37,6 +37,11 @@
             color: var(--brand-off-white);
         }
 
+        .hero-shell {
+            background: linear-gradient(135deg, rgba(30, 51, 39, 0.96), rgba(17, 22, 26, 0.98));
+            border: 1px solid rgba(224, 201, 138, 0.28);
+        }
+
         .brand-muted {
             color: #c7bfae !important;
         }
@@ -78,6 +83,25 @@
         .footer-public {
             border-top: 1px solid rgba(201, 164, 92, 0.25);
             color: #b7ae9a;
+        }
+
+        .footer-link {
+            color: #d4cbb7;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: var(--brand-gold-light);
+            text-decoration: underline;
+        }
+
+        .section-title {
+            letter-spacing: 0.02em;
+        }
+
+        .stock-image {
+            height: 240px;
+            object-fit: cover;
         }
 
         .pagination .page-link {
@@ -122,9 +146,25 @@
     </main>
 
     <footer class="footer-public py-4 mt-4">
-        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
-            <p class="mb-0">&copy; {{ date('Y') }} ACPC Autos. All rights reserved.</p>
-            <p class="mb-0 small">Premium pre-owned vehicles.</p>
+        <div class="container">
+            <div class="row g-4 align-items-start">
+                <div class="col-md-4">
+                    <h2 class="h6 text-brand-gold mb-2">ACPC Autos</h2>
+                    <p class="mb-0 small">Premium hand-picked vehicles with a personal dealership experience.</p>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="h6 text-brand-gold mb-2">Contact</h2>
+                    <p class="mb-1 small">Phone: <a href="#" class="footer-link">+00 0000 000000</a></p>
+                    <p class="mb-0 small">Email: <a href="#" class="footer-link">sales@example.com</a></p>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="h6 text-brand-gold mb-2">Opening Hours</h2>
+                    <p class="mb-0 small">Mon-Sat: 9:00am - 6:00pm</p>
+                </div>
+            </div>
+            <div class="mt-4 pt-3 border-top border-secondary-subtle">
+                <p class="mb-0 small">&copy; {{ date('Y') }} ACPC Autos. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
