@@ -2,12 +2,13 @@
 
 use App\Http\Controllers\Admin\CarController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\CarListingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [CarListingController::class, 'home'])->name('home');
+Route::get('/cars', [CarListingController::class, 'index'])->name('cars.index');
+Route::get('/cars/{slug}', [CarListingController::class, 'show'])->name('cars.show');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])
