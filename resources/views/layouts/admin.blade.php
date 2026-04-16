@@ -24,6 +24,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.enquiries.index') }}">Enquiries</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.site-settings.edit') }}">Site Settings</a>
+                    </li>
                 </ul>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

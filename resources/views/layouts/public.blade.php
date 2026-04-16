@@ -366,9 +366,6 @@
 </head>
 <body>
     @php
-        $publicPhoneDisplay = config('dealer.phone_display');
-        $publicPhoneTel = config('dealer.phone_tel');
-        $publicWhatsAppNumber = config('dealer.whatsapp_number');
         $publicWhatsAppMessage = config('dealer.whatsapp_message');
     @endphp
     <nav class="navbar navbar-expand-lg navbar-public py-3">
@@ -421,11 +418,11 @@
                 <div class="col-md-4">
                     <h2 class="h6 text-brand-gold mb-2">Contact</h2>
                     <p class="mb-1 small">Phone: <a href="tel:{{ preg_replace('/\s+/', '', $publicPhoneTel) }}" class="footer-link">{{ $publicPhoneDisplay }}</a></p>
-                    <p class="mb-0 small">Email: <a href="{{ config('dealer.email_mailto') }}" class="footer-link">{{ config('dealer.email_display') }}</a></p>
+                    <p class="mb-0 small">Email: <a href="{{ $publicEmailMailto }}" class="footer-link">{{ $publicEmailDisplay }}</a></p>
                 </div>
                 <div class="col-md-4">
-                    <h2 class="h6 text-brand-gold mb-2">Opening Hours</h2>
-                    <p class="mb-0 small">Mon-Sat: 9:00am - 6:00pm</p>
+                    <h2 class="h6 text-brand-gold mb-2">Appointments</h2>
+                    <p class="mb-0 small">{{ $publicAppointmentsText }}</p>
                 </div>
             </div>
             <div class="mt-4 pt-3 border-top border-secondary-subtle">
