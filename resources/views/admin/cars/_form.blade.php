@@ -32,6 +32,12 @@
     </div>
 
     <div class="col-md-4">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" name="location" id="location" class="form-control" value="{{ old('location', $car->location ?? '') }}" placeholder="e.g. Málaga">
+        <small class="text-muted">Shown on public listings. Leave blank to use the default showroom location.</small>
+    </div>
+
+    <div class="col-md-4">
         <label for="fuel_type" class="form-label">Fuel Type</label>
         <input type="text" name="fuel_type" id="fuel_type" class="form-control" value="{{ old('fuel_type', $car->fuel_type ?? '') }}">
     </div>

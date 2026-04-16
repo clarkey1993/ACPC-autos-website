@@ -14,6 +14,7 @@ class Car extends Model
         'year',
         'price',
         'mileage',
+        'location',
         'fuel_type',
         'transmission',
         'colour',
@@ -22,6 +23,40 @@ class Car extends Model
         'featured_image',
         'slug',
     ];
+
+    public function cardStatusLabel(): string
+    {
+        return match ($this->status) {
+            'available' => 'Available',
+            'reserved' => 'Reserved',
+            'sold' => 'Sold',
+            default => 'Available',
+        };
+    }
+
+    public function cardStatusBadgeClass(): string
+    {
+        return match ($this->status) {
+            'available' => 'text-bg-success',
+            'reserved' => 'text-bg-warning',
+            'sold' => 'text-bg-secondary',
+            default => 'text-bg-success',
+        };
+    }
+
+    public function cardMileageText(): string
+    {
+        return $this->mileage !== null
+            ? number_format((int) $this->mileage) . ' km'
+            : 'Mileage on request';
+    }
+
+    public function cardLocationText(): string
+    {
+        $value = $this->location;
+
+        return ($value !== null && $value !== '') ? $value : 'Málaga';
+    }
 
     public function images(): HasMany
     {

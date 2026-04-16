@@ -20,6 +20,7 @@ class UpdateCarRequest extends FormRequest
             'year' => ['required', 'integer', 'digits:4', 'min:1900', 'max:' . (date('Y') + 1)],
             'price' => ['required', 'integer', 'min:0'],
             'mileage' => ['nullable', 'integer', 'min:0'],
+            'location' => ['nullable', 'string', 'max:120'],
             'fuel_type' => ['nullable', 'string', 'max:50'],
             'transmission' => ['nullable', 'string', 'max:50'],
             'colour' => ['nullable', 'string', 'max:50'],
