@@ -51,7 +51,7 @@
                         }
                         $carouselId = 'indexCarCarousel' . $car->id;
                     @endphp
-                    <div class="card brand-card h-100 shadow-sm rounded-4 overflow-hidden">
+                    <div class="card brand-card car-inventory-card h-100 shadow-sm rounded-4 overflow-hidden">
                         @if ($imagePaths->isNotEmpty())
                             <div id="{{ $carouselId }}" class="carousel slide">
                                 <div class="carousel-inner">

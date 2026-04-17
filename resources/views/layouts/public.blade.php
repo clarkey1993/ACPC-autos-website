@@ -362,6 +362,116 @@
             margin-bottom: 0.7rem;
             letter-spacing: 0.01em;
         }
+
+        /**
+         * Inventory listing cards (grid): same premium dark panel as dark-mode branding,
+         * on light pages only — softer lift on white; buttons use global .btn-brand-*.
+         * Add class `car-inventory-card` to any `card brand-card` used for stock listings.
+         */
+        @media not (prefers-color-scheme: dark) {
+            .card.brand-card.car-inventory-card {
+                /* Green-forward depth aligned with --brand-primary / dark-mode gold trim */
+                background: linear-gradient(
+                    168deg,
+                    rgba(34, 52, 42, 0.98) 0%,
+                    rgba(22, 40, 30, 0.98) 46%,
+                    rgba(14, 24, 18, 0.99) 100%
+                );
+                border: 1px solid rgba(224, 201, 138, 0.28);
+                color: #f5f1e8;
+                box-shadow:
+                    0 0 0 1px rgba(255, 255, 255, 0.04),
+                    0 10px 26px rgba(8, 16, 12, 0.2),
+                    0 3px 10px rgba(8, 16, 12, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+                transition:
+                    box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+                    transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+                    border-color 0.22s ease;
+            }
+
+            .card.brand-card.car-inventory-card:hover {
+                transform: translateY(-3px);
+                border-color: rgba(224, 201, 138, 0.38);
+                box-shadow:
+                    0 0 0 1px rgba(255, 255, 255, 0.05),
+                    0 14px 34px rgba(8, 16, 12, 0.26),
+                    0 4px 12px rgba(8, 16, 12, 0.12),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            }
+
+            .card.brand-card.car-inventory-card .carousel,
+            .card.brand-card.car-inventory-card .carousel-inner,
+            .card.brand-card.car-inventory-card .carousel-item {
+                background: #0d1410;
+            }
+
+            .card.brand-card.car-inventory-card .carousel .stock-image {
+                background: #0d1410;
+            }
+
+            .card.brand-card.car-inventory-card .carousel {
+                box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+            }
+
+            .card.brand-card.car-inventory-card .card-body {
+                background: transparent;
+            }
+
+            .card.brand-card.car-inventory-card .card-title {
+                color: #f5f1e8;
+                letter-spacing: -0.01em;
+            }
+
+            .card.brand-card.car-inventory-card .home-muted {
+                color: rgba(199, 191, 174, 0.92) !important;
+            }
+
+            .card.brand-card.car-inventory-card .brand-muted {
+                color: rgba(199, 191, 174, 0.92) !important;
+            }
+
+            /* Same tokens as dark :root: --brand-gold + light highlight for legibility on green */
+            .card.brand-card.car-inventory-card .price-highlight {
+                color: #c9a45c;
+                text-shadow: 0 0 1px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.35);
+            }
+
+            .card.brand-card.car-inventory-card .carousel-control-prev,
+            .card.brand-card.car-inventory-card .carousel-control-next {
+                opacity: 0.92;
+            }
+
+            .card.brand-card.car-inventory-card > .d-flex.stock-image {
+                background: rgba(0, 0, 0, 0.28) !important;
+                color: rgba(245, 241, 232, 0.52) !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            }
+
+            .card.brand-card.car-inventory-card .badge.text-bg-success {
+                background-color: #2f5e3a !important;
+                color: #f7f5ef !important;
+            }
+
+            .card.brand-card.car-inventory-card .badge.text-bg-warning {
+                background-color: #c9a45c !important;
+                color: #1a1610 !important;
+            }
+
+            .card.brand-card.car-inventory-card .badge.text-bg-secondary {
+                background-color: rgba(255, 255, 255, 0.1) !important;
+                color: #f5f1e8 !important;
+                border: 1px solid rgba(255, 255, 255, 0.14);
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .card.brand-card.car-inventory-card,
+                .card.brand-card.car-inventory-card:hover {
+                    transition: none;
+                    transform: none;
+                }
+            }
+        }
     </style>
 </head>
 <body>

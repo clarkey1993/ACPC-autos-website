@@ -19,7 +19,7 @@
             }
 
             .page-home .home-panel,
-            .page-home .card.brand-card {
+            .page-home .card.brand-card:not(.car-inventory-card) {
                 background: var(--home-surface);
                 border: 1px solid rgba(47, 94, 58, 0.16);
                 box-shadow: 0 8px 24px rgba(21, 36, 28, 0.08);
@@ -141,7 +141,7 @@
                 }
 
                 .page-home .home-panel,
-                .page-home .card.brand-card {
+                .page-home .card.brand-card:not(.car-inventory-card) {
                     border-color: rgba(201, 164, 92, 0.26);
                     box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18);
                 }
@@ -196,7 +196,7 @@
                             }
                             $carouselId = 'homeCarCarousel' . $car->id;
                         @endphp
-                        <div class="card brand-card home-featured-card h-100 rounded-4 overflow-hidden border-0">
+                        <div class="card brand-card car-inventory-card home-featured-card h-100 rounded-4 overflow-hidden border-0">
                             @if ($imagePaths->isNotEmpty())
                                 <div id="{{ $carouselId }}" class="carousel slide">
                                     <div class="carousel-inner">
