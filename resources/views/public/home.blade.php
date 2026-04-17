@@ -117,7 +117,7 @@
                 background: var(--featured-section-bg);
                 border: 1px solid rgba(47, 94, 58, 0.12);
                 border-radius: 1rem;
-                padding: 1.15rem 1.15rem 1.35rem;
+                padding: 1.75rem 1.15rem 1.35rem;
                 box-shadow: 0 6px 20px rgba(21, 36, 28, 0.06);
             }
 
@@ -172,37 +172,6 @@
                 }
             }
         </style>
-
-        <section class="home-hero rounded-4 p-3 p-md-4 mb-3 mb-md-4 shadow-sm">
-            <div class="row align-items-center g-3 g-md-4">
-                <div class="col-lg-7">
-                    <div class="home-hero-brandrow mb-2 mb-md-3">
-                        <a href="{{ route('home') }}" class="brand-logo-link d-inline-flex align-items-center">
-                            <img src="{{ asset('images/logo-full.png') }}" alt="ACPC Autos" class="brand-logo brand-logo--hero" decoding="async">
-                        </a>
-                        <div class="home-hero-brandtext">
-                            <p class="home-hero-name">ACPC Autos</p>
-                            <div class="home-hero-rule"></div>
-                            <p class="text-uppercase home-hero-eyebrow mb-0">Premium dealer stock</p>
-                        </div>
-                    </div>
-                    <h1 class="display-5 fw-semibold mb-2 mb-md-2">Exceptional cars, ready when you are</h1>
-                    <p class="fs-6 home-muted mb-3 mb-md-3">A small, curated list of quality vehicles — browse with confidence and speak directly with our team.</p>
-                    <div class="d-flex flex-wrap gap-2">
-                        <a href="#featured-cars" class="btn btn-brand-primary">View featured</a>
-                        <a href="{{ route('cars.index') }}" class="btn btn-brand-outline">Full stock list</a>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="home-panel rounded-3 p-3 p-md-4 h-100">
-                        <p class="small text-brand-gold fw-semibold mb-2">Why our stock stands out</p>
-                        <p class="mb-2 small home-muted">Hand-picked vehicles with presentation and history in mind.</p>
-                        <p class="mb-2 small home-muted">Straightforward details — no clutter, no endless filters.</p>
-                        <p class="mb-0 small home-muted">Personal support from first look to handover.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <section id="featured-cars" class="py-3 py-md-4 mb-5 mb-md-6 featured-shell">
             <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-3">
@@ -272,6 +241,37 @@
                         <div class="home-panel rounded-4 p-4 text-center home-muted">No cars available right now. Please check back soon.</div>
                     </div>
                 @endforelse
+            </div>
+        </section>
+
+        <section class="home-hero rounded-4 px-3 px-md-4 py-2 py-md-3 mt-3 mt-md-4 mb-3 mb-md-4 shadow-sm">
+            <div class="row align-items-center g-3 g-md-4">
+                <div class="col-lg-7">
+                    <div class="home-hero-brandrow mb-2 mb-md-3">
+                        <a href="{{ route('home') }}" class="brand-logo-link d-inline-flex align-items-center">
+                            <img src="{{ asset('images/logo-full.png') }}" alt="ACPC Autos" class="brand-logo brand-logo--hero" decoding="async">
+                        </a>
+                        <div class="home-hero-brandtext">
+                            <p class="home-hero-name">ACPC Autos</p>
+                            <div class="home-hero-rule"></div>
+                            <p class="text-uppercase home-hero-eyebrow mb-0">Premium dealer stock</p>
+                        </div>
+                    </div>
+                    <h1 class="display-5 fw-semibold mb-2 mb-md-2">Exceptional cars, ready when you are</h1>
+                    <p class="fs-6 home-muted mb-3 mb-md-3">A small, curated list of quality vehicles — browse with confidence and speak directly with our team.</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="#featured-cars" class="btn btn-brand-primary">View featured</a>
+                        <a href="{{ route('cars.index') }}" class="btn btn-brand-outline">Full stock list</a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="home-panel rounded-3 p-3 p-md-4 h-100">
+                        <p class="small text-brand-gold fw-semibold mb-2">Why our stock stands out</p>
+                        <p class="mb-2 small home-muted">Hand-picked vehicles with presentation and history in mind.</p>
+                        <p class="mb-2 small home-muted">Straightforward details — no clutter, no endless filters.</p>
+                        <p class="mb-0 small home-muted">Personal support from first look to handover.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
