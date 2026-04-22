@@ -41,55 +41,7 @@
         <div class="row g-4">
             @forelse ($cars as $car)
                 <div class="col-md-6 col-lg-4">
-                    @php
-                        $imagePaths = collect();
-                        if ($car->featured_image) {
-                            $imagePaths->push($car->featured_image);
-                        }
-                        foreach ($car->images as $image) {
-                            $imagePaths->push($image->image_path);
-                        }
-                        $carouselId = 'indexCarCarousel' . $car->id;
-                    @endphp
-                    <div class="card brand-card car-inventory-card h-100 shadow-sm rounded-4 overflow-hidden">
-                        @if ($imagePaths->isNotEmpty())
-                            <div id="{{ $carouselId }}" class="carousel slide">
-                                <div class="carousel-inner">
-                                    @foreach ($imagePaths as $imagePath)
-                                        <div class="carousel-item @if ($loop->first) active @endif">
-                                            <img
-                                                src="{{ \Illuminate\Support\Facades\Storage::url($imagePath) }}"
-                                                class="d-block w-100 stock-image"
-                                                alt="{{ $car->title }}"
-                                            >
-                                        </div>
-                                    @endforeach
-                                </div>
-
-                                @if ($imagePaths->count() > 1)
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#{{ $carouselId }}" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#{{ $carouselId }}" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
-                                @endif
-                            </div>
-                        @else
-                            <div class="d-flex align-items-center justify-content-center brand-muted stock-image">
-                                <span>No image</span>
-                            </div>
-                        @endif
-                        <div class="card-body p-4">
-                            <h2 class="h5 card-title mb-1">{{ $car->title }}</h2>
-                            <p class="mb-2 brand-muted small">{{ $car->make }} {{ $car->model }} ({{ $car->year }})</p>
-                            @include('public.cars.partials.card-summary', ['car' => $car])
-                            <p class="price-highlight">€{{ number_format($car->price) }}</p>
-                            <a href="{{ route('cars.show', $car->slug) }}" class="btn btn-brand-primary btn-sm">View Details</a>
-                        </div>
-                    </div>
+                    @include('public.cars.partials.car-card', ['car' => $car, 'carouselIdPrefix' => 'indexCarCard'])
                 </div>
             @empty
                 <div class="col-12">

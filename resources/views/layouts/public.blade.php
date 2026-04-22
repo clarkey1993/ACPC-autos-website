@@ -390,104 +390,273 @@
         }
 
         /**
-         * Inventory listing cards (grid): premium light finish for light mode.
-         * Add class `car-inventory-card` to any `card brand-card` used for stock listings.
+         * Clickable card behaviour — works in both light and dark mode.
+         * The whole `.car-inventory-card` is clickable via a `.stretched-link` on the
+         * "View details" button. Carousel controls and the image-count overlay sit
+         * above the stretched-link's ::after so they continue to work.
          */
-        @media not (prefers-color-scheme: dark) {
-            .card.brand-card.car-inventory-card {
-                background: linear-gradient(168deg, #ffffff 0%, #fcfaf5 62%, #f6f2e7 100%);
-                border: 1px solid rgba(185, 145, 70, 0.2);
-                color: #1f2420;
-                box-shadow:
-                    0 0 0 1px rgba(255, 255, 255, 0.65),
-                    0 10px 24px rgba(15, 24, 18, 0.08),
-                    0 2px 6px rgba(15, 24, 18, 0.05),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.85);
-                transition:
-                    box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1),
-                    transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
-                    border-color 0.22s ease;
+        .car-inventory-card[data-card-link] {
+            cursor: pointer;
+        }
+
+        .car-inventory-card[data-card-link]:focus-visible {
+            outline: 2px solid var(--brand-gold);
+            outline-offset: 3px;
+        }
+
+        /* ============================================================
+           Marketplace-style public car listing card
+           ------------------------------------------------------------
+           Class map:
+             .car-card              : outer card element
+             .car-inventory-card    : shared hook (cursor, focus, overlay)
+             .car-card__media       : image/carousel region
+             .car-card__image       : image inside carousel
+             .car-card__status      : status badge over image
+             .car-card__body        : content area under image
+             .car-card__meta        : small uppercase meta line
+             .car-card__title       : compact title
+             .car-card__price       : prominent price
+             .car-card__specs       : inline mileage/fuel/transmission row
+             .car-card__cta         : subtle "View details" link
+             .card-image-count      : image count pill overlay
+        ============================================================ */
+
+        .car-card {
+            background: var(--brand-surface);
+            border: 1px solid var(--brand-border);
+            border-radius: 0.875rem;
+            overflow: hidden;
+            box-shadow: 0 4px 14px rgba(15, 24, 18, 0.06);
+            transition:
+                transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .car-card:hover,
+        .car-card:focus-within {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(15, 24, 18, 0.1);
+            border-color: rgba(185, 145, 70, 0.28);
+        }
+
+        .car-card__media {
+            position: relative;
+            aspect-ratio: 16 / 11;
+            background: var(--brand-surface-alt);
+            overflow: hidden;
+        }
+
+        .car-card__media .carousel,
+        .car-card__media .carousel-inner,
+        .car-card__media .carousel-item {
+            height: 100%;
+        }
+
+        .car-card__media::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0 0;
+            height: 38%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.32) 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .car-card__image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+            will-change: transform;
+        }
+
+        .car-card:hover .car-card__image,
+        .car-card:focus-within .car-card__image {
+            transform: scale(1.05);
+        }
+
+        .car-card__image--empty {
+            color: var(--brand-muted-text);
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .car-card__status {
+            position: absolute;
+            top: 0.7rem;
+            left: 0.7rem;
+            z-index: 4;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-size: 0.68rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22);
+        }
+
+        .car-card__body {
+            padding: 0.95rem 1rem 1.05rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            flex: 1 1 auto;
+        }
+
+        .car-card__meta {
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            font-size: 0.7rem;
+            color: var(--brand-muted-text);
+            margin: 0 0 0.1rem;
+        }
+
+        .car-card__title {
+            font-size: 1.02rem;
+            font-weight: 700;
+            letter-spacing: 0.005em;
+            line-height: 1.25;
+            color: var(--brand-text);
+            margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-clamp: 2;
+            overflow: hidden;
+        }
+
+        .car-card__price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--brand-gold);
+            margin: 0.25rem 0 0.45rem;
+            letter-spacing: 0.005em;
+            line-height: 1.15;
+        }
+
+        .car-card__specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 0.9rem;
+            font-size: 0.78rem;
+            color: var(--brand-muted-text);
+            margin: 0 0 0.25rem;
+            padding: 0;
+        }
+
+        .car-card__specs li {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.32rem;
+            line-height: 1.1;
+        }
+
+        .car-card__specs svg {
+            width: 0.9rem;
+            height: 0.9rem;
+            opacity: 0.72;
+            flex-shrink: 0;
+        }
+
+        .car-card__cta {
+            margin-top: auto;
+            padding-top: 0.35rem;
+            color: var(--brand-gold);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.32rem;
+            align-self: flex-start;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            transition: color 0.18s ease, gap 0.18s ease;
+        }
+
+        .car-card__cta svg {
+            width: 0.85rem;
+            height: 0.85rem;
+            transition: transform 0.2s ease;
+        }
+
+        .car-card__cta:hover,
+        .car-card__cta:focus,
+        .car-card:hover .car-card__cta {
+            color: var(--brand-gold-light);
+        }
+
+        .car-card:hover .car-card__cta svg {
+            transform: translateX(3px);
+        }
+
+        /* Image count pill overlay (shared). */
+        .car-inventory-card .carousel-control-prev,
+        .car-inventory-card .carousel-control-next {
+            z-index: 4;
+        }
+
+        .car-inventory-card .card-image-count {
+            position: absolute;
+            bottom: 0.7rem;
+            right: 0.7rem;
+            z-index: 4;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            background: rgba(12, 18, 14, 0.62);
+            color: #fefaf0;
+            font-size: 0.74rem;
+            font-weight: 600;
+            line-height: 1;
+            letter-spacing: 0.02em;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .car-inventory-card .card-image-count svg {
+            width: 0.85rem;
+            height: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        /* Dark mode: keep the card visually lighter/cleaner, not blocky. */
+        @media (prefers-color-scheme: dark) {
+            .car-card {
+                background: var(--brand-surface);
+                border-color: rgba(201, 164, 92, 0.18);
+                box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
             }
 
-            .card.brand-card.car-inventory-card:hover {
-                transform: translateY(-2px);
-                border-color: rgba(185, 145, 70, 0.32);
-                box-shadow:
-                    0 0 0 1px rgba(255, 255, 255, 0.75),
-                    0 14px 28px rgba(15, 24, 18, 0.1),
-                    0 3px 8px rgba(15, 24, 18, 0.06),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            .car-card:hover,
+            .car-card:focus-within {
+                border-color: rgba(201, 164, 92, 0.32);
+                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.36);
             }
 
-            .card.brand-card.car-inventory-card .carousel,
-            .card.brand-card.car-inventory-card .carousel-inner,
-            .card.brand-card.car-inventory-card .carousel-item {
-                background: #ece7db;
+            .car-card__media {
+                background: #131a20;
             }
+        }
 
-            .card.brand-card.car-inventory-card .carousel .stock-image {
-                background: #ece7db;
-            }
-
-            .card.brand-card.car-inventory-card .carousel {
-                box-shadow: inset 0 -1px 0 rgba(98, 112, 102, 0.12);
-            }
-
-            .card.brand-card.car-inventory-card .card-body {
-                background: transparent;
-            }
-
-            .card.brand-card.car-inventory-card .card-title {
-                color: #202520;
-                letter-spacing: -0.01em;
-            }
-
-            .card.brand-card.car-inventory-card .home-muted {
-                color: #667168 !important;
-            }
-
-            .card.brand-card.car-inventory-card .brand-muted {
-                color: #667168 !important;
-            }
-
-            .card.brand-card.car-inventory-card .price-highlight {
-                color: #b99146;
-                text-shadow: none;
-            }
-
-            .card.brand-card.car-inventory-card .carousel-control-prev,
-            .card.brand-card.car-inventory-card .carousel-control-next {
-                opacity: 0.92;
-            }
-
-            .card.brand-card.car-inventory-card > .d-flex.stock-image {
-                background: rgba(232, 225, 209, 0.7) !important;
-                color: #7a837b !important;
-                border-bottom: 1px solid rgba(98, 112, 102, 0.12);
-            }
-
-            .card.brand-card.car-inventory-card .badge.text-bg-success {
-                background-color: #2f5e3a !important;
-                color: #f7f5ef !important;
-            }
-
-            .card.brand-card.car-inventory-card .badge.text-bg-warning {
-                background-color: #c9a45c !important;
-                color: #1a1610 !important;
-            }
-
-            .card.brand-card.car-inventory-card .badge.text-bg-secondary {
-                background-color: rgba(94, 103, 98, 0.12) !important;
-                color: #3f4641 !important;
-                border: 1px solid rgba(94, 103, 98, 0.2);
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-                .card.brand-card.car-inventory-card,
-                .card.brand-card.car-inventory-card:hover {
-                    transition: none;
-                    transform: none;
-                }
+        @media (prefers-reduced-motion: reduce) {
+            .car-card,
+            .car-card:hover,
+            .car-card:focus-within,
+            .car-card__image,
+            .car-card:hover .car-card__image,
+            .car-card:focus-within .car-card__image,
+            .car-card:hover .car-card__cta svg {
+                transition: none;
+                transform: none;
             }
         }
     </style>
@@ -572,5 +741,65 @@
     </a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        (function () {
+            var INTERACTIVE_SELECTOR = 'a[href], button, input, select, textarea, label, [data-bs-toggle], [data-bs-slide], [data-bs-slide-to], [data-no-card-link]';
+
+            function navigateFromCard(card, openInNewTab) {
+                var url = card.getAttribute('data-card-link');
+                if (!url) {
+                    return;
+                }
+                if (openInNewTab) {
+                    window.open(url, '_blank', 'noopener');
+                } else {
+                    window.location.href = url;
+                }
+            }
+
+            document.addEventListener('click', function (event) {
+                var card = event.target.closest('[data-card-link]');
+                if (!card) {
+                    return;
+                }
+                if (event.target.closest(INTERACTIVE_SELECTOR)) {
+                    return;
+                }
+                if (window.getSelection && window.getSelection().toString()) {
+                    return;
+                }
+                var openInNewTab = event.ctrlKey || event.metaKey || event.shiftKey || event.button === 1;
+                event.preventDefault();
+                navigateFromCard(card, openInNewTab);
+            });
+
+            document.addEventListener('auxclick', function (event) {
+                if (event.button !== 1) {
+                    return;
+                }
+                var card = event.target.closest('[data-card-link]');
+                if (!card) {
+                    return;
+                }
+                if (event.target.closest(INTERACTIVE_SELECTOR)) {
+                    return;
+                }
+                event.preventDefault();
+                navigateFromCard(card, true);
+            });
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key !== 'Enter' && event.key !== ' ' && event.key !== 'Spacebar') {
+                    return;
+                }
+                var card = event.target.closest('[data-card-link]');
+                if (!card || card !== event.target) {
+                    return;
+                }
+                event.preventDefault();
+                navigateFromCard(card, false);
+            });
+        })();
+    </script>
 </body>
 </html>

@@ -34,11 +34,6 @@
                 margin-bottom: 0.75rem;
             }
 
-            .page-home .home-featured-card .stock-image {
-                height: 215px;
-                object-fit: cover;
-            }
-
             .page-home .featured-shell {
                 background: var(--featured-section-bg);
                 border: 1px solid rgba(185, 145, 70, 0.15);
@@ -107,55 +102,7 @@
             <div class="row g-3 g-md-4 featured-cards-row">
                 @forelse ($latestCars as $car)
                     <div class="col-12 col-sm-6 col-xl-4">
-                        @php
-                            $imagePaths = collect();
-                            if ($car->featured_image) {
-                                $imagePaths->push($car->featured_image);
-                            }
-                            foreach ($car->images as $image) {
-                                $imagePaths->push($image->image_path);
-                            }
-                            $carouselId = 'homeCarCarousel' . $car->id;
-                        @endphp
-                        <div class="card brand-card car-inventory-card home-featured-card h-100 rounded-4 overflow-hidden border-0">
-                            @if ($imagePaths->isNotEmpty())
-                                <div id="{{ $carouselId }}" class="carousel slide">
-                                    <div class="carousel-inner">
-                                        @foreach ($imagePaths as $imagePath)
-                                            <div class="carousel-item @if ($loop->first) active @endif">
-                                                <img
-                                                    src="{{ \Illuminate\Support\Facades\Storage::url($imagePath) }}"
-                                                    class="d-block w-100 stock-image"
-                                                    alt="{{ $car->title }}"
-                                                >
-                                            </div>
-                                        @endforeach
-                                    </div>
-
-                                    @if ($imagePaths->count() > 1)
-                                        <button class="carousel-control-prev" type="button" data-bs-target="#{{ $carouselId }}" data-bs-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Previous</span>
-                                        </button>
-                                        <button class="carousel-control-next" type="button" data-bs-target="#{{ $carouselId }}" data-bs-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="visually-hidden">Next</span>
-                                        </button>
-                                    @endif
-                                </div>
-                            @else
-                                <div class="d-flex align-items-center justify-content-center home-muted stock-image bg-secondary bg-opacity-10">
-                                    No image
-                                </div>
-                            @endif
-                            <div class="card-body p-3 p-md-4 d-flex flex-column">
-                                <h3 class="h5 card-title mb-1">{{ $car->title }}</h3>
-                                <p class="small home-muted mb-2">{{ $car->make }} {{ $car->model }} · {{ $car->year }}</p>
-                                @include('public.cars.partials.card-summary', ['car' => $car])
-                                <p class="price-highlight">€{{ number_format($car->price) }}</p>
-                                <a href="{{ route('cars.show', $car->slug) }}" class="btn btn-brand-primary btn-sm mt-auto">View details</a>
-                            </div>
-                        </div>
+                        @include('public.cars.partials.car-card', ['car' => $car, 'carouselIdPrefix' => 'homeCarCard'])
                     </div>
                 @empty
                     <div class="col-12">

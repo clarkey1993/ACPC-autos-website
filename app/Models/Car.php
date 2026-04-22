@@ -58,6 +58,28 @@ class Car extends Model
         return ($value !== null && $value !== '') ? $value : 'Málaga';
     }
 
+    public function cardFuelText(): ?string
+    {
+        $value = $this->fuel_type;
+
+        if ($value === null || $value === '') {
+            return null;
+        }
+
+        return ucwords(strtolower((string) $value));
+    }
+
+    public function cardTransmissionText(): ?string
+    {
+        $value = $this->transmission;
+
+        if ($value === null || $value === '') {
+            return null;
+        }
+
+        return ucwords(strtolower((string) $value));
+    }
+
     public function images(): HasMany
     {
         return $this->hasMany(CarImage::class);
