@@ -111,11 +111,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0;
+            padding: 0.5rem;
             top: 50%;
             bottom: auto;
             transform: translateY(-50%);
             pointer-events: auto;
+            filter: none;
         }
 
         .page-cars-show .show-gallery .carousel-control-prev {
@@ -128,38 +129,38 @@
             left: auto;
         }
 
+        /* Gold chevron only (no circle) — drop-shadow keeps it readable on any photo */
         .page-cars-show .show-gallery .carousel-control-prev-icon,
         .page-cars-show .show-gallery .carousel-control-next-icon {
-            width: clamp(2.85rem, 4.6vw, 3.45rem);
-            height: clamp(2.85rem, 4.6vw, 3.45rem);
+            width: clamp(2rem, 3.6vw, 2.55rem);
+            height: clamp(2.55rem, 5.1vw, 3.35rem);
             padding: 0;
-            /* Chevron scales with the circle — fills most of the button for visibility */
-            background-size: 58% 58%;
+            background-color: transparent;
+            background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
-            background-color: #1f4d2e;
-            border: 1px solid rgba(212, 175, 55, 0.55);
-            border-radius: 999px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(0, 0, 0, 0.15);
-            transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 10px rgba(0, 0, 0, 0.55));
+            transition: filter 0.2s ease, transform 0.2s ease;
         }
 
+        /* Taller, slimmer stroke chevrons (narrower angle + lighter line weight) */
         .page-cars-show .show-gallery .carousel-control-prev-icon {
-            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23d4af37'%3E%3Cpath fill-rule='evenodd' d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 30' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='14 3 6 15 14 27'/%3E%3C/svg%3E");
         }
 
         .page-cars-show .show-gallery .carousel-control-next-icon {
-            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23d4af37'%3E%3Cpath fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 30' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 3 14 15 6 27'/%3E%3C/svg%3E");
         }
 
         .page-cars-show .show-gallery .carousel-control-prev:hover .carousel-control-prev-icon,
         .page-cars-show .show-gallery .carousel-control-next:hover .carousel-control-next-icon,
         .page-cars-show .show-gallery .carousel-control-prev:focus-visible .carousel-control-prev-icon,
         .page-cars-show .show-gallery .carousel-control-next:focus-visible .carousel-control-next-icon {
-            background-color: #2a6b41;
-            border-color: rgba(212, 175, 55, 0.9);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(212, 175, 55, 0.25);
-            transform: scale(1.05);
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 14px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 6px rgba(212, 175, 55, 0.55));
+            transform: scale(1.08);
         }
 
         .page-cars-show .show-gallery .carousel-control-prev:focus-visible,
@@ -374,38 +375,62 @@
             border-radius: 2px;
         }
 
-        .page-cars-show .show-details-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-            gap: 0.75rem;
+        .page-cars-show .show-details-list {
             margin: 0;
             padding: 0;
             list-style: none;
         }
 
-        .page-cars-show .show-details-grid li {
-            display: block;
-            padding: 0.7rem 0.85rem;
-            background: var(--show-surface-alt);
-            border: 1px solid var(--show-border);
-            border-radius: 0.6rem;
+        .page-cars-show .show-details-list__item {
+            display: grid;
+            grid-template-columns: minmax(6.5rem, 9.5rem) 1fr;
+            gap: 0.35rem 1rem;
+            align-items: baseline;
+            padding: 0.72rem 0;
+            border-bottom: 1px solid var(--show-border);
         }
 
-        .page-cars-show .show-details-grid__label {
-            display: block;
-            font-size: 0.68rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--brand-muted-text);
-            margin-bottom: 0.25rem;
+        .page-cars-show .show-details-list__item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
         }
 
-        .page-cars-show .show-details-grid__value {
-            font-size: 0.97rem;
-            font-weight: 600;
+        .page-cars-show .show-details-list__label {
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: capitalize;
+            color: var(--brand-gold);
+        }
+
+        .page-cars-show .show-details-list__label::after {
+            content: ":";
+            color: var(--brand-gold);
+            margin-left: 0.05em;
+        }
+
+        .page-cars-show .show-details-list__value {
+            font-size: 0.98rem;
+            font-weight: 500;
             color: var(--brand-text);
-            line-height: 1.25;
+            line-height: 1.45;
+        }
+
+        @media (max-width: 480px) {
+            .page-cars-show .show-details-list__item {
+                grid-template-columns: 1fr;
+                gap: 0.2rem 0;
+                padding: 0.62rem 0;
+            }
+
+            .page-cars-show .show-details-list__label {
+                font-size: 0.78rem;
+            }
+
+            .page-cars-show .show-details-list__value {
+                font-size: 0.94rem;
+                padding-left: 0.05rem;
+            }
         }
 
         .page-cars-show .show-description {
@@ -589,44 +614,44 @@
     {{-- ================= Vehicle details ================= --}}
     <section class="show-section">
         <h2 class="show-section__title">Vehicle Details</h2>
-        <ul class="show-details-grid">
-            <li>
-                <span class="show-details-grid__label">Make</span>
-                <span class="show-details-grid__value">{{ $car->make ?: 'N/A' }}</span>
+        <ul class="show-details-list">
+            <li class="show-details-list__item">
+                <span class="show-details-list__label">Make</span>
+                <span class="show-details-list__value">{{ $car->make ?: 'N/A' }}</span>
             </li>
-            <li>
-                <span class="show-details-grid__label">Model</span>
-                <span class="show-details-grid__value">{{ $car->model ?: 'N/A' }}</span>
+            <li class="show-details-list__item">
+                <span class="show-details-list__label">Model</span>
+                <span class="show-details-list__value">{{ $car->model ?: 'N/A' }}</span>
             </li>
-            <li>
-                <span class="show-details-grid__label">Year</span>
-                <span class="show-details-grid__value">{{ $car->year ?: 'N/A' }}</span>
+            <li class="show-details-list__item">
+                <span class="show-details-list__label">Year</span>
+                <span class="show-details-list__value">{{ $car->year ?: 'N/A' }}</span>
             </li>
-            <li>
-                <span class="show-details-grid__label">Mileage</span>
-                <span class="show-details-grid__value">{{ $car->cardMileageText() }}</span>
+            <li class="show-details-list__item">
+                <span class="show-details-list__label">Mileage</span>
+                <span class="show-details-list__value">{{ $car->cardMileageText() }}</span>
             </li>
-            <li>
-                <span class="show-details-grid__label">Fuel</span>
-                <span class="show-details-grid__value">{{ $carFuel ?: 'N/A' }}</span>
+            <li class="show-details-list__item">
+                <span class="show-details-list__label">Fuel</span>
+                <span class="show-details-list__value">{{ $carFuel ?: 'N/A' }}</span>
             </li>
-            <li>
-                <span class="show-details-grid__label">Transmission</span>
-                <span class="show-details-grid__value">{{ $carTransmission ?: 'N/A' }}</span>
+            <li class="show-details-list__item">
+                <span class="show-details-list__label">Transmission</span>
+                <span class="show-details-list__value">{{ $carTransmission ?: 'N/A' }}</span>
             </li>
-            <li>
-                <span class="show-details-grid__label">Colour</span>
-                <span class="show-details-grid__value">{{ $carColour ?: 'N/A' }}</span>
+            <li class="show-details-list__item">
+                <span class="show-details-list__label">Colour</span>
+                <span class="show-details-list__value">{{ $carColour ?: 'N/A' }}</span>
             </li>
             @if ($carLocation)
-                <li>
-                    <span class="show-details-grid__label">Location</span>
-                    <span class="show-details-grid__value">{{ $carLocation }}</span>
+                <li class="show-details-list__item">
+                    <span class="show-details-list__label">Location</span>
+                    <span class="show-details-list__value">{{ $carLocation }}</span>
                 </li>
             @endif
-            <li>
-                <span class="show-details-grid__label">Status</span>
-                <span class="show-details-grid__value">{{ $car->cardStatusLabel() }}</span>
+            <li class="show-details-list__item">
+                <span class="show-details-list__label">Status</span>
+                <span class="show-details-list__value">{{ $car->cardStatusLabel() }}</span>
             </li>
         </ul>
     </section>
