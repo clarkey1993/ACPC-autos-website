@@ -7,15 +7,8 @@
         <style>
             .page-home {
                 --home-surface: linear-gradient(165deg, #fffefb 0%, #fbf8f2 56%, #f6f1e7 100%);
-                --home-hero: linear-gradient(124deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 246, 239, 0.97) 58%, rgba(243, 235, 221, 0.94) 100%);
                 --home-accent-line: linear-gradient(90deg, transparent, rgba(185, 145, 70, 0.66), rgba(47, 94, 58, 0.28), transparent);
                 --featured-section-bg: linear-gradient(155deg, rgba(255, 254, 251, 0.98) 0%, rgba(250, 246, 237, 0.96) 52%, rgba(245, 240, 230, 0.96) 100%);
-            }
-
-            .page-home .home-hero {
-                background: var(--home-hero);
-                border: 1px solid rgba(185, 145, 70, 0.2);
-                box-shadow: 0 12px 28px rgba(15, 24, 18, 0.08);
             }
 
             .page-home .home-panel,
@@ -46,73 +39,6 @@
                 object-fit: cover;
             }
 
-            .page-home .home-hero .display-5 {
-                line-height: 1.12;
-            }
-
-            .page-home .home-hero-brandrow {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.45rem;
-                max-width: 100%;
-            }
-
-            @media (min-width: 576px) {
-                .page-home .home-hero-brandrow {
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    align-items: center;
-                    column-gap: 0.6rem;
-                    row-gap: 0.25rem;
-                }
-            }
-
-            .page-home .home-hero-brandrow .brand-logo-link {
-                flex-shrink: 0;
-                line-height: 0;
-            }
-
-            .page-home .home-hero-brandtext {
-                flex: 0 1 auto;
-                min-width: 0;
-            }
-
-            .page-home .brand-logo--hero {
-                height: clamp(62px, 8.75vw, 92px);
-                width: auto;
-                max-width: min(400px, 100%);
-                filter: drop-shadow(0 2px 12px rgba(31, 43, 36, 0.14));
-            }
-
-            .page-home .home-hero-name {
-                font-size: clamp(1.48rem, 2.65vw, 1.95rem);
-                font-weight: 700;
-                letter-spacing: -0.022em;
-                line-height: 1.12;
-                color: #1f2420;
-                margin-bottom: 0;
-                text-wrap: balance;
-            }
-
-            .page-home .home-hero-rule {
-                width: 40px;
-                height: 2px;
-                border-radius: 2px;
-                background: var(--home-accent-line);
-                opacity: 0.88;
-                margin-top: 0.35rem;
-                margin-bottom: 0.3rem;
-            }
-
-            .page-home .home-hero-eyebrow {
-                font-size: 0.6875rem;
-                font-weight: 500;
-                letter-spacing: 0.18em;
-                line-height: 1.5;
-                color: rgba(96, 86, 66, 0.82);
-            }
-
             .page-home .featured-shell {
                 background: var(--featured-section-bg);
                 border: 1px solid rgba(185, 145, 70, 0.15);
@@ -122,22 +48,32 @@
             }
 
             .page-home .home-featured-heading {
-                font-size: clamp(1.65rem, 3vw, 2.2rem);
+                font-size: clamp(1.9rem, 3.4vw, 2.5rem);
                 font-weight: 700;
                 color: #232925;
+                letter-spacing: -0.01em;
+            }
+
+            .page-home .home-featured-intro {
+                max-width: 640px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .page-home .home-featured-intro .home-title-accent {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .page-home .featured-cards-row {
+                justify-content: center;
             }
 
             @media (prefers-color-scheme: dark) {
                 .page-home {
                     --home-surface: linear-gradient(168deg, rgba(38, 48, 54, 0.95) 0%, rgba(30, 38, 44, 0.98) 55%, rgba(26, 32, 37, 0.99) 100%);
-                    --home-hero: linear-gradient(118deg, rgba(47, 94, 58, 0.42) 0%, rgba(30, 51, 39, 0.88) 42%, rgba(22, 30, 36, 0.94) 100%);
                     --home-accent-line: linear-gradient(90deg, transparent, rgba(201, 164, 92, 0.55), rgba(47, 94, 58, 0.45), transparent);
                     --featured-section-bg: linear-gradient(158deg, rgba(34, 44, 40, 0.55) 0%, rgba(28, 36, 42, 0.86) 100%);
-                }
-
-                .page-home .home-hero {
-                    border-color: rgba(224, 201, 138, 0.32);
-                    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
                 }
 
                 .page-home .home-panel,
@@ -158,32 +94,17 @@
                 .page-home .home-featured-heading {
                     color: #efe7d4;
                 }
-
-                .page-home .home-hero-name {
-                    color: #faf6ec;
-                }
-
-                .page-home .home-hero-eyebrow {
-                    color: rgba(216, 208, 196, 0.82);
-                }
-
-                .page-home .brand-logo--hero {
-                    filter: brightness(1.08) contrast(1.04) drop-shadow(0 2px 14px rgba(0, 0, 0, 0.45));
-                }
             }
         </style>
 
         <section id="featured-cars" class="py-3 py-md-4 mb-5 mb-md-6 featured-shell">
-            <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-3">
-                <div>
-                    <div class="home-title-accent"></div>
-                    <h2 class="home-featured-heading home-section-title mb-0">Featured cars</h2>
-                    <p class="home-muted small mb-0 mt-2">Current highlights from our showroom — tap a card for full details.</p>
-                </div>
-                <a href="{{ route('cars.index') }}" class="btn btn-brand-outline btn-sm align-self-center">Browse all stock</a>
+            <div class="home-featured-intro text-center mb-4">
+                <div class="home-title-accent"></div>
+                <h2 class="home-featured-heading home-section-title mb-2">Featured cars</h2>
+                <p class="home-muted small mb-0">Current highlights from our showroom — tap a card for full details.</p>
             </div>
 
-            <div class="row g-3 g-md-4">
+            <div class="row g-3 g-md-4 featured-cards-row">
                 @forelse ($latestCars as $car)
                     <div class="col-12 col-sm-6 col-xl-4">
                         @php
@@ -241,37 +162,6 @@
                         <div class="home-panel rounded-4 p-4 text-center home-muted">No cars available right now. Please check back soon.</div>
                     </div>
                 @endforelse
-            </div>
-        </section>
-
-        <section class="home-hero rounded-4 px-3 px-md-4 py-2 py-md-3 mt-3 mt-md-4 mb-3 mb-md-4 shadow-sm">
-            <div class="row align-items-center g-3 g-md-4">
-                <div class="col-lg-7">
-                    <div class="home-hero-brandrow mb-2 mb-md-3">
-                        <a href="{{ route('home') }}" class="brand-logo-link d-inline-flex align-items-center">
-                            <img src="{{ asset('images/logo-full.png') }}" alt="ACPC Autos" class="brand-logo brand-logo--hero" decoding="async">
-                        </a>
-                        <div class="home-hero-brandtext">
-                            <p class="home-hero-name">ACPC Autos</p>
-                            <div class="home-hero-rule"></div>
-                            <p class="text-uppercase home-hero-eyebrow mb-0">Premium dealer stock</p>
-                        </div>
-                    </div>
-                    <h1 class="display-5 fw-semibold mb-2 mb-md-2">Exceptional cars, ready when you are</h1>
-                    <p class="fs-6 home-muted mb-3 mb-md-3">A small, curated list of quality vehicles — browse with confidence and speak directly with our team.</p>
-                    <div class="d-flex flex-wrap gap-2">
-                        <a href="#featured-cars" class="btn btn-brand-primary">View featured</a>
-                        <a href="{{ route('cars.index') }}" class="btn btn-brand-outline">Full stock list</a>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="home-panel rounded-3 p-3 p-md-4 h-100">
-                        <p class="small text-brand-gold fw-semibold mb-2">Why our stock stands out</p>
-                        <p class="mb-2 small home-muted">Hand-picked vehicles with presentation and history in mind.</p>
-                        <p class="mb-2 small home-muted">Straightforward details — no clutter, no endless filters.</p>
-                        <p class="mb-0 small home-muted">Personal support from first look to handover.</p>
-                    </div>
-                </div>
             </div>
         </section>
 

@@ -156,7 +156,7 @@
                             @endif
                         </div>
                         <div class="show-cta-row mt-3 pt-3 border-top border-secondary-subtle">
-                            <a href="tel:{{ preg_replace('/\s+/', '', $publicPhoneTel) }}" class="btn btn-brand-primary">Call now</a>
+                            @include('public.partials.phone-cta', ['variant' => 'button-primary', 'label' => 'Call now'])
                             <a href="#enquiry-form" class="btn btn-brand-outline">Send enquiry</a>
                         </div>
                         <ul class="list-unstyled small brand-muted mb-0 mt-3 pt-3 border-top border-secondary-subtle show-trust-list">
@@ -298,7 +298,7 @@
         <p class="text-uppercase small text-brand-gold fw-semibold mb-2">Need a faster response?</p>
         <h2 class="h4 mb-2">Call or email our sales team today</h2>
         <p class="brand-muted mb-2">
-            <a href="tel:{{ preg_replace('/\s+/', '', $publicPhoneTel) }}" class="footer-link fw-semibold">{{ $publicPhoneDisplay }}</a>
+            @include('public.partials.phone-cta', ['variant' => 'inline-link'])
             <span class="mx-1 opacity-50">·</span>
             <a href="{{ $publicEmailMailto }}" class="footer-link fw-semibold">{{ $publicEmailDisplay }}</a>
         </p>

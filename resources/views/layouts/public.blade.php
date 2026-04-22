@@ -63,6 +63,19 @@
             position: relative;
         }
 
+        .navbar-public .navbar-top-row {
+            min-height: 3.25rem;
+        }
+
+        .navbar-public .navbar-toggler {
+            border-color: var(--brand-gold-border);
+            padding: 0.35rem 0.55rem;
+        }
+
+        .navbar-public .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.18rem rgba(185, 145, 70, 0.25);
+        }
+
         .brand-logo {
             width: auto;
             max-width: 100%;
@@ -76,12 +89,16 @@
         }
 
         .brand-logo--navbar {
-            height: clamp(42px, 3.35vw, 46px);
+            height: clamp(2.5rem, 8.5vw, 7rem);
             width: auto;
-            max-height: 46px;
-            margin-right: 0.55rem;
+            max-height: 7.25rem;
             display: block;
-            align-self: center;
+            position: absolute;
+            right: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-right: clamp(-1.4rem, -1.4vw, -0.7rem);
+            pointer-events: none;
         }
 
         .navbar-public .navbar-brand.brand-logo-link {
@@ -89,14 +106,23 @@
             align-items: center;
             line-height: 1;
             z-index: 3;
+            position: relative;
         }
 
         .navbar-brand-name {
-            font-size: clamp(1.09rem, 0.65vw + 0.98rem, 1.22rem);
-            font-weight: 600;
-            letter-spacing: 0.012em;
-            line-height: 1.2;
+            font-size: clamp(1.45rem, 4.6vw, 3.1rem);
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            line-height: 1.05;
             align-self: center;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 768px) {
+            .navbar-brand-name {
+                letter-spacing: 0.1em;
+            }
         }
 
         .brand-logo-link {
@@ -107,6 +133,11 @@
         .brand-logo-link:hover .brand-logo,
         .brand-logo-link:focus-visible .brand-logo {
             transform: scale(1.03);
+        }
+
+        .brand-logo-link:hover .brand-logo--navbar,
+        .brand-logo-link:focus-visible .brand-logo--navbar {
+            transform: translateY(-50%) scale(1.03);
         }
 
         .brand-logo-link:focus-visible {
@@ -251,6 +282,11 @@
         .nav-link-public {
             color: var(--brand-navbar-link) !important;
             font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            padding-left: 0.85rem !important;
+            padding-right: 0.85rem !important;
         }
 
         .nav-link-public:hover,
@@ -260,7 +296,22 @@
 
         @media (min-width: 992px) {
             .navbar-public .navbar-nav {
-                gap: 0.25rem !important;
+                gap: 0.5rem !important;
+            }
+
+            .navbar-public .navbar-collapse {
+                border-top: 1px solid var(--brand-gold-border);
+                padding-top: 0.35rem;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-public .navbar-collapse {
+                padding-top: 0.5rem;
+            }
+
+            .navbar-public .navbar-nav {
+                gap: 0.1rem;
             }
         }
 
@@ -313,6 +364,29 @@
             margin-top: 0.35rem;
             margin-bottom: 0.7rem;
             letter-spacing: 0.01em;
+        }
+
+        /* Responsive phone CTA — desktop shows number as a styled, non-clickable box/text */
+        .phone-cta-static {
+            cursor: default;
+            pointer-events: none;
+            transform: none !important;
+            box-shadow: none !important;
+            user-select: text;
+        }
+
+        .phone-cta-static:hover,
+        .phone-cta-static:focus {
+            background-color: var(--brand-primary);
+            border-color: var(--brand-primary);
+            color: #f7f5ef;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        .phone-static-inline {
+            color: var(--brand-footer-link);
+            user-select: text;
         }
 
         /**
@@ -422,17 +496,19 @@
     @php
         $publicWhatsAppMessage = config('dealer.whatsapp_message');
     @endphp
-    <nav class="navbar navbar-expand-lg navbar-public py-3">
-        <div class="container">
-            <a class="navbar-brand brand-logo-link gap-0 py-0" href="{{ route('home') }}">
-                <img src="{{ asset('images/logo-icon.png') }}" alt="" class="brand-logo brand-logo--navbar" decoding="async">
-                <span class="navbar-brand-name text-brand-gold">ACPC Autos</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#publicNavbar" aria-controls="publicNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="publicNavbar">
-                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+    <nav class="navbar navbar-expand-lg navbar-public">
+        <div class="container flex-column py-2 py-md-3">
+            <div class="navbar-top-row w-100 d-flex align-items-center justify-content-center position-relative">
+                <a class="navbar-brand brand-logo-link d-inline-flex align-items-center gap-0 m-0 py-1" href="{{ route('home') }}">
+                    <img src="{{ asset('images/logo-icon.png') }}" alt="" class="brand-logo brand-logo--navbar" decoding="async">
+                    <span class="navbar-brand-name text-brand-gold">ACPC Autos</span>
+                </a>
+                <button class="navbar-toggler position-absolute end-0 top-50 translate-middle-y" type="button" data-bs-toggle="collapse" data-bs-target="#publicNavbar" aria-controls="publicNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse w-100 justify-content-center" id="publicNavbar">
+                <ul class="navbar-nav justify-content-center align-items-lg-center">
                     <li class="nav-item">
                         <a class="nav-link nav-link-public" href="{{ route('home') }}">Home</a>
                     </li>
@@ -469,7 +545,7 @@
                 </div>
                 <div class="col-md-4">
                     <h2 class="h6 text-brand-gold mb-2">Contact</h2>
-                    <p class="mb-1 small">Phone: <a href="tel:{{ preg_replace('/\s+/', '', $publicPhoneTel) }}" class="footer-link">{{ $publicPhoneDisplay }}</a></p>
+                    <p class="mb-1 small">Phone: @include('public.partials.phone-cta', ['variant' => 'inline-link'])</p>
                     <p class="mb-0 small">Email: <a href="{{ $publicEmailMailto }}" class="footer-link">{{ $publicEmailDisplay }}</a></p>
                 </div>
                 <div class="col-md-4">
