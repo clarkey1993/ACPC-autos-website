@@ -8,6 +8,8 @@
             --show-surface: var(--brand-surface);
             --show-surface-alt: var(--brand-surface-alt);
             --show-border: var(--brand-border);
+            /* When max-height caps the hero, width must cap too or 16:10 leaves empty bands */
+            --show-gallery-max-width: min(100%, calc(620px * 16 / 10));
         }
 
         /* -------- Top back link -------- */
@@ -53,7 +55,8 @@
         .page-cars-show .show-gallery {
             display: block;
             width: 100%;
-            max-width: 100%;
+            max-width: var(--show-gallery-max-width);
+            margin-inline: auto;
             position: relative;
             border: 1px solid var(--show-border);
             border-radius: 1.1rem;
@@ -64,6 +67,7 @@
 
         .page-cars-show .show-gallery__media {
             position: relative;
+            width: 100%;
             aspect-ratio: 16 / 10;
             max-height: 620px;
             background: var(--show-surface-alt);
@@ -74,13 +78,16 @@
         .page-cars-show .show-gallery__carousel .carousel-inner,
         .page-cars-show .show-gallery__carousel .carousel-item {
             height: 100%;
+            min-height: 0;
         }
 
         .page-cars-show .show-gallery__image {
             display: block;
             width: 100%;
             height: 100%;
+            min-height: 100%;
             object-fit: cover;
+            object-position: center;
             cursor: zoom-in;
         }
 
@@ -99,7 +106,7 @@
         .page-cars-show .show-gallery .carousel-control-prev,
         .page-cars-show .show-gallery .carousel-control-next {
             width: auto;
-            z-index: 5;
+            z-index: 12;
             opacity: 1;
             display: flex;
             align-items: center;
@@ -108,6 +115,7 @@
             top: 50%;
             bottom: auto;
             transform: translateY(-50%);
+            pointer-events: auto;
         }
 
         .page-cars-show .show-gallery .carousel-control-prev {
@@ -122,10 +130,11 @@
 
         .page-cars-show .show-gallery .carousel-control-prev-icon,
         .page-cars-show .show-gallery .carousel-control-next-icon {
-            width: clamp(2.65rem, 4.2vw, 3.15rem);
-            height: clamp(2.65rem, 4.2vw, 3.15rem);
+            width: clamp(2.85rem, 4.6vw, 3.45rem);
+            height: clamp(2.85rem, 4.6vw, 3.45rem);
             padding: 0;
-            background-size: 1.05rem 1.05rem;
+            /* Chevron scales with the circle — fills most of the button for visibility */
+            background-size: 58% 58%;
             background-position: center;
             background-repeat: no-repeat;
             background-color: #1f4d2e;
@@ -203,6 +212,9 @@
             grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
             gap: 0.5rem;
             margin-top: 0.85rem;
+            width: 100%;
+            max-width: var(--show-gallery-max-width);
+            margin-inline: auto;
         }
 
         @media (min-width: 768px) {
