@@ -6,27 +6,27 @@
     <div class="page-home">
         <style>
             .page-home {
-                --home-surface: linear-gradient(165deg, #ffffff 0%, #fbf8f1 58%, #f4eee1 100%);
-                --home-hero: linear-gradient(120deg, rgba(47, 94, 58, 0.1) 0%, rgba(255, 255, 255, 0.98) 46%, rgba(243, 235, 220, 0.96) 100%);
-                --home-accent-line: linear-gradient(90deg, transparent, rgba(185, 145, 70, 0.8), rgba(47, 94, 58, 0.5), transparent);
-                --featured-section-bg: linear-gradient(155deg, rgba(233, 241, 232, 0.5) 0%, rgba(246, 242, 232, 0.78) 45%, rgba(250, 247, 240, 0.92) 100%);
+                --home-surface: linear-gradient(165deg, #fffefb 0%, #fbf8f2 56%, #f6f1e7 100%);
+                --home-hero: linear-gradient(124deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 246, 239, 0.97) 58%, rgba(243, 235, 221, 0.94) 100%);
+                --home-accent-line: linear-gradient(90deg, transparent, rgba(185, 145, 70, 0.66), rgba(47, 94, 58, 0.28), transparent);
+                --featured-section-bg: linear-gradient(155deg, rgba(255, 254, 251, 0.98) 0%, rgba(250, 246, 237, 0.96) 52%, rgba(245, 240, 230, 0.96) 100%);
             }
 
             .page-home .home-hero {
                 background: var(--home-hero);
-                border: 1px solid rgba(185, 145, 70, 0.3);
-                box-shadow: 0 14px 32px rgba(21, 36, 28, 0.09);
+                border: 1px solid rgba(185, 145, 70, 0.2);
+                box-shadow: 0 12px 28px rgba(15, 24, 18, 0.08);
             }
 
             .page-home .home-panel,
             .page-home .card.brand-card:not(.car-inventory-card) {
                 background: var(--home-surface);
-                border: 1px solid rgba(47, 94, 58, 0.16);
-                box-shadow: 0 8px 24px rgba(21, 36, 28, 0.08);
+                border: 1px solid rgba(185, 145, 70, 0.16);
+                box-shadow: 0 10px 24px rgba(15, 24, 18, 0.07);
             }
 
             .page-home .home-muted {
-                color: #5f6f63 !important;
+                color: #667168 !important;
             }
 
             .page-home .home-section-title {
@@ -90,7 +90,7 @@
                 font-weight: 700;
                 letter-spacing: -0.022em;
                 line-height: 1.12;
-                color: #101c15;
+                color: #1f2420;
                 margin-bottom: 0;
                 text-wrap: balance;
             }
@@ -110,21 +110,21 @@
                 font-weight: 500;
                 letter-spacing: 0.18em;
                 line-height: 1.5;
-                color: rgba(72, 62, 42, 0.82);
+                color: rgba(96, 86, 66, 0.82);
             }
 
             .page-home .featured-shell {
                 background: var(--featured-section-bg);
-                border: 1px solid rgba(47, 94, 58, 0.12);
+                border: 1px solid rgba(185, 145, 70, 0.15);
                 border-radius: 1rem;
                 padding: 1.75rem 1.15rem 1.35rem;
-                box-shadow: 0 6px 20px rgba(21, 36, 28, 0.06);
+                box-shadow: 0 12px 28px rgba(15, 24, 18, 0.07);
             }
 
             .page-home .home-featured-heading {
                 font-size: clamp(1.65rem, 3vw, 2.2rem);
                 font-weight: 700;
-                color: #1f2f25;
+                color: #232925;
             }
 
             @media (prefers-color-scheme: dark) {

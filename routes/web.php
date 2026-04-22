@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\EnquiryController as AdminEnquiryController;
 use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\CarListingController;
 use App\Http\Controllers\EnquiryController;
+use App\Http\Controllers\PublicPageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,9 @@ Route::get('/', [CarListingController::class, 'home'])->name('home');
 Route::get('/cars', [CarListingController::class, 'index'])->name('cars.index');
 Route::get('/cars/{slug}', [CarListingController::class, 'show'])->name('cars.show');
 Route::post('/cars/{car:slug}/enquiries', [EnquiryController::class, 'store'])->name('enquiries.store');
+Route::get('/about-us', [PublicPageController::class, 'about'])->name('about');
+Route::get('/contact-us', [PublicPageController::class, 'contact'])->name('contact');
+Route::post('/contact-us', [PublicPageController::class, 'submitContact'])->name('contact.submit');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])

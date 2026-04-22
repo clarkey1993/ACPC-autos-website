@@ -5,14 +5,14 @@
 @section('content')
     <style>
         .page-cars-index .index-hero {
-            background: linear-gradient(128deg, #ffffff 0%, #fbf8f1 60%, #f3ebdc 100%);
-            border: 1px solid rgba(47, 94, 58, 0.17);
-            box-shadow: 0 10px 26px rgba(19, 31, 24, 0.09);
+            background: linear-gradient(132deg, #fffefb 0%, #fbf8f2 58%, #f5f0e6 100%);
+            border: 1px solid rgba(185, 145, 70, 0.2);
+            box-shadow: 0 12px 26px rgba(15, 24, 18, 0.08);
         }
 
         .page-cars-index .empty-state-card {
-            background: linear-gradient(145deg, #ffffff 0%, #f6f2e8 100%);
-            border: 1px solid rgba(185, 145, 70, 0.25);
+            background: linear-gradient(148deg, #fffefb 0%, #f7f2e8 100%);
+            border: 1px solid rgba(185, 145, 70, 0.22);
         }
 
         @media (prefers-color-scheme: dark) {

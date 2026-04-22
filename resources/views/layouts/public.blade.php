@@ -12,18 +12,18 @@
             --brand-dark: #1e3327;
             --brand-gold: #b99146;
             --brand-gold-light: #d5b77a;
-            --brand-bg: #f8f6f1;
-            --brand-surface: #ffffff;
-            --brand-surface-alt: #f2eee4;
-            --brand-text: #1f2b24;
-            --brand-muted-text: #59675d;
-            --brand-border: #e5e5e5;
-            --brand-gold-border: rgba(185, 145, 70, 0.35);
-            --brand-navbar-bg: rgba(255, 255, 255, 0.94);
+            --brand-bg: #f6f4ef;
+            --brand-surface: #fffdf9;
+            --brand-surface-alt: #f5f1e8;
+            --brand-text: #1f2420;
+            --brand-muted-text: #667168;
+            --brand-border: rgba(24, 36, 28, 0.1);
+            --brand-gold-border: rgba(185, 145, 70, 0.28);
+            --brand-navbar-bg: rgba(255, 255, 255, 0.92);
             --brand-navbar-link: #22352a;
-            --brand-footer-text: #6a756d;
-            --brand-footer-link: #2b3f33;
-            --brand-card-shadow: 0 8px 20px rgba(20, 30, 24, 0.07);
+            --brand-footer-text: #59665d;
+            --brand-footer-link: #243a2d;
+            --brand-card-shadow: 0 10px 24px rgba(14, 22, 17, 0.08);
         }
 
         @media (prefers-color-scheme: dark) {
@@ -60,6 +60,7 @@
             background-color: var(--brand-navbar-bg);
             border-bottom: 1px solid var(--brand-gold-border);
             backdrop-filter: blur(8px);
+            position: relative;
         }
 
         .brand-logo {
@@ -87,6 +88,7 @@
             display: inline-flex;
             align-items: center;
             line-height: 1;
+            z-index: 3;
         }
 
         .navbar-brand-name {
@@ -256,59 +258,9 @@
             color: var(--brand-primary) !important;
         }
 
-        .navbar-phone-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--brand-navbar-link);
-            text-decoration: none;
-            padding: 0.35rem 0.55rem;
-            border-radius: 0.375rem;
-            border: 1px solid rgba(47, 94, 58, 0.14);
-            background-color: rgba(47, 94, 58, 0.04);
-            white-space: nowrap;
-            transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .navbar-phone-link:hover,
-        .navbar-phone-link:focus {
-            color: var(--brand-primary);
-            background-color: rgba(47, 94, 58, 0.1);
-            border-color: rgba(47, 94, 58, 0.22);
-        }
-
-        .navbar-phone-link svg {
-            flex-shrink: 0;
-            opacity: 0.85;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .navbar-phone-link {
-                border-color: rgba(224, 201, 138, 0.2);
-                background-color: rgba(255, 255, 255, 0.04);
-            }
-
-            .navbar-phone-link:hover,
-            .navbar-phone-link:focus {
-                color: var(--brand-gold-light);
-                background-color: rgba(255, 255, 255, 0.08);
-                border-color: rgba(224, 201, 138, 0.32);
-            }
-        }
-
         @media (min-width: 992px) {
-            .navbar-phone-wrap {
-                border-left: 1px solid rgba(47, 94, 58, 0.14);
-                padding-left: 0.65rem;
-                margin-left: 0.35rem;
-            }
-        }
-
-        @media (min-width: 992px) and (prefers-color-scheme: dark) {
-            .navbar-phone-wrap {
-                border-left-color: rgba(224, 201, 138, 0.22);
+            .navbar-public .navbar-nav {
+                gap: 0.25rem !important;
             }
         }
 
@@ -364,26 +316,19 @@
         }
 
         /**
-         * Inventory listing cards (grid): same premium dark panel as dark-mode branding,
-         * on light pages only — softer lift on white; buttons use global .btn-brand-*.
+         * Inventory listing cards (grid): premium light finish for light mode.
          * Add class `car-inventory-card` to any `card brand-card` used for stock listings.
          */
         @media not (prefers-color-scheme: dark) {
             .card.brand-card.car-inventory-card {
-                /* Green-forward depth aligned with --brand-primary / dark-mode gold trim */
-                background: linear-gradient(
-                    168deg,
-                    rgba(34, 52, 42, 0.98) 0%,
-                    rgba(22, 40, 30, 0.98) 46%,
-                    rgba(14, 24, 18, 0.99) 100%
-                );
-                border: 1px solid rgba(224, 201, 138, 0.28);
-                color: #f5f1e8;
+                background: linear-gradient(168deg, #ffffff 0%, #fcfaf5 62%, #f6f2e7 100%);
+                border: 1px solid rgba(185, 145, 70, 0.2);
+                color: #1f2420;
                 box-shadow:
-                    0 0 0 1px rgba(255, 255, 255, 0.04),
-                    0 10px 26px rgba(8, 16, 12, 0.2),
-                    0 3px 10px rgba(8, 16, 12, 0.1),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+                    0 0 0 1px rgba(255, 255, 255, 0.65),
+                    0 10px 24px rgba(15, 24, 18, 0.08),
+                    0 2px 6px rgba(15, 24, 18, 0.05),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.85);
                 transition:
                     box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1),
                     transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
@@ -391,27 +336,27 @@
             }
 
             .card.brand-card.car-inventory-card:hover {
-                transform: translateY(-3px);
-                border-color: rgba(224, 201, 138, 0.38);
+                transform: translateY(-2px);
+                border-color: rgba(185, 145, 70, 0.32);
                 box-shadow:
-                    0 0 0 1px rgba(255, 255, 255, 0.05),
-                    0 14px 34px rgba(8, 16, 12, 0.26),
-                    0 4px 12px rgba(8, 16, 12, 0.12),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+                    0 0 0 1px rgba(255, 255, 255, 0.75),
+                    0 14px 28px rgba(15, 24, 18, 0.1),
+                    0 3px 8px rgba(15, 24, 18, 0.06),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.9);
             }
 
             .card.brand-card.car-inventory-card .carousel,
             .card.brand-card.car-inventory-card .carousel-inner,
             .card.brand-card.car-inventory-card .carousel-item {
-                background: #0d1410;
+                background: #ece7db;
             }
 
             .card.brand-card.car-inventory-card .carousel .stock-image {
-                background: #0d1410;
+                background: #ece7db;
             }
 
             .card.brand-card.car-inventory-card .carousel {
-                box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+                box-shadow: inset 0 -1px 0 rgba(98, 112, 102, 0.12);
             }
 
             .card.brand-card.car-inventory-card .card-body {
@@ -419,22 +364,21 @@
             }
 
             .card.brand-card.car-inventory-card .card-title {
-                color: #f5f1e8;
+                color: #202520;
                 letter-spacing: -0.01em;
             }
 
             .card.brand-card.car-inventory-card .home-muted {
-                color: rgba(199, 191, 174, 0.92) !important;
+                color: #667168 !important;
             }
 
             .card.brand-card.car-inventory-card .brand-muted {
-                color: rgba(199, 191, 174, 0.92) !important;
+                color: #667168 !important;
             }
 
-            /* Same tokens as dark :root: --brand-gold + light highlight for legibility on green */
             .card.brand-card.car-inventory-card .price-highlight {
-                color: #c9a45c;
-                text-shadow: 0 0 1px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.35);
+                color: #b99146;
+                text-shadow: none;
             }
 
             .card.brand-card.car-inventory-card .carousel-control-prev,
@@ -443,9 +387,9 @@
             }
 
             .card.brand-card.car-inventory-card > .d-flex.stock-image {
-                background: rgba(0, 0, 0, 0.28) !important;
-                color: rgba(245, 241, 232, 0.52) !important;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                background: rgba(232, 225, 209, 0.7) !important;
+                color: #7a837b !important;
+                border-bottom: 1px solid rgba(98, 112, 102, 0.12);
             }
 
             .card.brand-card.car-inventory-card .badge.text-bg-success {
@@ -459,9 +403,9 @@
             }
 
             .card.brand-card.car-inventory-card .badge.text-bg-secondary {
-                background-color: rgba(255, 255, 255, 0.1) !important;
-                color: #f5f1e8 !important;
-                border: 1px solid rgba(255, 255, 255, 0.14);
+                background-color: rgba(94, 103, 98, 0.12) !important;
+                color: #3f4641 !important;
+                border: 1px solid rgba(94, 103, 98, 0.2);
             }
 
             @media (prefers-reduced-motion: reduce) {
@@ -495,13 +439,11 @@
                     <li class="nav-item">
                         <a class="nav-link nav-link-public" href="{{ route('cars.index') }}">Browse Cars</a>
                     </li>
-                    <li class="nav-item navbar-phone-wrap">
-                        <a class="navbar-phone-link my-1 my-lg-0" href="tel:{{ preg_replace('/\s+/', '', $publicPhoneTel) }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
-                                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
-                            </svg>
-                            <span>{{ $publicPhoneDisplay }}</span>
-                        </a>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-public" href="{{ route('about') }}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-public" href="{{ route('contact') }}">Contact Us</a>
                     </li>
                 </ul>
             </div>
