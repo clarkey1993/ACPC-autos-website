@@ -504,6 +504,12 @@
             @else
                 <div class="show-gallery__empty">No image available</div>
             @endif
+
+            @if ($car->status === 'reserved' || $car->status === 'sold')
+                <div class="car-ribbon-layer" aria-hidden="true">
+                    <div class="car-ribbon car-ribbon--{{ $car->status }}">{{ $car->cardStatusLabel() }}</div>
+                </div>
+            @endif
         </div>
     </section>
 
@@ -560,7 +566,11 @@
 
         <div class="show-cta-row">
             @include('public.partials.phone-cta', ['variant' => 'button-primary', 'label' => 'Call now'])
-            <a href="#enquiry-form" class="btn btn-brand-outline">Send enquiry</a>
+            @if ($car->status === 'sold')
+                <a href="{{ route('cars.index') }}" class="btn btn-brand-outline">Ask about similar vehicles</a>
+            @else
+                <a href="#enquiry-form" class="btn btn-brand-outline">Send enquiry</a>
+            @endif
         </div>
     </section>
 
@@ -622,9 +632,19 @@
     {{-- ================= Enquiry form ================= --}}
     <section id="enquiry-form" class="show-section show-enquiry">
         <div class="show-enquiry__header">
-            <p class="text-uppercase small text-brand-gold fw-semibold mb-1" style="letter-spacing: 0.1em;">Interested in this car?</p>
-            <h2 class="h4 mb-1">Send an enquiry</h2>
-            <p class="brand-muted mb-0">Leave your details and our team will get back to you quickly.</p>
+            @if ($car->status === 'sold')
+                <p class="text-uppercase small text-brand-gold fw-semibold mb-1" style="letter-spacing: 0.1em;">Looking for something similar?</p>
+                <h2 class="h4 mb-1">Ask about similar vehicles</h2>
+                <p class="brand-muted mb-0">This vehicle has been sold. Tell us what you're looking for and our team will be in touch with similar stock.</p>
+            @elseif ($car->status === 'reserved')
+                <p class="text-uppercase small text-brand-gold fw-semibold mb-1" style="letter-spacing: 0.1em;">Currently reserved</p>
+                <h2 class="h4 mb-1">Register your interest</h2>
+                <p class="brand-muted mb-0">This vehicle is reserved. Leave your details and we'll let you know if it becomes available again.</p>
+            @else
+                <p class="text-uppercase small text-brand-gold fw-semibold mb-1" style="letter-spacing: 0.1em;">Interested in this car?</p>
+                <h2 class="h4 mb-1">Send an enquiry</h2>
+                <p class="brand-muted mb-0">Leave your details and our team will get back to you quickly.</p>
+            @endif
         </div>
 
         @if (session('success'))

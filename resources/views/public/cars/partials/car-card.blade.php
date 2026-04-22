@@ -63,9 +63,16 @@
             </div>
         @endif
 
-        <span class="car-card__status badge {{ $car->cardStatusBadgeClass() }} rounded-pill px-2 py-1 small fw-semibold">
-            {{ $car->cardStatusLabel() }}
-        </span>
+        @if ($car->status === 'reserved' || $car->status === 'sold')
+            <div class="car-ribbon-layer" aria-hidden="true">
+                <div class="car-ribbon car-ribbon--{{ $car->status }}">{{ $car->cardStatusLabel() }}</div>
+            </div>
+            <span class="visually-hidden">Status: {{ $car->cardStatusLabel() }}</span>
+        @else
+            <span class="car-card__status badge {{ $car->cardStatusBadgeClass() }} rounded-pill px-2 py-1 small fw-semibold">
+                {{ $car->cardStatusLabel() }}
+            </span>
+        @endif
     </div>
 
     <div class="car-card__body">
