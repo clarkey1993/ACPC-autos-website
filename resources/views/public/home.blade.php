@@ -96,7 +96,7 @@
             <div class="home-featured-intro text-center mb-4">
                 <div class="home-title-accent"></div>
                 <h2 class="home-featured-heading home-section-title mb-2">Featured cars</h2>
-                <p class="home-muted small mb-0">Current highlights from our showroom — tap a card for full details.</p>
+                <p class="home-muted small mb-0">Current highlights from our showroom.</p>
             </div>
 
             <div class="row g-3 g-md-4 featured-cards-row">
