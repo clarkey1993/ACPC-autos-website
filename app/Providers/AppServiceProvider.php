@@ -32,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
             'publicEmailMailto' => config('dealer.email_mailto'),
             'publicWhatsAppNumber' => config('dealer.whatsapp_number'),
             'publicAppointmentsText' => 'Viewings by appointment only',
+            'publicDedicatedCarsPageEnabled' => false,
         ];
 
         try {
@@ -71,6 +72,7 @@ class AppServiceProvider extends ServiceProvider
                     ? $settings->whatsapp_number
                     : $fallback['publicWhatsAppNumber'],
                 'publicAppointmentsText' => $appointments,
+                'publicDedicatedCarsPageEnabled' => (bool) $settings->enable_dedicated_cars_page,
             ]);
         } catch (\Throwable $e) {
             View::share($fallback);

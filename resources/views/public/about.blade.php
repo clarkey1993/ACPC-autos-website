@@ -102,7 +102,9 @@
                 <p class="text-uppercase small text-brand-gold fw-semibold mb-2">Ready to explore our stock?</p>
                 <h2 class="h4 mb-2">Browse current vehicles</h2>
                 <p class="brand-muted mb-3">Discover our latest hand-picked arrivals and speak with us directly for availability.</p>
-                <a href="{{ route('cars.index') }}" class="btn btn-brand-primary">Browse Cars</a>
+                <a href="{{ $publicDedicatedCarsPageEnabled ? route('cars.index') : route('home') }}" class="btn btn-brand-primary">
+                    {{ $publicDedicatedCarsPageEnabled ? 'Browse Cars' : 'View Current Stock' }}
+                </a>
             </div>
         </section>
     </div>

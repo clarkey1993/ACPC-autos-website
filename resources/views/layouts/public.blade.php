@@ -10,6 +10,7 @@
             color-scheme: light dark;
             --brand-primary: #2f5e3a;
             --brand-dark: #1e3327;
+            --brand-deep: #0f1d14;
             --brand-gold: #b99146;
             --brand-gold-light: #d5b77a;
             --brand-bg: #f6f4ef;
@@ -19,10 +20,11 @@
             --brand-muted-text: #667168;
             --brand-border: rgba(24, 36, 28, 0.1);
             --brand-gold-border: rgba(185, 145, 70, 0.28);
-            --brand-navbar-bg: rgba(255, 255, 255, 0.92);
-            --brand-navbar-link: #22352a;
-            --brand-footer-text: #59665d;
-            --brand-footer-link: #243a2d;
+            --brand-navbar-bg: #0f1d14;
+            --brand-navbar-link: #f5f1e8;
+            --brand-footer-bg: #0f1d14;
+            --brand-footer-text: #e8e1cf;
+            --brand-footer-link: #f5f1e8;
             --brand-card-shadow: 0 10px 24px rgba(14, 22, 17, 0.08);
         }
 
@@ -30,6 +32,7 @@
             :root {
                 --brand-primary: #2f5e3a;
                 --brand-dark: #1e3327;
+                --brand-deep: #0b170f;
                 --brand-gold: #c9a45c;
                 --brand-gold-light: #e0c98a;
                 --brand-bg: #101418;
@@ -39,10 +42,11 @@
                 --brand-muted-text: #c7bfae;
                 --brand-border: rgba(201, 164, 92, 0.3);
                 --brand-gold-border: rgba(224, 201, 138, 0.3);
-                --brand-navbar-bg: rgba(17, 22, 26, 0.95);
+                --brand-navbar-bg: #0b170f;
                 --brand-navbar-link: #f5f1e8;
-                --brand-footer-text: #b7ae9a;
-                --brand-footer-link: #d4cbb7;
+                --brand-footer-bg: #0b170f;
+                --brand-footer-text: #d4cbb7;
+                --brand-footer-link: #f0e9d6;
                 --brand-card-shadow: 0 10px 28px rgba(0, 0, 0, 0.34);
             }
         }
@@ -59,7 +63,7 @@
         .navbar-public {
             background-color: var(--brand-navbar-bg);
             border-bottom: 1px solid var(--brand-gold-border);
-            backdrop-filter: blur(8px);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
             position: relative;
         }
 
@@ -73,7 +77,11 @@
         }
 
         .navbar-public .navbar-toggler:focus {
-            box-shadow: 0 0 0 0.18rem rgba(185, 145, 70, 0.25);
+            box-shadow: 0 0 0 0.18rem rgba(185, 145, 70, 0.35);
+        }
+
+        .navbar-public .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(245, 241, 232, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
         }
 
         .brand-logo {
@@ -151,11 +159,9 @@
             width: auto;
         }
 
-        @media (prefers-color-scheme: dark) {
-            .brand-logo--navbar,
-            .brand-logo--footer {
-                filter: brightness(1.08) contrast(1.04);
-            }
+        .brand-logo--navbar,
+        .brand-logo--footer {
+            filter: brightness(1.08) contrast(1.04);
         }
 
         .brand-card {
@@ -232,15 +238,26 @@
         .footer-public {
             border-top: 1px solid var(--brand-gold-border);
             color: var(--brand-footer-text);
-            background-color: var(--brand-surface-alt);
+            background-color: var(--brand-footer-bg);
+            box-shadow: inset 0 1px 0 rgba(185, 145, 70, 0.12);
+        }
+
+        .footer-public .text-brand-gold {
+            color: var(--brand-gold-light) !important;
+        }
+
+        .footer-public .border-top.border-secondary-subtle {
+            border-color: var(--brand-gold-border) !important;
         }
 
         .footer-link {
             color: var(--brand-footer-link);
             text-decoration: none;
+            transition: color 0.18s ease;
         }
 
-        .footer-link:hover {
+        .footer-link:hover,
+        .footer-link:focus {
             color: var(--brand-gold-light);
             text-decoration: underline;
         }
@@ -287,11 +304,12 @@
             font-size: 0.82rem;
             padding-left: 0.85rem !important;
             padding-right: 0.85rem !important;
+            transition: color 0.18s ease;
         }
 
         .nav-link-public:hover,
         .nav-link-public:focus {
-            color: var(--brand-primary) !important;
+            color: var(--brand-gold-light) !important;
         }
 
         @media (min-width: 992px) {
@@ -738,9 +756,11 @@
                     <li class="nav-item">
                         <a class="nav-link nav-link-public" href="{{ route('home') }}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-link-public" href="{{ route('cars.index') }}">Browse Cars</a>
-                    </li>
+                    @if ($publicDedicatedCarsPageEnabled)
+                        <li class="nav-item">
+                            <a class="nav-link nav-link-public" href="{{ route('cars.index') }}">Browse Cars</a>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link nav-link-public" href="{{ route('about') }}">About Us</a>
                     </li>

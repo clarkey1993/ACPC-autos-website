@@ -13,5 +13,10 @@ class SiteSetting extends Model
         'business_email',
         'whatsapp_number',
         'opening_hours_text',
+        'enable_dedicated_cars_page',
+    ];
+
+    protected $casts = [
+        'enable_dedicated_cars_page' => 'boolean',
     ];
 }

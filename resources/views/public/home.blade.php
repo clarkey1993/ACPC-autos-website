@@ -95,12 +95,12 @@
         <section id="featured-cars" class="py-3 py-md-4 mb-5 mb-md-6 featured-shell">
             <div class="home-featured-intro text-center mb-4">
                 <div class="home-title-accent"></div>
-                <h2 class="home-featured-heading home-section-title mb-2">Featured cars</h2>
-                <p class="home-muted small mb-0">Current highlights from our showroom.</p>
+                <h2 class="home-featured-heading home-section-title mb-2">Current stock</h2>
+                <p class="home-muted small mb-0">Browse our full showroom inventory in one place.</p>
             </div>
 
             <div class="row g-3 g-md-4 featured-cards-row">
-                @forelse ($latestCars as $car)
+                @forelse ($cars as $car)
                     <div class="col-12 col-sm-6 col-xl-4">
                         @include('public.cars.partials.car-card', ['car' => $car, 'carouselIdPrefix' => 'homeCarCard'])
                     </div>
@@ -110,21 +110,12 @@
                     </div>
                 @endforelse
             </div>
-        </section>
 
-        <section class="mb-4 mb-md-5">
-            <div class="home-panel rounded-4 p-3 p-md-4">
-                <div class="row align-items-center g-3">
-                    <div class="col-lg-8">
-                        <div class="home-title-accent"></div>
-                        <h2 class="h4 home-section-title mb-2">Browse stock</h2>
-                        <p class="home-muted small mb-0">See every available vehicle in one clean list — built for a small premium inventory, not endless scrolling.</p>
-                    </div>
-                    <div class="col-lg-4 text-lg-end">
-                        <a href="{{ route('cars.index') }}" class="btn btn-brand-primary">Go to stock list</a>
-                    </div>
+            @if ($cars->hasPages())
+                <div class="mt-4 d-flex justify-content-center">
+                    {{ $cars->links('pagination::bootstrap-5') }}
                 </div>
-            </div>
+            @endif
         </section>
 
         <section class="mb-4 mb-md-5">
@@ -157,7 +148,7 @@
                 <p class="text-uppercase small text-brand-gold fw-semibold mb-2">Ready to move forward?</p>
                 <h2 class="h3 mb-2">Speak to us about availability</h2>
                 <p class="home-muted small mb-4 mb-md-3">Viewings, pricing, and next steps — we respond promptly to serious enquiries.</p>
-                <a href="{{ route('cars.index') }}" class="btn btn-brand-primary btn-lg">Enquire on stock</a>
+                <a href="{{ route('contact') }}" class="btn btn-brand-primary btn-lg">Enquire on stock</a>
             </div>
         </section>
     </div>

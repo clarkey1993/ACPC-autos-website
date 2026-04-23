@@ -67,6 +67,26 @@
                     <div class="form-text">Shown under “Appointments” in the public footer.</div>
                 </div>
 
+                <div class="mb-4">
+                    <div class="form-check">
+                        <input type="hidden" name="enable_dedicated_cars_page" value="0">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value="1"
+                            id="enable_dedicated_cars_page"
+                            name="enable_dedicated_cars_page"
+                            @checked(old('enable_dedicated_cars_page', $settings->enable_dedicated_cars_page))
+                        >
+                        <label class="form-check-label" for="enable_dedicated_cars_page">
+                            Enable dedicated cars page
+                        </label>
+                    </div>
+                    <div class="form-text">
+                        Off: homepage is the main stock page and “Browse Cars” is hidden. On: dedicated cars page and nav link are visible.
+                    </div>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Save settings</button>
             </form>
         </div>

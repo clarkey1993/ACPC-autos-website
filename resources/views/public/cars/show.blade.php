@@ -483,7 +483,7 @@
     @endphp
 
     <section class="show-back">
-        <a href="{{ route('cars.index') }}" class="btn btn-brand-outline btn-sm">&larr; Back to Cars</a>
+        <a href="{{ route('home') }}" class="btn btn-brand-outline btn-sm">&larr; Back</a>
     </section>
 
     {{-- ================= Title + price (above gallery) ================= --}}
@@ -604,7 +604,7 @@
         <div class="show-cta-row">
             @include('public.partials.phone-cta', ['variant' => 'button-primary', 'label' => 'Call now'])
             @if ($car->status === 'sold')
-                <a href="{{ route('cars.index') }}" class="btn btn-brand-outline">Ask about similar vehicles</a>
+                <a href="{{ $publicDedicatedCarsPageEnabled ? route('cars.index') : route('home') }}" class="btn btn-brand-outline">Ask about similar vehicles</a>
             @else
                 <a href="#enquiry-form" class="btn btn-brand-outline">Send enquiry</a>
             @endif

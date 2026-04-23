@@ -3,23 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\SiteSetting;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class CarListingController extends Controller
 {
-    public function home()
+    public function home(): View
     {
-        $latestCars = Car::query()
+        $cars = Car::query()
             ->with('images')
             ->orderByRaw("CASE WHEN status = 'available' THEN 1 WHEN status = 'reserved' THEN 2 WHEN status = 'sold' THEN 3 ELSE 4 END")
             ->latest()
-            ->take(3)
-            ->get();
+            ->paginate(12);
 
-        return view('public.home', compact('latestCars'));
+        return view('public.home', compact('cars'));
     }
 
-    public function index()
+    public function index(): View|RedirectResponse
     {
+        $settings = SiteSetting::query()->first();
+        if (! $settings || ! $settings->enable_dedicated_cars_page) {
+            return redirect()->route('home');
+        }
+
         $cars = Car::query()
             ->with('images')
             ->orderByRaw("CASE WHEN status = 'available' THEN 1 WHEN status = 'reserved' THEN 2 WHEN status = 'sold' THEN 3 ELSE 4 END")

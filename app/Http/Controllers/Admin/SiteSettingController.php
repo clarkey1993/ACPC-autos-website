@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\SiteSetting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\View\View;
 
 class SiteSettingController extends Controller
@@ -29,12 +30,19 @@ class SiteSettingController extends Controller
             $request->merge(['whatsapp_number' => null]);
         }
 
-        $validated = $request->validate([
+        $hasDedicatedCarsPageColumn = Schema::hasColumn('site_settings', 'enable_dedicated_cars_page');
+
+        $rules = [
             'business_phone' => ['nullable', 'string', 'max:80'],
             'business_email' => ['nullable', 'string', 'max:120', 'email'],
             'whatsapp_number' => ['nullable', 'string', 'max:32', 'regex:/^[0-9]+$/'],
             'opening_hours_text' => ['nullable', 'string', 'max:2000'],
-        ], [
+        ];
+        if ($hasDedicatedCarsPageColumn) {
+            $rules['enable_dedicated_cars_page'] = ['nullable', 'boolean'];
+        }
+
+        $validated = $request->validate($rules, [
             'whatsapp_number.regex' => 'WhatsApp number must be digits only (country code + number, no spaces or +).',
         ]);
 
@@ -42,6 +50,10 @@ class SiteSettingController extends Controller
             if (array_key_exists($key, $validated) && is_string($validated[$key]) && trim($validated[$key]) === '') {
                 $validated[$key] = null;
             }
+        }
+
+        if ($hasDedicatedCarsPageColumn) {
+            $validated['enable_dedicated_cars_page'] = $request->boolean('enable_dedicated_cars_page');
         }
 
         $settings->update($validated);
