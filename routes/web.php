@@ -9,7 +9,44 @@ use App\Http\Controllers\CarListingController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\PublicPageController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Car;
+use App\Models\SiteSetting;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/sitemap.xml', function () {
+    $settings = SiteSetting::query()->first();
+
+    $pages = [
+        ['loc' => route('home'), 'lastmod' => now()],
+        ['loc' => route('about'), 'lastmod' => now()],
+        ['loc' => route('contact'), 'lastmod' => now()],
+    ];
+
+    if ($settings && $settings->enable_dedicated_cars_page) {
+        $pages[] = ['loc' => route('cars.index'), 'lastmod' => now()];
+    }
+
+    $cars = Car::query()
+        ->select(['slug', 'updated_at'])
+        ->orderByDesc('updated_at')
+        ->get();
+
+    return response()
+        ->view('seo.sitemap', compact('pages', 'cars'))
+        ->header('Content-Type', 'application/xml; charset=UTF-8');
+})->name('seo.sitemap');
+
+Route::get('/robots.txt', function () {
+    $content = implode("\n", [
+        'User-agent: *',
+        'Allow: /',
+        'Disallow: /admin',
+        '',
+        'Sitemap: ' . route('seo.sitemap'),
+    ]) . "\n";
+
+    return response($content, 200, ['Content-Type' => 'text/plain; charset=UTF-8']);
+})->name('seo.robots');
 
 Route::get('/', [CarListingController::class, 'home'])->name('home');
 Route::get('/cars', [CarListingController::class, 'index'])->name('cars.index');

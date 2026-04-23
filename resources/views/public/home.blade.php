@@ -1,6 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Home - ACPC Autos')
+@section('title', 'Used Cars for Sale in Málaga | ACPC Autos')
+@section('meta_description', 'Browse premium used cars for sale in Málaga at ACPC Autos. Discover hand-picked vehicles, transparent pricing, and personal service.')
 
 @section('content')
     <div class="page-home">
@@ -137,7 +138,7 @@
                 <div class="col-md-4">
                     <div class="home-panel rounded-4 p-4 h-100">
                         <h3 class="h6 text-brand-gold text-uppercase small fw-semibold mb-2">Selection</h3>
-                        <p class="mb-0 small home-muted">Low milage vehicles chosen for quality, condition, and long-term value.</p>
+                        <p class="mb-0 small home-muted">Low mileage vehicles chosen for quality, condition, and long-term value.</p>
                     </div>
                 </div>
                 <div class="col-md-4">

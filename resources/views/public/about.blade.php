@@ -1,6 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'About Us - ACPC Autos')
+@section('title', 'About ACPC Autos | Used Cars Málaga')
+@section('meta_description', 'Learn about ACPC Autos in Málaga: a premium used car dealership focused on quality vehicles, honest guidance, and personal service.')
 
 @section('content')
     <style>

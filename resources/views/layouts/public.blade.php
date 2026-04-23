@@ -3,7 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'ACPC Autos')</title>
+    @php
+        $seoTitle = trim($__env->yieldContent('title', 'ACPC Autos'));
+        $seoDescription = trim($__env->yieldContent('meta_description', 'Premium used cars for sale in Malaga. Explore hand-picked vehicles and contact ACPC Autos for viewings and enquiries.'));
+        $seoCanonical = trim($__env->yieldContent('canonical_url', url()->current()));
+        $seoOgImage = trim($__env->yieldContent('og_image', asset('images/logo-full.png')));
+        $seoOgType = trim($__env->yieldContent('og_type', 'website'));
+    @endphp
+    <title>{{ $seoTitle }}</title>
+    <meta name="description" content="{{ $seoDescription }}">
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+    <link rel="canonical" href="{{ $seoCanonical }}">
+
+    <meta property="og:site_name" content="ACPC Autos">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:type" content="{{ $seoOgType }}">
+    <meta property="og:title" content="{{ $seoTitle }}">
+    <meta property="og:description" content="{{ $seoDescription }}">
+    <meta property="og:url" content="{{ $seoCanonical }}">
+    <meta property="og:image" content="{{ $seoOgImage }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $seoTitle }}">
+    <meta name="twitter:description" content="{{ $seoDescription }}">
+    <meta name="twitter:image" content="{{ $seoOgImage }}">
+    <meta name="twitter:url" content="{{ $seoCanonical }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         :root {
@@ -836,6 +860,36 @@
             }
         }
     </style>
+    @php
+        $localBusinessSchema = [
+            '@context' => 'https://schema.org',
+            '@type' => 'AutoDealer',
+            'name' => 'ACPC Autos',
+            'url' => route('home'),
+            'telephone' => $publicPhoneTel ?? null,
+            'email' => $publicEmailDisplay ?? null,
+            'image' => asset('images/logo-full.png'),
+            'priceRange' => 'EUR',
+            'address' => [
+                '@type' => 'PostalAddress',
+                'addressLocality' => 'Malaga',
+                'addressCountry' => 'ES',
+            ],
+            'areaServed' => [
+                '@type' => 'City',
+                'name' => 'Malaga',
+            ],
+            'description' => 'Premium hand-picked used cars in Malaga with personal dealership service.',
+            'openingHoursSpecification' => [
+                [
+                    '@type' => 'OpeningHoursSpecification',
+                    'description' => $publicOpeningHoursText ?? null,
+                ],
+            ],
+        ];
+    @endphp
+    <script type="application/ld+json">{!! json_encode($localBusinessSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+    @stack('structured_data')
 </head>
 <body>
     @php

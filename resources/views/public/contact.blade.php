@@ -1,6 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Contact Us - ACPC Autos')
+@section('title', 'Contact ACPC Autos | Used Cars Málaga')
+@section('meta_description', 'Contact ACPC Autos in Málaga for used car availability, appointments, pricing, and enquiries. Call, email, or send a message online.')
 
 @section('content')
     <style>

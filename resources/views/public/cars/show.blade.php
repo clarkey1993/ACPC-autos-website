@@ -1,6 +1,10 @@
 @extends('layouts.public')
 
-@section('title', $car->title . ' - ACPC Autos')
+@section('title', trim(preg_replace('/\s+/', ' ', ($car->make ?: '') . ' ' . ($car->model ?: ''))) . ' for Sale in Málaga | ACPC Autos')
+@section('meta_description', trim(preg_replace('/\s+/', ' ', ($car->make ?: '') . ' ' . ($car->model ?: ''))) . ' for sale in Málaga at ACPC Autos. ' . ($car->year ?: 'Used') . ' model, ' . $car->cardMileageText() . ', priced at €' . number_format((float) $car->price) . '. Enquire today.')
+@section('canonical_url', route('cars.show', $car->slug))
+@section('og_type', 'product')
+@section('og_image', $car->featured_image ? url(\Illuminate\Support\Facades\Storage::url($car->featured_image)) : asset('images/logo-full.png'))
 
 @section('content')
     <style>
@@ -466,7 +470,53 @@
         $carTransmission = $car->cardTransmissionText();
         $carColour = $car->colour;
         $carLocation = $car->location;
+        $vehicleSchemaImages = $imagePaths
+            ->map(fn ($path) => url(\Illuminate\Support\Facades\Storage::url($path)))
+            ->values()
+            ->all();
+        $vehicleSchemaName = trim(preg_replace('/\s+/', ' ', ($car->make ?: '') . ' ' . ($car->model ?: '')));
+        $vehicleSchema = [
+            '@context' => 'https://schema.org',
+            '@type' => 'Vehicle',
+            'name' => $vehicleSchemaName !== '' ? $vehicleSchemaName : $car->title,
+            'brand' => [
+                '@type' => 'Brand',
+                'name' => $car->make ?: 'ACPC Autos',
+            ],
+            'model' => $car->model ?: null,
+            'vehicleModelDate' => $car->year ? (string) $car->year : null,
+            'mileageFromOdometer' => $car->mileage !== null ? [
+                '@type' => 'QuantitativeValue',
+                'value' => (int) $car->mileage,
+                'unitCode' => 'KMT',
+            ] : null,
+            'vehicleTransmission' => $carTransmission,
+            'fuelType' => $carFuel,
+            'color' => $carColour ?: null,
+            'image' => $vehicleSchemaImages,
+            'offers' => [
+                '@type' => 'Offer',
+                'priceCurrency' => 'EUR',
+                'price' => $car->price !== null ? (float) $car->price : null,
+                'availability' => match ($car->status) {
+                    'available' => 'https://schema.org/InStock',
+                    'reserved' => 'https://schema.org/PreOrder',
+                    'sold' => 'https://schema.org/SoldOut',
+                    default => 'https://schema.org/InStock',
+                },
+                'url' => route('cars.show', $car->slug),
+                'itemCondition' => 'https://schema.org/UsedCondition',
+                'seller' => [
+                    '@type' => 'AutoDealer',
+                    'name' => 'ACPC Autos',
+                ],
+            ],
+        ];
     @endphp
+
+    @push('structured_data')
+        <script type="application/ld+json">{!! json_encode($vehicleSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>
+    @endpush
 
     <section class="show-back">
         <a href="{{ route('home') }}" class="btn btn-brand-outline btn-sm">&larr; Back</a>
@@ -744,6 +794,8 @@
                                             src="{{ \Illuminate\Support\Facades\Storage::url($imagePath) }}"
                                             class="d-block mx-auto"
                                             alt="{{ $car->title }} image {{ $loop->iteration }}"
+                                            loading="lazy"
+                                            decoding="async"
                                             style="max-height: 85vh; max-width: 100%; object-fit: contain;"
                                         >
                                     </div>
