@@ -8,9 +8,9 @@
     <style>
         :root {
             color-scheme: light dark;
-            --brand-primary: #2f5e3a;
-            --brand-dark: #1e3327;
-            --brand-deep: #0f1d14;
+            --brand-primary: #2a5635;
+            --brand-dark: #1b3b26;
+            --brand-deep: #0e2c1d;
             --brand-gold: #b99146;
             --brand-gold-light: #d5b77a;
             --brand-bg: #f6f4ef;
@@ -20,28 +20,28 @@
             --brand-muted-text: #667168;
             --brand-border: rgba(24, 36, 28, 0.1);
             --brand-gold-border: rgba(185, 145, 70, 0.28);
-            --brand-navbar-bg: #0f1d14;
+            --brand-navbar-bg: #123524;
             --brand-navbar-link: #f5f1e8;
-            --brand-footer-bg: #0f1d14;
+            --brand-footer-bg: #123524;
             --brand-footer-text: #e8e1cf;
             --brand-footer-link: #f5f1e8;
-            --brand-panel-bg: linear-gradient(165deg, #13241a 0%, #0f1d14 55%, #0b170f 100%);
-            --brand-panel-bg-soft: linear-gradient(155deg, #1a2e22 0%, #15281e 55%, #11211a 100%);
+            --brand-panel-bg: linear-gradient(165deg, #163d2a 0%, #123524 55%, #0e2c1d 100%);
+            --brand-panel-bg-soft: linear-gradient(155deg, #1c4733 0%, #163d2a 55%, #123524 100%);
             --brand-panel-border: rgba(185, 145, 70, 0.22);
             --brand-panel-border-strong: rgba(213, 183, 122, 0.38);
             --brand-panel-text: #f5f1e8;
             --brand-panel-muted: #c4bba5;
-            --brand-panel-media-bg: #0b1610;
-            --brand-panel-shadow: 0 10px 26px rgba(7, 15, 10, 0.28);
-            --brand-panel-shadow-hover: 0 14px 32px rgba(7, 15, 10, 0.4);
+            --brand-panel-media-bg: #0a2016;
+            --brand-panel-shadow: 0 10px 26px rgba(8, 22, 14, 0.3);
+            --brand-panel-shadow-hover: 0 14px 32px rgba(8, 22, 14, 0.42);
             --brand-card-shadow: 0 10px 24px rgba(14, 22, 17, 0.08);
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --brand-primary: #2f5e3a;
-                --brand-dark: #1e3327;
-                --brand-deep: #0b170f;
+                --brand-primary: #2a5635;
+                --brand-dark: #1b3b26;
+                --brand-deep: #0a2016;
                 --brand-gold: #c9a45c;
                 --brand-gold-light: #e0c98a;
                 --brand-bg: #101418;
@@ -51,18 +51,18 @@
                 --brand-muted-text: #c7bfae;
                 --brand-border: rgba(201, 164, 92, 0.3);
                 --brand-gold-border: rgba(224, 201, 138, 0.3);
-                --brand-navbar-bg: #0b170f;
+                --brand-navbar-bg: #0e2c1d;
                 --brand-navbar-link: #f5f1e8;
-                --brand-footer-bg: #0b170f;
+                --brand-footer-bg: #0e2c1d;
                 --brand-footer-text: #d4cbb7;
                 --brand-footer-link: #f0e9d6;
-                --brand-panel-bg: linear-gradient(165deg, #0f1d14 0%, #0b170f 55%, #091410 100%);
-                --brand-panel-bg-soft: linear-gradient(155deg, #15281e 0%, #11211a 55%, #0d1a13 100%);
+                --brand-panel-bg: linear-gradient(165deg, #123524 0%, #0e2c1d 55%, #0a2418 100%);
+                --brand-panel-bg-soft: linear-gradient(155deg, #163d2a 0%, #123524 55%, #0e2c1d 100%);
                 --brand-panel-border: rgba(201, 164, 92, 0.25);
                 --brand-panel-border-strong: rgba(224, 201, 138, 0.4);
                 --brand-panel-text: #f5f1e8;
                 --brand-panel-muted: #c7bfae;
-                --brand-panel-media-bg: #0a1410;
+                --brand-panel-media-bg: #081c12;
                 --brand-panel-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
                 --brand-panel-shadow-hover: 0 16px 38px rgba(0, 0, 0, 0.5);
                 --brand-card-shadow: 0 10px 28px rgba(0, 0, 0, 0.34);

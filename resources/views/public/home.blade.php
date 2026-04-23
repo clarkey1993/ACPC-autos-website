@@ -157,10 +157,10 @@
 
         <section class="mb-2">
             <div class="home-panel rounded-4 p-4 p-md-5 text-center">
-                <p class="text-uppercase small text-brand-gold fw-semibold mb-2">Ready to move forward?</p>
-                <h2 class="h3 mb-2">Speak to us about availability</h2>
-                <p class="home-muted small mb-4 mb-md-3">Viewings, pricing, and next steps — we respond promptly to serious enquiries.</p>
-                <a href="{{ route('contact') }}" class="btn btn-brand-primary btn-lg">Enquire on stock</a>
+                <p class="text-uppercase small text-brand-gold fw-semibold mb-2">Can't find what you're looking for?</p>
+                <h2 class="h3 mb-2">Let us help find it</h2>
+                <p class="home-muted small mb-4 mb-md-3">Tell us the make, model, budget, and any must-have features, and we'll do our best to source the right vehicle for you.</p>
+                <a href="{{ route('contact') }}" class="btn btn-brand-primary btn-lg">Contact us!</a>
             </div>
         </section>
     </div>
