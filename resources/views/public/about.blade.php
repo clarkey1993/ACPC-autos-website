@@ -4,18 +4,6 @@
 
 @section('content')
     <style>
-        .page-about .about-hero {
-            background: linear-gradient(132deg, #fffefb 0%, #fbf8f2 58%, #f5f0e6 100%);
-            border: 1px solid rgba(185, 145, 70, 0.2);
-            box-shadow: 0 12px 26px rgba(15, 24, 18, 0.08);
-        }
-
-        .page-about .about-panel {
-            background: linear-gradient(165deg, #fffefb 0%, #fbf8f2 58%, #f6f1e7 100%);
-            border: 1px solid rgba(185, 145, 70, 0.16);
-            box-shadow: 0 10px 24px rgba(15, 24, 18, 0.07);
-        }
-
         .page-about .about-eyebrow {
             letter-spacing: 0.11em;
         }
@@ -24,24 +12,10 @@
             width: 0.38rem;
             height: 0.38rem;
             border-radius: 999px;
-            background: var(--brand-gold);
+            background: var(--brand-gold-light);
             margin-top: 0.42rem;
             flex-shrink: 0;
-            opacity: 0.9;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .page-about .about-hero {
-                background: linear-gradient(132deg, rgba(36, 46, 52, 0.96) 0%, rgba(26, 33, 39, 0.98) 100%);
-                border-color: rgba(201, 164, 92, 0.24);
-                box-shadow: 0 10px 26px rgba(0, 0, 0, 0.24);
-            }
-
-            .page-about .about-panel {
-                background: linear-gradient(168deg, rgba(38, 48, 54, 0.95) 0%, rgba(30, 38, 44, 0.98) 55%, rgba(26, 32, 37, 0.99) 100%);
-                border-color: rgba(201, 164, 92, 0.24);
-                box-shadow: 0 10px 26px rgba(0, 0, 0, 0.2);
-            }
+            opacity: 0.95;
         }
     </style>
 

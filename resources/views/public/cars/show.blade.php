@@ -5,9 +5,7 @@
 @section('content')
     <style>
         .page-cars-show {
-            --show-surface: var(--brand-surface);
-            --show-surface-alt: var(--brand-surface-alt);
-            --show-border: var(--brand-border);
+            --show-border: var(--brand-panel-border);
             /* When max-height caps the hero, width must cap too or 16:10 leaves empty bands */
             --show-gallery-max-width: min(100%, calc(620px * 16 / 10));
         }
@@ -58,11 +56,8 @@
             max-width: var(--show-gallery-max-width);
             margin-inline: auto;
             position: relative;
-            border: 1px solid var(--show-border);
             border-radius: 1.1rem;
             overflow: hidden;
-            background: var(--show-surface-alt);
-            box-shadow: 0 6px 22px rgba(15, 24, 18, 0.08);
         }
 
         .page-cars-show .show-gallery__media {
@@ -70,7 +65,7 @@
             width: 100%;
             aspect-ratio: 16 / 10;
             max-height: 620px;
-            background: var(--show-surface-alt);
+            background: var(--brand-panel-media-bg);
             overflow: hidden;
         }
 
@@ -97,7 +92,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--brand-muted-text);
+            color: var(--brand-panel-muted);
             font-size: 0.9rem;
             letter-spacing: 0.05em;
             text-transform: uppercase;
@@ -246,21 +241,18 @@
 
         .page-cars-show .show-thumb:hover {
             transform: translateY(-1px);
-            border-color: rgba(185, 145, 70, 0.35);
+            border-color: var(--brand-panel-border-strong);
         }
 
         .page-cars-show .show-thumb.active {
-            border-color: var(--brand-gold);
-            box-shadow: 0 0 0 1px rgba(185, 145, 70, 0.4);
+            border-color: var(--brand-gold-light);
+            box-shadow: 0 0 0 1px var(--brand-panel-border-strong);
         }
 
         /* -------- Main info band (title / price / specs / CTAs) -------- */
         .page-cars-show .show-info {
-            background: var(--show-surface);
-            border: 1px solid var(--show-border);
             border-radius: 1rem;
             padding: 1.35rem 1.35rem 1.2rem;
-            box-shadow: 0 4px 16px rgba(15, 24, 18, 0.06);
             margin-top: 1.25rem;
         }
 
@@ -289,7 +281,7 @@
             gap: 0.55rem 1.3rem;
             margin: 0 0 1.1rem;
             padding: 0 0 0.95rem;
-            border-bottom: 1px solid var(--show-border);
+            border-bottom: 1px solid var(--brand-panel-border);
             list-style: none;
         }
 
@@ -297,7 +289,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.45rem;
-            color: var(--brand-text);
+            color: var(--brand-panel-text);
             font-size: 0.9rem;
             font-weight: 500;
             line-height: 1.1;
@@ -306,13 +298,13 @@
         .page-cars-show .show-chips svg {
             width: 1rem;
             height: 1rem;
-            color: var(--brand-gold);
-            opacity: 0.88;
+            color: var(--brand-gold-light);
+            opacity: 0.95;
             flex-shrink: 0;
         }
 
         .page-cars-show .show-chips__label {
-            color: var(--brand-muted-text);
+            color: var(--brand-panel-muted);
             font-weight: 500;
             margin-right: 0.15rem;
         }
@@ -340,11 +332,8 @@
 
         /* -------- Vehicle details section -------- */
         .page-cars-show .show-section {
-            background: var(--show-surface);
-            border: 1px solid var(--show-border);
             border-radius: 1rem;
             padding: 1.4rem 1.4rem 1.3rem;
-            box-shadow: 0 4px 16px rgba(15, 24, 18, 0.06);
             margin-top: 1.25rem;
         }
 
@@ -359,7 +348,7 @@
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--brand-text);
+            color: var(--brand-panel-text);
             margin: 0 0 1rem;
             display: inline-flex;
             align-items: center;
@@ -370,8 +359,8 @@
             content: "";
             width: 1.6rem;
             height: 2px;
-            background: var(--brand-gold);
-            opacity: 0.85;
+            background: var(--brand-gold-light);
+            opacity: 0.95;
             border-radius: 2px;
         }
 
@@ -387,7 +376,7 @@
             gap: 0.35rem 1rem;
             align-items: baseline;
             padding: 0.72rem 0;
-            border-bottom: 1px solid var(--show-border);
+            border-bottom: 1px solid var(--brand-panel-border);
         }
 
         .page-cars-show .show-details-list__item:last-child {
@@ -400,19 +389,19 @@
             font-weight: 700;
             letter-spacing: 0.04em;
             text-transform: capitalize;
-            color: var(--brand-gold);
+            color: var(--brand-gold-light);
         }
 
         .page-cars-show .show-details-list__label::after {
             content: ":";
-            color: var(--brand-gold);
+            color: var(--brand-gold-light);
             margin-left: 0.05em;
         }
 
         .page-cars-show .show-details-list__value {
             font-size: 0.98rem;
             font-weight: 500;
-            color: var(--brand-text);
+            color: var(--brand-panel-text);
             line-height: 1.45;
         }
 
@@ -434,7 +423,7 @@
         }
 
         .page-cars-show .show-description {
-            color: var(--brand-text);
+            color: var(--brand-panel-text);
             font-size: 0.98rem;
             line-height: 1.65;
             margin: 0;
@@ -442,7 +431,7 @@
         }
 
         .page-cars-show .show-description--muted {
-            color: var(--brand-muted-text);
+            color: var(--brand-panel-muted);
         }
 
         /* -------- Enquiry + call-out sections -------- */
@@ -455,11 +444,8 @@
         }
 
         .page-cars-show .show-contact-card {
-            background: var(--show-surface);
-            border: 1px solid var(--show-border);
             border-radius: 1rem;
             padding: 1.5rem;
-            box-shadow: 0 4px 16px rgba(15, 24, 18, 0.06);
             text-align: center;
             margin-top: 1.25rem;
         }

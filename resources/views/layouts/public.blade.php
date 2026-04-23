@@ -8,9 +8,9 @@
     <style>
         :root {
             color-scheme: light dark;
-            --brand-primary: #2a5635;
-            --brand-dark: #1b3b26;
-            --brand-deep: #0e2c1d;
+            --brand-primary: #2f5e3a;
+            --brand-dark: #1e3327;
+            --brand-deep: #14361f;
             --brand-gold: #b99146;
             --brand-gold-light: #d5b77a;
             --brand-bg: #f6f4ef;
@@ -20,28 +20,28 @@
             --brand-muted-text: #667168;
             --brand-border: rgba(24, 36, 28, 0.1);
             --brand-gold-border: rgba(185, 145, 70, 0.28);
-            --brand-navbar-bg: #123524;
+            --brand-navbar-bg: #18452d;
             --brand-navbar-link: #f5f1e8;
-            --brand-footer-bg: #123524;
+            --brand-footer-bg: #18452d;
             --brand-footer-text: #e8e1cf;
             --brand-footer-link: #f5f1e8;
-            --brand-panel-bg: linear-gradient(165deg, #163d2a 0%, #123524 55%, #0e2c1d 100%);
-            --brand-panel-bg-soft: linear-gradient(155deg, #1c4733 0%, #163d2a 55%, #123524 100%);
+            --brand-panel-bg: linear-gradient(165deg, #1d4f35 0%, #18452d 55%, #143c28 100%);
+            --brand-panel-bg-soft: linear-gradient(155deg, #235a3f 0%, #1d4f35 55%, #18452d 100%);
             --brand-panel-border: rgba(185, 145, 70, 0.22);
             --brand-panel-border-strong: rgba(213, 183, 122, 0.38);
             --brand-panel-text: #f5f1e8;
             --brand-panel-muted: #c4bba5;
-            --brand-panel-media-bg: #0a2016;
-            --brand-panel-shadow: 0 10px 26px rgba(8, 22, 14, 0.3);
-            --brand-panel-shadow-hover: 0 14px 32px rgba(8, 22, 14, 0.42);
+            --brand-panel-media-bg: #0d2a1a;
+            --brand-panel-shadow: 0 10px 26px rgba(10, 28, 18, 0.32);
+            --brand-panel-shadow-hover: 0 14px 32px rgba(10, 28, 18, 0.44);
             --brand-card-shadow: 0 10px 24px rgba(14, 22, 17, 0.08);
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --brand-primary: #2a5635;
-                --brand-dark: #1b3b26;
-                --brand-deep: #0a2016;
+                --brand-primary: #2f5e3a;
+                --brand-dark: #1e3327;
+                --brand-deep: #0f2c1b;
                 --brand-gold: #c9a45c;
                 --brand-gold-light: #e0c98a;
                 --brand-bg: #101418;
@@ -51,18 +51,18 @@
                 --brand-muted-text: #c7bfae;
                 --brand-border: rgba(201, 164, 92, 0.3);
                 --brand-gold-border: rgba(224, 201, 138, 0.3);
-                --brand-navbar-bg: #0e2c1d;
+                --brand-navbar-bg: #143c28;
                 --brand-navbar-link: #f5f1e8;
-                --brand-footer-bg: #0e2c1d;
+                --brand-footer-bg: #143c28;
                 --brand-footer-text: #d4cbb7;
                 --brand-footer-link: #f0e9d6;
-                --brand-panel-bg: linear-gradient(165deg, #123524 0%, #0e2c1d 55%, #0a2418 100%);
-                --brand-panel-bg-soft: linear-gradient(155deg, #163d2a 0%, #123524 55%, #0e2c1d 100%);
+                --brand-panel-bg: linear-gradient(165deg, #18452d 0%, #143c28 55%, #0f331f 100%);
+                --brand-panel-bg-soft: linear-gradient(155deg, #1d4f35 0%, #18452d 55%, #143c28 100%);
                 --brand-panel-border: rgba(201, 164, 92, 0.25);
                 --brand-panel-border-strong: rgba(224, 201, 138, 0.4);
                 --brand-panel-text: #f5f1e8;
                 --brand-panel-muted: #c7bfae;
-                --brand-panel-media-bg: #081c12;
+                --brand-panel-media-bg: #0b2218;
                 --brand-panel-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
                 --brand-panel-shadow-hover: 0 16px 38px rgba(0, 0, 0, 0.5);
                 --brand-card-shadow: 0 10px 28px rgba(0, 0, 0, 0.34);
@@ -251,6 +251,100 @@
         .badge-brand {
             background-color: var(--brand-primary);
             color: #f7f5ef;
+        }
+
+        /* ============================================================
+           Shared dark-green brand panel system
+           ------------------------------------------------------------
+           Applied to any main content card across the public site so the
+           whole site feels unified with the header/footer palette. New
+           pages can just use class "brand-dark-panel" or the per-page
+           class is remapped onto these tokens.
+        ============================================================ */
+        .brand-dark-panel,
+        .page-about .about-panel,
+        .page-contact .contact-shell,
+        .page-cars-show .show-info,
+        .page-cars-show .show-section,
+        .page-cars-show .show-contact-card {
+            background: var(--brand-panel-bg);
+            border: 1px solid var(--brand-panel-border);
+            color: var(--brand-panel-text);
+            box-shadow: var(--brand-panel-shadow);
+        }
+
+        .brand-dark-panel-soft,
+        .page-about .about-hero,
+        .page-contact .contact-hero,
+        .page-cars-show .show-gallery {
+            background: var(--brand-panel-bg-soft);
+            border: 1px solid var(--brand-panel-border);
+            color: var(--brand-panel-text);
+            box-shadow: var(--brand-panel-shadow);
+        }
+
+        .brand-dark-panel h1,
+        .brand-dark-panel h2,
+        .brand-dark-panel h3,
+        .brand-dark-panel h4,
+        .brand-dark-panel h5,
+        .brand-dark-panel h6,
+        .brand-dark-panel-soft h1,
+        .brand-dark-panel-soft h2,
+        .brand-dark-panel-soft h3,
+        .brand-dark-panel-soft h4,
+        .brand-dark-panel-soft h5,
+        .brand-dark-panel-soft h6,
+        .page-about .about-panel h1,
+        .page-about .about-panel h2,
+        .page-about .about-panel h3,
+        .page-about .about-panel h4,
+        .page-about .about-panel h5,
+        .page-about .about-panel h6,
+        .page-about .about-hero h1,
+        .page-about .about-hero h2,
+        .page-about .about-hero h3,
+        .page-contact .contact-shell h1,
+        .page-contact .contact-shell h2,
+        .page-contact .contact-shell h3,
+        .page-contact .contact-shell h4,
+        .page-contact .contact-hero h1,
+        .page-contact .contact-hero h2,
+        .page-contact .contact-hero h3,
+        .page-cars-show .show-info h1,
+        .page-cars-show .show-info h2,
+        .page-cars-show .show-info h3,
+        .page-cars-show .show-section h1,
+        .page-cars-show .show-section h2,
+        .page-cars-show .show-section h3,
+        .page-cars-show .show-contact-card h1,
+        .page-cars-show .show-contact-card h2,
+        .page-cars-show .show-contact-card h3 {
+            color: var(--brand-panel-text);
+        }
+
+        .brand-dark-panel .brand-muted,
+        .brand-dark-panel-soft .brand-muted,
+        .page-about .about-panel .brand-muted,
+        .page-about .about-hero .brand-muted,
+        .page-contact .contact-shell .brand-muted,
+        .page-contact .contact-hero .brand-muted,
+        .page-cars-show .show-info .brand-muted,
+        .page-cars-show .show-section .brand-muted,
+        .page-cars-show .show-contact-card .brand-muted {
+            color: var(--brand-panel-muted) !important;
+        }
+
+        .brand-dark-panel .text-brand-gold,
+        .brand-dark-panel-soft .text-brand-gold,
+        .page-about .about-panel .text-brand-gold,
+        .page-about .about-hero .text-brand-gold,
+        .page-contact .contact-shell .text-brand-gold,
+        .page-contact .contact-hero .text-brand-gold,
+        .page-cars-show .show-info .text-brand-gold,
+        .page-cars-show .show-section .text-brand-gold,
+        .page-cars-show .show-contact-card .text-brand-gold {
+            color: var(--brand-gold-light) !important;
         }
 
         .footer-public {

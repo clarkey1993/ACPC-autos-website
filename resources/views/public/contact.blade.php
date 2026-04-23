@@ -4,18 +4,6 @@
 
 @section('content')
     <style>
-        .page-contact .contact-shell {
-            background: linear-gradient(165deg, #fffefb 0%, #fbf8f2 58%, #f6f1e7 100%);
-            border: 1px solid rgba(185, 145, 70, 0.16);
-            box-shadow: 0 10px 24px rgba(15, 24, 18, 0.07);
-        }
-
-        .page-contact .contact-hero {
-            background: linear-gradient(132deg, #fffefb 0%, #fbf8f2 58%, #f5f0e6 100%);
-            border: 1px solid rgba(185, 145, 70, 0.2);
-            box-shadow: 0 12px 26px rgba(15, 24, 18, 0.08);
-        }
-
         .page-contact .contact-option-grid {
             display: grid;
             grid-template-columns: minmax(0, 1fr);
@@ -39,64 +27,38 @@
             gap: 0.3rem;
             padding: 1rem 1.15rem;
             border-radius: 0.75rem;
-            border: 1px solid rgba(185, 145, 70, 0.22);
-            background: rgba(255, 253, 248, 0.6);
+            border: 1px solid var(--brand-panel-border);
+            background: rgba(255, 255, 255, 0.04);
             color: inherit;
             text-decoration: none;
             text-align: center;
             min-height: 86px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
         }
 
         .page-contact a.contact-option:hover,
         .page-contact a.contact-option:focus-visible {
             transform: translateY(-1px);
-            border-color: rgba(185, 145, 70, 0.42);
-            box-shadow: 0 8px 18px rgba(15, 24, 18, 0.08);
+            border-color: var(--brand-panel-border-strong);
+            background: rgba(213, 183, 122, 0.08);
+            box-shadow: 0 8px 18px rgba(10, 28, 18, 0.28);
         }
 
         .page-contact .contact-option-label {
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 0.12em;
-            color: var(--brand-gold);
+            color: var(--brand-gold-light);
             font-weight: 600;
             line-height: 1;
         }
 
         .page-contact .contact-option-value {
             font-weight: 600;
-            color: var(--brand-text);
+            color: var(--brand-panel-text);
             font-size: 1rem;
             line-height: 1.2;
             word-break: break-word;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .page-contact .contact-option {
-                background: rgba(255, 255, 255, 0.035);
-                border-color: rgba(201, 164, 92, 0.28);
-            }
-
-            .page-contact a.contact-option:hover,
-            .page-contact a.contact-option:focus-visible {
-                border-color: rgba(224, 201, 138, 0.45);
-                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
-            }
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .page-contact .contact-shell {
-                background: linear-gradient(168deg, rgba(38, 48, 54, 0.95) 0%, rgba(30, 38, 44, 0.98) 55%, rgba(26, 32, 37, 0.99) 100%);
-                border-color: rgba(201, 164, 92, 0.24);
-                box-shadow: 0 10px 26px rgba(0, 0, 0, 0.2);
-            }
-
-            .page-contact .contact-hero {
-                background: linear-gradient(132deg, rgba(36, 46, 52, 0.96) 0%, rgba(26, 33, 39, 0.98) 100%);
-                border-color: rgba(201, 164, 92, 0.24);
-                box-shadow: 0 10px 26px rgba(0, 0, 0, 0.24);
-            }
         }
     </style>
 

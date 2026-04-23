@@ -137,7 +137,7 @@
                 <div class="col-md-4">
                     <div class="home-panel rounded-4 p-4 h-100">
                         <h3 class="h6 text-brand-gold text-uppercase small fw-semibold mb-2">Selection</h3>
-                        <p class="mb-0 small home-muted">Vehicles chosen for quality, condition, and long-term value.</p>
+                        <p class="mb-0 small home-muted">Low milage vehicles chosen for quality, condition, and long-term value.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
