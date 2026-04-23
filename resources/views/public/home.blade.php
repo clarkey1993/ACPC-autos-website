@@ -6,20 +6,32 @@
     <div class="page-home">
         <style>
             .page-home {
-                --home-surface: linear-gradient(165deg, #fffefb 0%, #fbf8f2 56%, #f6f1e7 100%);
-                --home-accent-line: linear-gradient(90deg, transparent, rgba(185, 145, 70, 0.66), rgba(47, 94, 58, 0.28), transparent);
-                --featured-section-bg: linear-gradient(155deg, rgba(255, 254, 251, 0.98) 0%, rgba(250, 246, 237, 0.96) 52%, rgba(245, 240, 230, 0.96) 100%);
+                --home-accent-line: linear-gradient(90deg, transparent, rgba(213, 183, 122, 0.9), rgba(185, 145, 70, 0.55), transparent);
             }
 
             .page-home .home-panel,
             .page-home .card.brand-card:not(.car-inventory-card) {
-                background: var(--home-surface);
-                border: 1px solid rgba(185, 145, 70, 0.16);
-                box-shadow: 0 10px 24px rgba(15, 24, 18, 0.07);
+                background: var(--brand-panel-bg);
+                border: 1px solid var(--brand-panel-border);
+                color: var(--brand-panel-text);
+                box-shadow: var(--brand-panel-shadow);
+            }
+
+            .page-home .home-panel h1,
+            .page-home .home-panel h2,
+            .page-home .home-panel h3,
+            .page-home .home-panel h4,
+            .page-home .home-panel h5,
+            .page-home .home-panel h6 {
+                color: var(--brand-panel-text);
+            }
+
+            .page-home .home-panel .text-brand-gold {
+                color: var(--brand-gold-light) !important;
             }
 
             .page-home .home-muted {
-                color: #667168 !important;
+                color: var(--brand-panel-muted) !important;
             }
 
             .page-home .home-section-title {
@@ -35,17 +47,18 @@
             }
 
             .page-home .featured-shell {
-                background: var(--featured-section-bg);
-                border: 1px solid rgba(185, 145, 70, 0.15);
+                background: var(--brand-panel-bg-soft);
+                border: 1px solid var(--brand-panel-border);
                 border-radius: 1rem;
                 padding: 1.75rem 1.15rem 1.35rem;
-                box-shadow: 0 12px 28px rgba(15, 24, 18, 0.07);
+                color: var(--brand-panel-text);
+                box-shadow: var(--brand-panel-shadow);
             }
 
             .page-home .home-featured-heading {
                 font-size: clamp(1.9rem, 3.4vw, 2.5rem);
                 font-weight: 700;
-                color: #232925;
+                color: var(--brand-gold-light);
                 letter-spacing: -0.01em;
             }
 
@@ -64,31 +77,30 @@
                 justify-content: center;
             }
 
-            @media (prefers-color-scheme: dark) {
-                .page-home {
-                    --home-surface: linear-gradient(168deg, rgba(38, 48, 54, 0.95) 0%, rgba(30, 38, 44, 0.98) 55%, rgba(26, 32, 37, 0.99) 100%);
-                    --home-accent-line: linear-gradient(90deg, transparent, rgba(201, 164, 92, 0.55), rgba(47, 94, 58, 0.45), transparent);
-                    --featured-section-bg: linear-gradient(158deg, rgba(34, 44, 40, 0.55) 0%, rgba(28, 36, 42, 0.86) 100%);
-                }
+            .page-home .featured-shell .pagination .page-link {
+                background-color: transparent;
+                border-color: var(--brand-panel-border);
+                color: var(--brand-panel-text);
+            }
 
-                .page-home .home-panel,
-                .page-home .card.brand-card:not(.car-inventory-card) {
-                    border-color: rgba(201, 164, 92, 0.26);
-                    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18);
-                }
+            .page-home .featured-shell .pagination .page-link:hover,
+            .page-home .featured-shell .pagination .page-link:focus {
+                background-color: rgba(213, 183, 122, 0.1);
+                border-color: var(--brand-panel-border-strong);
+                color: var(--brand-gold-light);
+                box-shadow: none;
+            }
 
-                .page-home .home-muted {
-                    color: #d8d0c4 !important;
-                }
+            .page-home .featured-shell .pagination .page-item.active .page-link {
+                background-color: var(--brand-primary);
+                border-color: var(--brand-primary);
+                color: #f7f5ef;
+            }
 
-                .page-home .featured-shell {
-                    border-color: rgba(201, 164, 92, 0.2);
-                    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-                }
-
-                .page-home .home-featured-heading {
-                    color: #efe7d4;
-                }
+            .page-home .featured-shell .pagination .page-item.disabled .page-link {
+                background-color: transparent;
+                color: var(--brand-panel-muted);
+                opacity: 0.55;
             }
         </style>
 

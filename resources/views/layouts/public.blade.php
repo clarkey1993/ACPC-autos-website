@@ -25,6 +25,15 @@
             --brand-footer-bg: #0f1d14;
             --brand-footer-text: #e8e1cf;
             --brand-footer-link: #f5f1e8;
+            --brand-panel-bg: linear-gradient(165deg, #13241a 0%, #0f1d14 55%, #0b170f 100%);
+            --brand-panel-bg-soft: linear-gradient(155deg, #1a2e22 0%, #15281e 55%, #11211a 100%);
+            --brand-panel-border: rgba(185, 145, 70, 0.22);
+            --brand-panel-border-strong: rgba(213, 183, 122, 0.38);
+            --brand-panel-text: #f5f1e8;
+            --brand-panel-muted: #c4bba5;
+            --brand-panel-media-bg: #0b1610;
+            --brand-panel-shadow: 0 10px 26px rgba(7, 15, 10, 0.28);
+            --brand-panel-shadow-hover: 0 14px 32px rgba(7, 15, 10, 0.4);
             --brand-card-shadow: 0 10px 24px rgba(14, 22, 17, 0.08);
         }
 
@@ -47,6 +56,15 @@
                 --brand-footer-bg: #0b170f;
                 --brand-footer-text: #d4cbb7;
                 --brand-footer-link: #f0e9d6;
+                --brand-panel-bg: linear-gradient(165deg, #0f1d14 0%, #0b170f 55%, #091410 100%);
+                --brand-panel-bg-soft: linear-gradient(155deg, #15281e 0%, #11211a 55%, #0d1a13 100%);
+                --brand-panel-border: rgba(201, 164, 92, 0.25);
+                --brand-panel-border-strong: rgba(224, 201, 138, 0.4);
+                --brand-panel-text: #f5f1e8;
+                --brand-panel-muted: #c7bfae;
+                --brand-panel-media-bg: #0a1410;
+                --brand-panel-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+                --brand-panel-shadow-hover: 0 16px 38px rgba(0, 0, 0, 0.5);
                 --brand-card-shadow: 0 10px 28px rgba(0, 0, 0, 0.34);
             }
         }
@@ -441,11 +459,12 @@
         ============================================================ */
 
         .car-card {
-            background: var(--brand-surface);
-            border: 1px solid var(--brand-border);
+            background: var(--brand-panel-bg);
+            border: 1px solid var(--brand-panel-border);
             border-radius: 0.875rem;
             overflow: hidden;
-            box-shadow: 0 4px 14px rgba(15, 24, 18, 0.06);
+            color: var(--brand-panel-text);
+            box-shadow: var(--brand-panel-shadow);
             transition:
                 transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
                 box-shadow 0.22s cubic-bezier(0.4, 0, 0.2, 1),
@@ -457,14 +476,14 @@
         .car-card:hover,
         .car-card:focus-within {
             transform: translateY(-2px);
-            box-shadow: 0 10px 22px rgba(15, 24, 18, 0.1);
-            border-color: rgba(185, 145, 70, 0.28);
+            box-shadow: var(--brand-panel-shadow-hover);
+            border-color: var(--brand-panel-border-strong);
         }
 
         .car-card__media {
             position: relative;
             aspect-ratio: 16 / 11;
-            background: var(--brand-surface-alt);
+            background: var(--brand-panel-media-bg);
             overflow: hidden;
         }
 
@@ -499,7 +518,7 @@
         }
 
         .car-card__image--empty {
-            color: var(--brand-muted-text);
+            color: var(--brand-panel-muted);
             font-size: 0.85rem;
             letter-spacing: 0.05em;
             text-transform: uppercase;
@@ -585,7 +604,7 @@
             text-transform: uppercase;
             letter-spacing: 0.09em;
             font-size: 0.7rem;
-            color: var(--brand-muted-text);
+            color: var(--brand-panel-muted);
             margin: 0 0 0.1rem;
         }
 
@@ -594,7 +613,7 @@
             font-weight: 700;
             letter-spacing: 0.005em;
             line-height: 1.25;
-            color: var(--brand-text);
+            color: var(--brand-panel-text);
             margin: 0;
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -617,7 +636,7 @@
             flex-wrap: wrap;
             gap: 0.4rem 0.9rem;
             font-size: 0.78rem;
-            color: var(--brand-muted-text);
+            color: var(--brand-panel-muted);
             margin: 0 0 0.25rem;
             padding: 0;
         }
@@ -703,22 +722,10 @@
             flex-shrink: 0;
         }
 
-        /* Dark mode: keep the card visually lighter/cleaner, not blocky. */
+        /* Dark mode: tokens already swap via :root rules — only tune ribbon/media if needed. */
         @media (prefers-color-scheme: dark) {
-            .car-card {
-                background: var(--brand-surface);
-                border-color: rgba(201, 164, 92, 0.18);
-                box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
-            }
-
-            .car-card:hover,
-            .car-card:focus-within {
-                border-color: rgba(201, 164, 92, 0.32);
-                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.36);
-            }
-
             .car-card__media {
-                background: #131a20;
+                background: var(--brand-panel-media-bg);
             }
         }
 
