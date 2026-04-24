@@ -77,32 +77,6 @@
             .page-home .featured-cards-row {
                 justify-content: center;
             }
-
-            .page-home .featured-shell .pagination .page-link {
-                background-color: transparent;
-                border-color: var(--brand-panel-border);
-                color: var(--brand-panel-text);
-            }
-
-            .page-home .featured-shell .pagination .page-link:hover,
-            .page-home .featured-shell .pagination .page-link:focus {
-                background-color: rgba(213, 183, 122, 0.1);
-                border-color: var(--brand-panel-border-strong);
-                color: var(--brand-gold-light);
-                box-shadow: none;
-            }
-
-            .page-home .featured-shell .pagination .page-item.active .page-link {
-                background-color: var(--brand-primary);
-                border-color: var(--brand-primary);
-                color: #f7f5ef;
-            }
-
-            .page-home .featured-shell .pagination .page-item.disabled .page-link {
-                background-color: transparent;
-                color: var(--brand-panel-muted);
-                opacity: 0.55;
-            }
         </style>
 
         <section id="featured-cars" class="py-3 py-md-4 mb-5 mb-md-6 featured-shell">
@@ -123,12 +97,6 @@
                     </div>
                 @endforelse
             </div>
-
-            @if ($cars->hasPages())
-                <div class="mt-4 d-flex justify-content-center">
-                    {{ $cars->links('pagination::bootstrap-5') }}
-                </div>
-            @endif
         </section>
 
         <section class="mb-4 mb-md-5">

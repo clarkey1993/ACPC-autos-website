@@ -15,7 +15,7 @@ class CarListingController extends Controller
             ->with('images')
             ->orderByRaw("CASE WHEN status = 'available' THEN 1 WHEN status = 'reserved' THEN 2 WHEN status = 'sold' THEN 3 ELSE 4 END")
             ->latest()
-            ->paginate(12);
+            ->get();
 
         return view('public.home', compact('cars'));
     }
