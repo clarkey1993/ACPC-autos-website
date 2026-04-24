@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
             'publicEmailDisplay' => config('dealer.email_display'),
             'publicEmailMailto' => config('dealer.email_mailto'),
             'publicWhatsAppNumber' => config('dealer.whatsapp_number'),
-            'publicAppointmentsText' => 'Viewings by appointment only',
+            'publicAppointmentsText' => __('public.footer.viewings_appointment'),
             'publicDedicatedCarsPageEnabled' => false,
         ];
 

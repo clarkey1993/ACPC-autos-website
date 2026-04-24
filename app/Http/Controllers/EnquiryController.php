@@ -29,6 +29,6 @@ class EnquiryController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', 'Thank you. Your enquiry has been sent.');
+            ->with('success', __('public.alerts.enquiry_success'));
     }
 }

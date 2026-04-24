@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Used Cars for Sale in Málaga | ACPC Autos')
-@section('meta_description', 'Browse premium used cars for sale in Málaga at ACPC Autos. Discover hand-picked vehicles, transparent pricing, and personal service.')
+@section('title', __('public.home.title'))
+@section('meta_description', __('public.home.meta_description'))
 
 @section('content')
     <div class="page-home">
@@ -108,8 +108,8 @@
         <section id="featured-cars" class="py-3 py-md-4 mb-5 mb-md-6 featured-shell">
             <div class="home-featured-intro text-center mb-4">
                 <div class="home-title-accent"></div>
-                <h2 class="home-featured-heading home-section-title mb-2">Current stock</h2>
-                <p class="home-muted small mb-0">Browse our full showroom inventory in one place.</p>
+                <h2 class="home-featured-heading home-section-title mb-2">{{ __('public.home.current_stock') }}</h2>
+                <p class="home-muted small mb-0">{{ __('public.home.showroom_intro') }}</p>
             </div>
 
             <div class="row g-3 g-md-4 featured-cards-row">
@@ -119,7 +119,7 @@
                     </div>
                 @empty
                     <div class="col-12">
-                        <div class="home-panel rounded-4 p-4 text-center home-muted">No cars available right now. Please check back soon.</div>
+                        <div class="home-panel rounded-4 p-4 text-center home-muted">{{ __('public.home.no_cars') }}</div>
                     </div>
                 @endforelse
             </div>
@@ -133,24 +133,24 @@
 
         <section class="mb-4 mb-md-5">
             <div class="home-title-accent"></div>
-            <h2 class="h4 home-section-title text-brand-gold mb-3">Why buy from us</h2>
+            <h2 class="h4 home-section-title text-brand-gold mb-3">{{ __('public.home.why_buy') }}</h2>
             <div class="row g-3">
                 <div class="col-md-4">
                     <div class="home-panel rounded-4 p-4 h-100">
-                        <h3 class="h6 text-brand-gold text-uppercase small fw-semibold mb-2">Selection</h3>
-                        <p class="mb-0 small home-muted">Low mileage vehicles chosen for quality, condition, and long-term value.</p>
+                        <h3 class="h6 text-brand-gold text-uppercase small fw-semibold mb-2">{{ __('public.home.selection') }}</h3>
+                        <p class="mb-0 small home-muted">{{ __('public.home.selection_text') }}</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="home-panel rounded-4 p-4 h-100">
-                        <h3 class="h6 text-brand-gold text-uppercase small fw-semibold mb-2">Clarity</h3>
-                        <p class="mb-0 small home-muted">Clear information and honest answers — no pressure tactics.</p>
+                        <h3 class="h6 text-brand-gold text-uppercase small fw-semibold mb-2">{{ __('public.home.clarity') }}</h3>
+                        <p class="mb-0 small home-muted">{{ __('public.home.clarity_text') }}</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="home-panel rounded-4 p-4 h-100">
-                        <h3 class="h6 text-brand-gold text-uppercase small fw-semibold mb-2">Service</h3>
-                        <p class="mb-0 small home-muted">Direct contact with people who know every car on the floor.</p>
+                        <h3 class="h6 text-brand-gold text-uppercase small fw-semibold mb-2">{{ __('public.home.service') }}</h3>
+                        <p class="mb-0 small home-muted">{{ __('public.home.service_text') }}</p>
                     </div>
                 </div>
             </div>
@@ -158,10 +158,10 @@
 
         <section class="mb-2">
             <div class="home-panel rounded-4 p-4 p-md-5 text-center">
-                <p class="text-uppercase small text-brand-gold fw-semibold mb-2">Can't find what you're looking for?</p>
-                <h2 class="h3 mb-2">Let us help find it</h2>
-                <p class="home-muted small mb-4 mb-md-3">Tell us the make, model, budget, and any must-have features, and we'll do our best to source the right vehicle for you.</p>
-                <a href="{{ route('contact') }}" class="btn btn-brand-primary btn-lg">Contact us!</a>
+                <p class="text-uppercase small text-brand-gold fw-semibold mb-2">{{ __('public.home.source_eyebrow') }}</p>
+                <h2 class="h3 mb-2">{{ __('public.home.source_title') }}</h2>
+                <p class="home-muted small mb-4 mb-md-3">{{ __('public.home.source_text') }}</p>
+                <a href="{{ route('contact') }}" class="btn btn-brand-primary btn-lg">{{ __('public.buttons.contact_us') }}</a>
             </div>
         </section>
     </div>

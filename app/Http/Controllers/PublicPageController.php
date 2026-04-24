@@ -38,7 +38,7 @@ class PublicPageController extends Controller
             "New website contact request\n\n"
             . "Name: {$validated['name']}\n"
             . "Email: {$validated['email']}\n"
-            . "Phone: " . ($validated['phone'] ?: 'Not provided') . "\n\n"
+            . "Phone: " . ($validated['phone'] ?: __('public.fallback.not_provided')) . "\n\n"
             . "Message:\n{$validated['message']}\n",
             function ($message) use ($recipient, $validated): void {
                 $message->to($recipient)
@@ -49,6 +49,6 @@ class PublicPageController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', 'Thank you. Your message has been sent.');
+            ->with('success', __('public.contact.success'));
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Used Cars for Sale in Málaga | ACPC Autos')
-@section('meta_description', 'View current used cars for sale in Málaga from ACPC Autos. Browse available, reserved, and sold stock with full vehicle details.')
+@section('title', __('public.cars.index_title'))
+@section('meta_description', __('public.cars.index_meta_description'))
 
 @section('content')
     <style>
@@ -33,8 +33,8 @@
     <div class="page-cars-index">
     <section class="mb-4">
         <div class="brand-card index-hero rounded-4 p-4 p-md-5">
-            <h1 class="h2 mb-2">Current Stock</h1>
-            <p class="brand-muted mb-0">A small premium collection of available vehicles. No clutter, just the best cars in stock right now.</p>
+            <h1 class="h2 mb-2">{{ __('public.cars.index_heading') }}</h1>
+            <p class="brand-muted mb-0">{{ __('public.cars.index_intro') }}</p>
         </div>
     </section>
 
@@ -46,7 +46,7 @@
                 </div>
             @empty
                 <div class="col-12">
-                    <div class="alert mb-0 brand-card empty-state-card border-0">No available cars found.</div>
+                    <div class="alert mb-0 brand-card empty-state-card border-0">{{ __('public.cars.index_empty') }}</div>
                 </div>
             @endforelse
         </div>

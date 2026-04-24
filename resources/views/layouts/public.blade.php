@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @php
-        $seoTitle = trim($__env->yieldContent('title', 'ACPC Autos'));
-        $seoDescription = trim($__env->yieldContent('meta_description', 'Premium used cars for sale in Malaga. Explore hand-picked vehicles and contact ACPC Autos for viewings and enquiries.'));
+        $seoTitle = trim($__env->yieldContent('title', __('public.meta.default_title')));
+        $seoDescription = trim($__env->yieldContent('meta_description', __('public.meta.default_description')));
         $seoCanonical = trim($__env->yieldContent('canonical_url', url()->current()));
         $seoOgImage = trim($__env->yieldContent('og_image', asset('images/logo-full.png')));
         $seoOgType = trim($__env->yieldContent('og_type', 'website'));
+        $publicLocale = app()->getLocale();
+        $ogLocale = $publicLocale === 'es' ? 'es_ES' : 'en_GB';
     @endphp
     <title>{{ $seoTitle }}</title>
     <meta name="description" content="{{ $seoDescription }}">
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
     <link rel="canonical" href="{{ $seoCanonical }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/apple-touch-icon.png') }}">
 
-    <meta property="og:site_name" content="ACPC Autos">
-    <meta property="og:locale" content="en_GB">
+    <meta property="og:site_name" content="{{ __('public.brand') }}">
+    <meta property="og:locale" content="{{ $ogLocale }}">
     <meta property="og:type" content="{{ $seoOgType }}">
     <meta property="og:title" content="{{ $seoTitle }}">
     <meta property="og:description" content="{{ $seoDescription }}">
@@ -197,8 +202,12 @@
         }
 
         .brand-logo--footer {
-            height: clamp(44px, 5vw, 56px);
+            display: block;
+            height: clamp(2.5rem, 8.5vw, 7rem);
             width: auto;
+            max-height: 7.25rem;
+            max-width: 100%;
+            object-fit: contain;
         }
 
         .brand-logo--navbar,
@@ -448,6 +457,41 @@
             color: var(--brand-gold-light) !important;
         }
 
+        .public-language-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .public-language-switch__link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.18s ease, opacity 0.18s ease;
+            opacity: 0.82;
+        }
+
+        .public-language-switch__link:hover,
+        .public-language-switch__link:focus-visible {
+            transform: scale(1.06);
+            opacity: 1;
+        }
+
+        .public-language-switch__link.is-active {
+            opacity: 1;
+        }
+
+        .public-language-switch__flag {
+            width: 22px;
+            height: 15px;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 1px;
+            filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35));
+        }
+
         @media (min-width: 992px) {
             .navbar-public .navbar-nav {
                 gap: 0.5rem !important;
@@ -456,6 +500,15 @@
             .navbar-public .navbar-collapse {
                 border-top: 1px solid var(--brand-gold-border);
                 padding-top: 0.35rem;
+                position: relative;
+            }
+
+            .navbar-public .public-language-switch-wrap {
+                position: absolute;
+                right: 0;
+                top: calc(50% + 0.18rem);
+                transform: translateY(-50%);
+                margin-top: 0;
             }
         }
 
@@ -466,6 +519,12 @@
 
             .navbar-public .navbar-nav {
                 gap: 0.1rem;
+            }
+
+            .navbar-public .public-language-switch-wrap {
+                display: flex;
+                justify-content: center;
+                margin-top: 0.55rem;
             }
         }
 
@@ -711,26 +770,18 @@
         }
 
         .car-card__body {
-            padding: 0.95rem 1rem 1.05rem;
+            padding: 0.9rem 1rem 0.95rem;
             display: flex;
             flex-direction: column;
-            gap: 0.25rem;
+            gap: 0.28rem;
             flex: 1 1 auto;
         }
 
-        .car-card__meta {
-            text-transform: uppercase;
-            letter-spacing: 0.09em;
-            font-size: 0.7rem;
-            color: var(--brand-panel-muted);
-            margin: 0 0 0.1rem;
-        }
-
         .car-card__title {
-            font-size: 1.02rem;
+            font-size: 1rem;
             font-weight: 700;
             letter-spacing: 0.005em;
-            line-height: 1.25;
+            line-height: 1.2;
             color: var(--brand-panel-text);
             margin: 0;
             display: -webkit-box;
@@ -740,69 +791,34 @@
             overflow: hidden;
         }
 
-        .car-card__price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--brand-gold);
-            margin: 0.25rem 0 0.45rem;
-            letter-spacing: 0.005em;
-            line-height: 1.15;
-        }
-
-        .car-card__specs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem 0.9rem;
-            font-size: 0.78rem;
+        .car-card__summary {
+            font-size: 0.82rem;
             color: var(--brand-panel-muted);
-            margin: 0 0 0.25rem;
-            padding: 0;
-        }
-
-        .car-card__specs li {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.32rem;
-            line-height: 1.1;
-        }
-
-        .car-card__specs svg {
-            width: 0.9rem;
-            height: 0.9rem;
-            opacity: 0.72;
-            flex-shrink: 0;
+            margin: 0;
+            line-height: 1.35;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .car-card__cta {
             margin-top: auto;
-            padding-top: 0.35rem;
+            padding-top: 0.15rem;
             color: var(--brand-gold);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 0.32rem;
             align-self: flex-start;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             font-weight: 600;
             letter-spacing: 0.03em;
-            text-transform: uppercase;
             transition: color 0.18s ease, gap 0.18s ease;
-        }
-
-        .car-card__cta svg {
-            width: 0.85rem;
-            height: 0.85rem;
-            transition: transform 0.2s ease;
         }
 
         .car-card__cta:hover,
         .car-card__cta:focus,
         .car-card:hover .car-card__cta {
             color: var(--brand-gold-light);
-        }
-
-        .car-card:hover .car-card__cta svg {
-            transform: translateX(3px);
         }
 
         /* Image count pill overlay (shared). */
@@ -864,7 +880,7 @@
         $localBusinessSchema = [
             '@context' => 'https://schema.org',
             '@type' => 'AutoDealer',
-            'name' => 'ACPC Autos',
+            'name' => __('public.brand'),
             'url' => route('home'),
             'telephone' => $publicPhoneTel ?? null,
             'email' => $publicEmailDisplay ?? null,
@@ -879,7 +895,7 @@
                 '@type' => 'City',
                 'name' => 'Malaga',
             ],
-            'description' => 'Premium hand-picked used cars in Malaga with personal dealership service.',
+            'description' => __('public.meta.default_description'),
             'openingHoursSpecification' => [
                 [
                     '@type' => 'OpeningHoursSpecification',
@@ -899,30 +915,50 @@
         <div class="container flex-column py-2 py-md-3">
             <div class="navbar-top-row w-100 d-flex align-items-center justify-content-center position-relative">
                 <a class="navbar-brand brand-logo-link d-inline-flex align-items-center gap-0 m-0 py-1" href="{{ route('home') }}">
-                    <img src="{{ asset('images/logo-icon.png') }}" alt="" class="brand-logo brand-logo--navbar" decoding="async">
-                    <span class="navbar-brand-name text-brand-gold">ACPC Autos</span>
+                    <img src="{{ asset('images/logo-icon.png') }}" alt="{{ __('public.brand') }}" class="brand-logo brand-logo--navbar" decoding="async">
+                    <span class="navbar-brand-name text-brand-gold">{{ __('public.brand') }}</span>
                 </a>
-                <button class="navbar-toggler position-absolute end-0 top-50 translate-middle-y" type="button" data-bs-toggle="collapse" data-bs-target="#publicNavbar" aria-controls="publicNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler position-absolute start-0 top-50 translate-middle-y" type="button" data-bs-toggle="collapse" data-bs-target="#publicNavbar" aria-controls="publicNavbar" aria-expanded="false" aria-label="{{ __('public.nav.toggle_navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
             <div class="collapse navbar-collapse w-100 justify-content-center" id="publicNavbar">
                 <ul class="navbar-nav justify-content-center align-items-lg-center">
                     <li class="nav-item">
-                        <a class="nav-link nav-link-public" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link nav-link-public" href="{{ route('home') }}">{{ __('public.nav.home') }}</a>
                     </li>
                     @if ($publicDedicatedCarsPageEnabled)
                         <li class="nav-item">
-                            <a class="nav-link nav-link-public" href="{{ route('cars.index') }}">Browse Cars</a>
+                            <a class="nav-link nav-link-public" href="{{ route('cars.index') }}">{{ __('public.nav.browse_cars') }}</a>
                         </li>
                     @endif
                     <li class="nav-item">
-                        <a class="nav-link nav-link-public" href="{{ route('about') }}">About Us</a>
+                        <a class="nav-link nav-link-public" href="{{ route('about') }}">{{ __('public.nav.about_us') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-link-public" href="{{ route('contact') }}">Contact Us</a>
+                        <a class="nav-link nav-link-public" href="{{ route('contact') }}">{{ __('public.nav.contact_us') }}</a>
                     </li>
                 </ul>
+                <div class="public-language-switch-wrap">
+                    <div class="public-language-switch" aria-label="{{ __('public.nav.language') }}">
+                        <a
+                            class="public-language-switch__link @if (app()->getLocale() === 'en') is-active @endif"
+                            href="{{ route('locale.switch', ['locale' => 'en']) }}"
+                            aria-label="{{ __('public.languages.en') }}"
+                            title="{{ __('public.languages.en') }}"
+                        >
+                            <img src="{{ asset('images/flags/uk.svg') }}" alt="" class="public-language-switch__flag" decoding="async">
+                        </a>
+                        <a
+                            class="public-language-switch__link @if (app()->getLocale() === 'es') is-active @endif"
+                            href="{{ route('locale.switch', ['locale' => 'es']) }}"
+                            aria-label="{{ __('public.languages.es') }}"
+                            title="{{ __('public.languages.es') }}"
+                        >
+                            <img src="{{ asset('images/flags/es.svg') }}" alt="" class="public-language-switch__flag" decoding="async">
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -940,22 +976,22 @@
                     @hasSection('footer_brand')
                         @yield('footer_brand')
                     @else
-                        <h2 class="h6 text-brand-gold mb-2">ACPC Autos</h2>
+                        <h2 class="h6 text-brand-gold mb-2">{{ __('public.brand') }}</h2>
                     @endif
-                    <p class="mb-0 small">Premium hand-picked vehicles with a personal dealership experience.</p>
+                    <p class="mb-0 small">{{ __('public.footer.default_tagline') }}</p>
                 </div>
                 <div class="col-md-4">
-                    <h2 class="h6 text-brand-gold mb-2">Contact</h2>
-                    <p class="mb-1 small">Phone: @include('public.partials.phone-cta', ['variant' => 'inline-link'])</p>
-                    <p class="mb-0 small">Email: <a href="{{ $publicEmailMailto }}" class="footer-link">{{ $publicEmailDisplay }}</a></p>
+                    <h2 class="h6 text-brand-gold mb-2">{{ __('public.footer.contact') }}</h2>
+                    <p class="mb-1 small">{{ __('public.forms.phone') }}: @include('public.partials.phone-cta', ['variant' => 'inline-link'])</p>
+                    <p class="mb-0 small">{{ __('public.forms.email') }}: <a href="{{ $publicEmailMailto }}" class="footer-link">{{ $publicEmailDisplay }}</a></p>
                 </div>
                 <div class="col-md-4">
-                    <h2 class="h6 text-brand-gold mb-2">Appointments</h2>
+                    <h2 class="h6 text-brand-gold mb-2">{{ __('public.footer.appointments') }}</h2>
                     <p class="mb-0 small">{{ $publicAppointmentsText }}</p>
                 </div>
             </div>
             <div class="mt-4 pt-3 border-top border-secondary-subtle">
-                <p class="mb-0 small">&copy; {{ date('Y') }} ACPC Autos. All rights reserved.</p>
+                <p class="mb-0 small">&copy; {{ date('Y') }} {{ __('public.brand') }}. {{ __('public.footer.rights') }}</p>
             </div>
         </div>
     </footer>
@@ -965,7 +1001,7 @@
         href="https://wa.me/{{ $publicWhatsAppNumber }}?text={{ rawurlencode($publicWhatsAppMessage) }}"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
+        aria-label="{{ __('public.whatsapp.aria') }}"
     >
         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
             <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.101h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.197-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>

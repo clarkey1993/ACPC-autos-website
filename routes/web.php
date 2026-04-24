@@ -48,6 +48,16 @@ Route::get('/robots.txt', function () {
     return response($content, 200, ['Content-Type' => 'text/plain; charset=UTF-8']);
 })->name('seo.robots');
 
+Route::get('/language/{locale}', function (string $locale) {
+    if (! in_array($locale, ['en', 'es'], true)) {
+        $locale = 'en';
+    }
+
+    session(['locale' => $locale]);
+
+    return redirect()->back();
+})->name('locale.switch');
+
 Route::get('/', [CarListingController::class, 'home'])->name('home');
 Route::get('/cars', [CarListingController::class, 'index'])->name('cars.index');
 Route::get('/cars/{slug}', [CarListingController::class, 'show'])->name('cars.show');

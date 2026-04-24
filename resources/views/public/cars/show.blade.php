@@ -1,7 +1,14 @@
 @extends('layouts.public')
 
-@section('title', trim(preg_replace('/\s+/', ' ', ($car->make ?: '') . ' ' . ($car->model ?: ''))) . ' for Sale in Málaga | ACPC Autos')
-@section('meta_description', trim(preg_replace('/\s+/', ' ', ($car->make ?: '') . ' ' . ($car->model ?: ''))) . ' for sale in Málaga at ACPC Autos. ' . ($car->year ?: 'Used') . ' model, ' . $car->cardMileageText() . ', priced at €' . number_format((float) $car->price) . '. Enquire today.')
+@section('title', __('public.brand') . ' | ' . trim(preg_replace('/\s+/', ' ', ($car->make ?: '') . ' ' . ($car->model ?: ''))) . ' ' . __('public.cars.show_title_suffix'))
+@section('meta_description', __('public.cars.show_meta_template', [
+    'name' => trim(preg_replace('/\s+/', ' ', ($car->make ?: '') . ' ' . ($car->model ?: ''))),
+    'mid' => __('public.cars.show_meta_mid'),
+    'year' => $car->year ?: __('public.fallback.used'),
+    'mileage' => $car->cardMileageText(),
+    'price' => '€' . number_format((float) $car->price),
+    'end' => __('public.cars.show_meta_end'),
+]))
 @section('canonical_url', route('cars.show', $car->slug))
 @section('og_type', 'product')
 @section('og_image', $car->featured_image ? url(\Illuminate\Support\Facades\Storage::url($car->featured_image)) : asset('images/logo-full.png'))
@@ -519,7 +526,7 @@
     @endpush
 
     <section class="show-back">
-        <a href="{{ route('home') }}" class="btn btn-brand-outline btn-sm">&larr; Back</a>
+        <a href="{{ route('home') }}" class="btn btn-brand-outline btn-sm">&larr; {{ __('public.buttons.back') }}</a>
     </section>
 
     {{-- ================= Title + price (above gallery) ================= --}}
@@ -544,7 +551,7 @@
                             <div class="carousel-item @if ($loop->first) active @endif">
                                 <img
                                     src="{{ \Illuminate\Support\Facades\Storage::url($imagePath) }}"
-                                    alt="{{ $car->title }} image {{ $loop->iteration }}"
+                                    alt="{{ $car->title }} {{ __('public.cars.photos') }} {{ $loop->iteration }}"
                                     class="show-gallery__image js-open-lightbox"
                                     data-image-index="{{ $loop->index }}"
                                     loading="{{ $loop->first ? 'eager' : 'lazy' }}"
@@ -555,15 +562,15 @@
                     </div>
 
                     @if ($imagePaths->count() > 1)
-                        <button class="carousel-control-prev" type="button" data-bs-target="#{{ $mainCarouselId }}" data-bs-slide="prev" aria-label="Previous image">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#{{ $mainCarouselId }}" data-bs-slide="prev" aria-label="{{ __('public.cars.previous') }} {{ __('public.cars.photos') }}">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
+                            <span class="visually-hidden">{{ __('public.cars.previous') }}</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#{{ $mainCarouselId }}" data-bs-slide="next" aria-label="Next image">
+                        <button class="carousel-control-next" type="button" data-bs-target="#{{ $mainCarouselId }}" data-bs-slide="next" aria-label="{{ __('public.cars.next') }} {{ __('public.cars.photos') }}">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
+                            <span class="visually-hidden">{{ __('public.cars.next') }}</span>
                         </button>
-                        <div class="show-gallery__count" aria-label="{{ $imagePaths->count() }} photos">
+                        <div class="show-gallery__count" aria-label="{{ $imagePaths->count() }} {{ __('public.cars.photos') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
                                 <path d="M15 12V6a1 1 0 0 0-1-1h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 3H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 5H2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1zM2 4h1.172a1 1 0 0 0 .707-.293l.828-.828A3 3 0 0 1 6.828 2h2.344a3 3 0 0 1 2.121.879l.828.828A1 1 0 0 0 12.828 4H14a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
                                 <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
@@ -575,7 +582,7 @@
                     @endif
                 </div>
             @else
-                <div class="show-gallery__empty">No image available</div>
+                <div class="show-gallery__empty">{{ __('public.cars.no_image_available') }}</div>
             @endif
 
             @if ($car->status === 'reserved' || $car->status === 'sold')
@@ -595,11 +602,11 @@
                     data-bs-target="#{{ $mainCarouselId }}"
                     data-bs-slide-to="{{ $loop->index }}"
                     data-image-index="{{ $loop->index }}"
-                    aria-label="Show image {{ $loop->iteration }}"
+                    aria-label="{{ __('public.cars.show_image', ['number' => $loop->iteration]) }}"
                 >
                     <img
                         src="{{ \Illuminate\Support\Facades\Storage::url($imagePath) }}"
-                        alt="{{ $car->title }} thumbnail {{ $loop->iteration }}"
+                        alt="{{ $car->title }} {{ __('public.cars.photos') }} {{ $loop->iteration }}"
                         loading="lazy"
                         decoding="async"
                     >
@@ -617,76 +624,76 @@
         <ul class="show-chips">
             <li>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 9a5 5 0 1 1 10 0A5 5 0 0 1 4 9zm5-8a.5.5 0 0 1 .5.5V3h2a.5.5 0 0 1 .5.5V4a6 6 0 1 1-6 0v-.5a.5.5 0 0 1 .5-.5h2V1.5A.5.5 0 0 1 9 1z"/></svg>
-                <span><span class="show-chips__label">Mileage</span>{{ $car->cardMileageText() }}</span>
+                <span><span class="show-chips__label">{{ __('public.cars.mileage') }}</span>{{ $car->cardMileageText() }}</span>
             </li>
             @if ($carFuel)
                 <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2.5A1.5 1.5 0 0 1 4.5 1h6A1.5 1.5 0 0 1 12 2.5V14h.5a.5.5 0 0 1 0 1h-10a.5.5 0 0 1 0-1H3V2.5zm1 12h7V2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0-.5.5v12zm9.5-6.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V10a.5.5 0 0 1-.5-.5V8h1zm-.5-3.5a.5.5 0 0 1 .5-.5H14a.5.5 0 0 1 .5.5v3h-1V4.5z"/></svg>
-                    <span><span class="show-chips__label">Fuel</span>{{ $carFuel }}</span>
+                    <span><span class="show-chips__label">{{ __('public.cars.fuel') }}</span>{{ $carFuel }}</span>
                 </li>
             @endif
             @if ($carTransmission)
                 <li>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1a.5.5 0 0 1 .5.5V6h3.5a.5.5 0 0 1 0 1H8.5v7.5a.5.5 0 0 1-1 0V7H4a.5.5 0 0 1 0-1h3.5V1.5A.5.5 0 0 1 8 1z"/><path d="M4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm11 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM4 12.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm11 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/></svg>
-                    <span><span class="show-chips__label">Transmission</span>{{ $carTransmission }}</span>
+                    <span><span class="show-chips__label">{{ __('public.cars.transmission') }}</span>{{ $carTransmission }}</span>
                 </li>
             @endif
             <li>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/></svg>
-                <span><span class="show-chips__label">Year</span>{{ $car->year }}</span>
+                <span><span class="show-chips__label">{{ __('public.cars.year') }}</span>{{ $car->year }}</span>
             </li>
         </ul>
 
         <div class="show-cta-row">
-            @include('public.partials.phone-cta', ['variant' => 'button-primary', 'label' => 'Call now'])
+            @include('public.partials.phone-cta', ['variant' => 'button-primary', 'label' => __('public.buttons.call_now')])
             @if ($car->status === 'sold')
-                <a href="{{ $publicDedicatedCarsPageEnabled ? route('cars.index') : route('home') }}" class="btn btn-brand-outline">Ask about similar vehicles</a>
+                <a href="{{ $publicDedicatedCarsPageEnabled ? route('cars.index') : route('home') }}" class="btn btn-brand-outline">{{ __('public.buttons.ask_similar') }}</a>
             @else
-                <a href="#enquiry-form" class="btn btn-brand-outline">Send enquiry</a>
+                <a href="#enquiry-form" class="btn btn-brand-outline">{{ __('public.forms.send_enquiry') }}</a>
             @endif
         </div>
     </section>
 
     {{-- ================= Vehicle details ================= --}}
     <section class="show-section">
-        <h2 class="show-section__title">Vehicle Details</h2>
+        <h2 class="show-section__title">{{ __('public.cars.vehicle_details') }}</h2>
         <ul class="show-details-list">
             <li class="show-details-list__item">
-                <span class="show-details-list__label">Make</span>
-                <span class="show-details-list__value">{{ $car->make ?: 'N/A' }}</span>
+                <span class="show-details-list__label">{{ __('public.cars.make') }}</span>
+                <span class="show-details-list__value">{{ $car->make ?: __('public.fallback.na') }}</span>
             </li>
             <li class="show-details-list__item">
-                <span class="show-details-list__label">Model</span>
-                <span class="show-details-list__value">{{ $car->model ?: 'N/A' }}</span>
+                <span class="show-details-list__label">{{ __('public.cars.model') }}</span>
+                <span class="show-details-list__value">{{ $car->model ?: __('public.fallback.na') }}</span>
             </li>
             <li class="show-details-list__item">
-                <span class="show-details-list__label">Year</span>
-                <span class="show-details-list__value">{{ $car->year ?: 'N/A' }}</span>
+                <span class="show-details-list__label">{{ __('public.cars.year') }}</span>
+                <span class="show-details-list__value">{{ $car->year ?: __('public.fallback.na') }}</span>
             </li>
             <li class="show-details-list__item">
-                <span class="show-details-list__label">Mileage</span>
+                <span class="show-details-list__label">{{ __('public.cars.mileage') }}</span>
                 <span class="show-details-list__value">{{ $car->cardMileageText() }}</span>
             </li>
             <li class="show-details-list__item">
-                <span class="show-details-list__label">Fuel</span>
-                <span class="show-details-list__value">{{ $carFuel ?: 'N/A' }}</span>
+                <span class="show-details-list__label">{{ __('public.cars.fuel') }}</span>
+                <span class="show-details-list__value">{{ $carFuel ?: __('public.fallback.na') }}</span>
             </li>
             <li class="show-details-list__item">
-                <span class="show-details-list__label">Transmission</span>
-                <span class="show-details-list__value">{{ $carTransmission ?: 'N/A' }}</span>
+                <span class="show-details-list__label">{{ __('public.cars.transmission') }}</span>
+                <span class="show-details-list__value">{{ $carTransmission ?: __('public.fallback.na') }}</span>
             </li>
             <li class="show-details-list__item">
-                <span class="show-details-list__label">Colour</span>
-                <span class="show-details-list__value">{{ $carColour ?: 'N/A' }}</span>
+                <span class="show-details-list__label">{{ __('public.cars.colour') }}</span>
+                <span class="show-details-list__value">{{ $carColour ?: __('public.fallback.na') }}</span>
             </li>
             @if ($carLocation)
                 <li class="show-details-list__item">
-                    <span class="show-details-list__label">Location</span>
+                    <span class="show-details-list__label">{{ __('public.cars.location') }}</span>
                     <span class="show-details-list__value">{{ $carLocation }}</span>
                 </li>
             @endif
             <li class="show-details-list__item">
-                <span class="show-details-list__label">Status</span>
+                <span class="show-details-list__label">{{ __('public.cars.status') }}</span>
                 <span class="show-details-list__value">{{ $car->cardStatusLabel() }}</span>
             </li>
         </ul>
@@ -694,11 +701,11 @@
 
     {{-- ================= Features ================= --}}
     <section class="show-section">
-        <h2 class="show-section__title">Features</h2>
+        <h2 class="show-section__title">{{ __('public.cars.features') }}</h2>
         @if ($car->description)
             <p class="show-description">{{ $car->description }}</p>
         @else
-            <p class="show-description show-description--muted mb-0">No description provided.</p>
+            <p class="show-description show-description--muted mb-0">{{ __('public.cars.no_description') }}</p>
         @endif
     </section>
 
@@ -706,17 +713,17 @@
     <section id="enquiry-form" class="show-section show-enquiry">
         <div class="show-enquiry__header">
             @if ($car->status === 'sold')
-                <p class="text-uppercase small text-brand-gold fw-semibold mb-1" style="letter-spacing: 0.1em;">Looking for something similar?</p>
-                <h2 class="h4 mb-1">Ask about similar vehicles</h2>
-                <p class="brand-muted mb-0">This vehicle has been sold. Tell us what you're looking for and our team will be in touch with similar stock.</p>
+                <p class="text-uppercase small text-brand-gold fw-semibold mb-1" style="letter-spacing: 0.1em;">{{ __('public.cars.sold_eyebrow') }}</p>
+                <h2 class="h4 mb-1">{{ __('public.cars.sold_title') }}</h2>
+                <p class="brand-muted mb-0">{{ __('public.cars.sold_text') }}</p>
             @elseif ($car->status === 'reserved')
-                <p class="text-uppercase small text-brand-gold fw-semibold mb-1" style="letter-spacing: 0.1em;">Currently reserved</p>
-                <h2 class="h4 mb-1">Register your interest</h2>
-                <p class="brand-muted mb-0">This vehicle is reserved. Leave your details and we'll let you know if it becomes available again.</p>
+                <p class="text-uppercase small text-brand-gold fw-semibold mb-1" style="letter-spacing: 0.1em;">{{ __('public.cars.reserved_eyebrow') }}</p>
+                <h2 class="h4 mb-1">{{ __('public.cars.reserved_title') }}</h2>
+                <p class="brand-muted mb-0">{{ __('public.cars.reserved_text') }}</p>
             @else
-                <p class="text-uppercase small text-brand-gold fw-semibold mb-1" style="letter-spacing: 0.1em;">Interested in this car?</p>
-                <h2 class="h4 mb-1">Send an enquiry</h2>
-                <p class="brand-muted mb-0">Leave your details and our team will get back to you quickly.</p>
+                <p class="text-uppercase small text-brand-gold fw-semibold mb-1" style="letter-spacing: 0.1em;">{{ __('public.cars.available_eyebrow') }}</p>
+                <h2 class="h4 mb-1">{{ __('public.cars.available_title') }}</h2>
+                <p class="brand-muted mb-0">{{ __('public.cars.available_text') }}</p>
             @endif
         </div>
 
@@ -728,7 +735,7 @@
 
         @if ($errors->any())
             <div class="alert alert-danger">
-                <p class="mb-2">Please fix the following:</p>
+                <p class="mb-2">{{ __('public.forms.errors_heading') }}</p>
                 <ul class="mb-0">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -741,34 +748,34 @@
             @csrf
             <div class="row g-3">
                 <div class="col-md-6">
-                    <label for="name" class="form-label">Name</label>
+                    <label for="name" class="form-label">{{ __('public.forms.name') }}</label>
                     <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}" required>
                 </div>
 
                 <div class="col-md-6">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label">{{ __('public.forms.email') }}</label>
                     <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}" required>
                 </div>
 
                 <div class="col-md-6">
-                    <label for="phone" class="form-label">Phone (optional)</label>
+                    <label for="phone" class="form-label">{{ __('public.forms.phone_optional') }}</label>
                     <input type="text" name="phone" id="phone" class="form-control" value="{{ old('phone') }}">
                 </div>
 
                 <div class="col-12">
-                    <label for="message" class="form-label">Message</label>
+                    <label for="message" class="form-label">{{ __('public.forms.message') }}</label>
                     <textarea name="message" id="message" rows="4" class="form-control" required>{{ old('message') }}</textarea>
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-brand-primary mt-3">Send enquiry</button>
+            <button type="submit" class="btn btn-brand-primary mt-3">{{ __('public.forms.send_enquiry') }}</button>
         </form>
     </section>
 
     {{-- ================= Contact fallback ================= --}}
     <div class="show-contact-card">
-        <p class="text-uppercase small text-brand-gold fw-semibold mb-2" style="letter-spacing: 0.1em;">Need a faster response?</p>
-        <h2 class="h5 mb-2">Call or email our sales team today</h2>
+        <p class="text-uppercase small text-brand-gold fw-semibold mb-2" style="letter-spacing: 0.1em;">{{ __('public.cars.fast_response') }}</p>
+        <h2 class="h5 mb-2">{{ __('public.cars.sales_team') }}</h2>
         <p class="brand-muted mb-2">
             @include('public.partials.phone-cta', ['variant' => 'inline-link'])
             <span class="mx-1 opacity-50">·</span>
@@ -782,8 +789,8 @@
             <div class="modal-dialog modal-fullscreen">
                 <div class="modal-content bg-black">
                     <div class="modal-header border-0">
-                        <h2 class="visually-hidden" id="carImageLightboxModalLabel">Car image gallery</h2>
-                        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h2 class="visually-hidden" id="carImageLightboxModalLabel">{{ __('public.cars.gallery_title') }}</h2>
+                        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="{{ __('public.cars.close') }}"></button>
                     </div>
                     <div class="modal-body d-flex align-items-center justify-content-center pt-0">
                         <div id="{{ $lightboxCarouselId }}" class="carousel slide w-100" data-bs-ride="false" data-bs-interval="false">
@@ -793,7 +800,7 @@
                                         <img
                                             src="{{ \Illuminate\Support\Facades\Storage::url($imagePath) }}"
                                             class="d-block mx-auto"
-                                            alt="{{ $car->title }} image {{ $loop->iteration }}"
+                                            alt="{{ $car->title }} {{ __('public.cars.photos') }} {{ $loop->iteration }}"
                                             loading="lazy"
                                             decoding="async"
                                             style="max-height: 85vh; max-width: 100%; object-fit: contain;"
@@ -805,11 +812,11 @@
                             @if ($imagePaths->count() > 1)
                                 <button class="carousel-control-prev" type="button" data-bs-target="#{{ $lightboxCarouselId }}" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
+                                    <span class="visually-hidden">{{ __('public.cars.previous') }}</span>
                                 </button>
                                 <button class="carousel-control-next" type="button" data-bs-target="#{{ $lightboxCarouselId }}" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
+                                    <span class="visually-hidden">{{ __('public.cars.next') }}</span>
                                 </button>
                             @endif
                         </div>
