@@ -27,6 +27,8 @@ return [
         'appointments' => 'Citas',
         'rights' => 'Todos los derechos reservados.',
         'viewings_appointment' => 'Visitas solo con cita previa',
+        'information' => 'Informacion',
+        'information_nav_aria' => 'Informacion y politicas',
     ],
     'forms' => [
         'name' => 'Nombre',
@@ -149,5 +151,178 @@ return [
     ],
     'alerts' => [
         'enquiry_success' => 'Gracias. Tu consulta ha sido enviada.',
+    ],
+
+    'pages' => [
+        'warranty' => [
+            'nav_label' => 'Garantia',
+            'title' => 'ACPC Autos | Garantia',
+            'meta_description' => 'Informacion sobre garantia para vehiculos adquiridos en ACPC Autos en Malaga: cobertura legal y apoyo del concesionario.',
+            'hero_eyebrow' => 'Tranquilidad',
+            'hero_title' => 'Garantia',
+            'hero_lead' => 'Queremos que compres con confianza. Aqui explicamos como encaja la garantia en los vehiculos vendidos por ACPC Autos y que puedes esperar despues de la entrega.',
+            'sections' => [
+                [
+                    'heading' => 'Derechos legales',
+                    'body' => 'Como consumidor en Espana puedes tener derechos frente a un vendedor profesional. Nada en esta pagina limita esos derechos. Si detectas un defecto, contactanos pronto para revisar tu caso de forma justa.',
+                ],
+                [
+                    'heading' => 'Estado del vehiculo usado',
+                    'body' => 'Salvo indicacion clara en la documentacion, los vehiculos se venden como usados. Puede haber desgaste acorde a edad y kilometraje. Buscamos describir el estado con precision en el anuncio y en la visita. Plantea dudas antes de comprometerte.',
+                ],
+                [
+                    'heading' => 'Garantia del fabricante',
+                    'body' => 'Algunos vehiculos pueden conservar parte de la garantia del fabricante. Cuando aplique, los detalles se confirmaran por escrito. Las condiciones las marca el fabricante, no ACPC Autos.',
+                ],
+                [
+                    'heading' => 'Como tramitar una incidencia',
+                    'body' => 'Si surge un problema tras la compra, contactanos con tus datos de referencia, una descripcion clara y fotos si ayudan. Te indicaremos los siguientes pasos y plazos segun el caso.',
+                ],
+            ],
+        ],
+        'privacy' => [
+            'nav_label' => 'Politica de privacidad',
+            'title' => 'ACPC Autos | Politica de privacidad',
+            'meta_description' => 'Como ACPC Autos recopila, usa y protege tus datos personales al usar nuestra web o servicios en Malaga.',
+            'hero_eyebrow' => 'Tu privacidad',
+            'hero_title' => 'Politica de privacidad',
+            'hero_lead' => 'Esta politica describe como tratamos la informacion personal relacionada con nuestra web y consultas de clientes. Buscamos claridad y practicidad.',
+            'sections' => [
+                [
+                    'heading' => 'Quienes somos',
+                    'body' => 'ACPC Autos opera esta web y la actividad comercial asociada. Para consultas de privacidad, usa los datos de la pagina de Contacto.',
+                ],
+                [
+                    'heading' => 'Datos que podemos recoger',
+                    'items' => [
+                        'Datos de contacto que nos facilitas (nombre, correo, telefono) al enviar una consulta.',
+                        'Datos tecnicos como IP, tipo de navegador y ubicacion aproximada en registros estandar del servidor.',
+                        'Cookies y tecnologias similares cuando prestes consentimiento, segun la Politica de cookies.',
+                    ],
+                ],
+                [
+                    'heading' => 'Finalidades',
+                    'items' => [
+                        'Responder consultas y organizar citas.',
+                        'Operar, asegurar y mejorar la web.',
+                        'Cumplir obligaciones legales cuando aplique.',
+                    ],
+                ],
+                [
+                    'heading' => 'Bases legales',
+                    'body' => 'Segun el caso, podremos basarnos en la ejecucion de un contrato, intereses legitimos (por ejemplo responder consultas y proteger sistemas) o consentimiento cuando sea necesario.',
+                ],
+                [
+                    'heading' => 'Conservacion',
+                    'body' => 'Conservamos la informacion solo el tiempo necesario para las finalidades indicadas, salvo que la ley exija un plazo mayor.',
+                ],
+                [
+                    'heading' => 'Tus derechos',
+                    'body' => 'Segun la normativa aplicable, puedes tener derechos de acceso, rectificacion, supresion, limitacion u oposicion, y presentar reclamacion ante una autoridad de control. Contactanos para ejercerlos.',
+                ],
+                [
+                    'heading' => 'Actualizaciones',
+                    'body' => 'Podremos actualizar esta politica. La version vigente estara publicada en esta pagina.',
+                ],
+            ],
+        ],
+        'terms' => [
+            'nav_label' => 'Terminos y condiciones',
+            'title' => 'ACPC Autos | Terminos y condiciones',
+            'meta_description' => 'Terminos de uso de la web de ACPC Autos y aspectos clave de la compra de vehiculos en nuestro concesionario en Malaga.',
+            'hero_eyebrow' => 'Aspectos legales',
+            'hero_title' => 'Terminos y condiciones',
+            'hero_lead' => 'Estos terminos regulan el uso de la web y puntos importantes sobre la venta de vehiculos. Te recomendamos leerlos con atencion.',
+            'sections' => [
+                [
+                    'heading' => 'Uso de la web',
+                    'body' => 'Te comprometes a no hacer un uso indebido de la web, no intentar accesos no autorizados ni usar sistemas automatizados que perjudiquen la disponibilidad o seguridad. Podemos suspender el acceso si es necesario para proteger nuestros sistemas.',
+                ],
+                [
+                    'heading' => 'Informacion en la web',
+                    'body' => 'Buscamos precision, pero anuncios, fotos y descripciones son orientativos. Inspecciona el vehiculo y confirma especificaciones antes de comprar. Precios y disponibilidad pueden cambiar.',
+                ],
+                [
+                    'heading' => 'Citas y visitas',
+                    'body' => 'Las visitas suelen ser con cita. Si no puedes acudir, avisa con tiempo para ceder el hueco a otro cliente.',
+                ],
+                [
+                    'heading' => 'Venta de vehiculos',
+                    'body' => 'La venta vinculante se formaliza solo segun nuestro proceso (pedido, factura o contrato firmado). Los depositos, si los hubiera, se regiran por lo acordado por escrito.',
+                ],
+                [
+                    'heading' => 'Limitacion de responsabilidad',
+                    'body' => 'En la medida permitida por la ley, no seremos responsables de danos indirectos o consecuenciales derivados del uso de la web. Nada aqui excluye responsabilidades que no puedan excluirse por ley.',
+                ],
+                [
+                    'heading' => 'Ley aplicable',
+                    'body' => 'Salvo normas imperativas en contrario, estos terminos se rigen por la legislacion espanola y los litigios pueden someterse a los tribunales de Espana.',
+                ],
+            ],
+        ],
+        'cookies' => [
+            'nav_label' => 'Politica de cookies',
+            'title' => 'ACPC Autos | Politica de cookies',
+            'meta_description' => 'Como ACPC Autos usa cookies y tecnologias similares en esta web.',
+            'hero_eyebrow' => 'Transparencia',
+            'hero_title' => 'Politica de cookies',
+            'hero_lead' => 'Que son las cookies, que tipos podemos usar y como puedes gestionar tus preferencias.',
+            'sections' => [
+                [
+                    'heading' => 'Que son las cookies?',
+                    'body' => 'Son pequenos archivos de texto que el sitio puede guardar en tu dispositivo. Ayudan al funcionamiento, recuerdan preferencias o permiten entender el uso agregado de la web.',
+                ],
+                [
+                    'heading' => 'Cookies que podemos usar',
+                    'items' => [
+                        'Cookies estrictamente necesarias para funciones basicas (por ejemplo seguridad o sesion).',
+                        'Cookies de preferencias para recordar opciones como el idioma cuando este implementado.',
+                        'Cookies de analitica, solo si estan activadas, para mejorar el sitio de forma agregada.',
+                    ],
+                ],
+                [
+                    'heading' => 'Gestion de cookies',
+                    'body' => 'Puedes controlarlas desde la configuracion del navegador. Bloquear algunas cookies puede afectar a partes del sitio.',
+                ],
+                [
+                    'heading' => 'Terceros',
+                    'body' => 'Si incorporamos contenido o herramientas de terceros, esos proveedores pueden usar sus propias cookies y aplicara su politica.',
+                ],
+            ],
+        ],
+        'faq' => [
+            'nav_label' => 'FAQ',
+            'title' => 'ACPC Autos | Preguntas frecuentes',
+            'meta_description' => 'Preguntas frecuentes sobre la compra de coches de segunda mano en ACPC Autos (Malaga): citas, stock, pagos y mas.',
+            'hero_eyebrow' => 'Ayuda',
+            'hero_title' => 'Preguntas frecuentes',
+            'hero_lead' => 'Respuestas rapidas a dudas habituales. Para algo concreto, escribenos y te ayudamos encantados.',
+            'sections' => [
+                [
+                    'question' => 'Necesito cita para ver un coche?',
+                    'answer' => 'Si. Normalmente trabajamos con cita para dedicarte tiempo y tener el vehiculo preparado.',
+                ],
+                [
+                    'question' => 'Puedo reservar un vehiculo?',
+                    'answer' => 'Segun disponibilidad y condiciones acordadas, puede ser posible. Pregunta por el proceso vigente y posibles senas.',
+                ],
+                [
+                    'question' => 'Comprais coches o aceptais entrada?',
+                    'answer' => 'Las politicas pueden cambiar. Escribenos con datos del vehiculo y te diremos que podemos ofrecer.',
+                ],
+                [
+                    'question' => 'Que medios de pago aceptais?',
+                    'answer' => 'Los medios aceptados se confirman durante la venta segun requisitos de cumplimiento. Siempre te explicaremos opciones antes de comprometerte.',
+                ],
+                [
+                    'question' => 'Los coches estan revisados?',
+                    'answer' => 'Seleccionamos stock con criterio y buscamos transparencia. Informes o historial dependen del vehiculo: pidenos la documentacion disponible.',
+                ],
+                [
+                    'question' => 'No vivo en Malaga, podeis ayudar?',
+                    'answer' => 'Atendemos a compradores con distintas necesidades logisticas. Cuentanos tu caso y te propondremos opciones practicas.',
+                ],
+            ],
+        ],
     ],
 ];

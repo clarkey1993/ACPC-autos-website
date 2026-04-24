@@ -27,6 +27,8 @@ return [
         'appointments' => 'Appointments',
         'rights' => 'All rights reserved.',
         'viewings_appointment' => 'Viewings by appointment only',
+        'information' => 'Information',
+        'information_nav_aria' => 'Information and policies',
     ],
     'forms' => [
         'name' => 'Name',
@@ -149,5 +151,178 @@ return [
     ],
     'alerts' => [
         'enquiry_success' => 'Thank you. Your enquiry has been sent.',
+    ],
+
+    'pages' => [
+        'warranty' => [
+            'nav_label' => 'Warranty',
+            'title' => 'ACPC Autos | Warranty',
+            'meta_description' => 'Warranty information for vehicles purchased from ACPC Autos in Malaga, including statutory coverage and dealer support.',
+            'hero_eyebrow' => 'Peace of mind',
+            'hero_title' => 'Warranty',
+            'hero_lead' => 'We want you to feel confident in your purchase. This page explains how warranty works for vehicles sold by ACPC Autos and what you can expect from us after handover.',
+            'sections' => [
+                [
+                    'heading' => 'Statutory rights',
+                    'body' => 'As a consumer in Spain you may have statutory rights in relation to goods purchased from a professional seller. Nothing on this page limits those rights. If you believe a defect exists, contact us promptly so we can review your case fairly.',
+                ],
+                [
+                    'heading' => 'Used vehicle condition',
+                    'body' => 'Unless clearly stated otherwise in your order paperwork, vehicles are sold as used. Minor wear consistent with age and mileage may be present. We aim to describe condition accurately in listings and during viewings. Please raise any questions before you commit.',
+                ],
+                [
+                    'heading' => 'Manufacturer warranty',
+                    'body' => 'Some vehicles may still carry all or part of a manufacturer warranty. Where applicable, details will be confirmed in writing. Manufacturer terms are set by the manufacturer, not ACPC Autos.',
+                ],
+                [
+                    'heading' => 'How to make a claim',
+                    'body' => 'If you experience an issue after purchase, contact us with your reference details, a clear description of the concern, and supporting photos where helpful. We will advise next steps and timeframes based on the facts of your case.',
+                ],
+            ],
+        ],
+        'privacy' => [
+            'nav_label' => 'Privacy Policy',
+            'title' => 'ACPC Autos | Privacy Policy',
+            'meta_description' => 'How ACPC Autos collects, uses, and protects your personal data when you use our website or services in Malaga.',
+            'hero_eyebrow' => 'Your privacy',
+            'hero_title' => 'Privacy Policy',
+            'hero_lead' => 'This policy describes how we handle personal information in connection with our dealership website and customer enquiries. It is intended to be clear and practical.',
+            'sections' => [
+                [
+                    'heading' => 'Who we are',
+                    'body' => 'ACPC Autos operates this website and related sales activities. For privacy questions, use the contact details shown on our Contact page.',
+                ],
+                [
+                    'heading' => 'Information we may collect',
+                    'items' => [
+                        'Contact details you provide (name, email, phone) when you send an enquiry or message.',
+                        'Technical data such as IP address, browser type, and approximate location derived from standard server logs.',
+                        'Cookies and similar technologies where you consent, as described in our Cookie Policy.',
+                    ],
+                ],
+                [
+                    'heading' => 'How we use information',
+                    'items' => [
+                        'To respond to enquiries and arrange appointments.',
+                        'To operate, secure, and improve our website.',
+                        'To meet legal obligations where applicable.',
+                    ],
+                ],
+                [
+                    'heading' => 'Legal bases',
+                    'body' => 'Depending on the context, we may rely on contract performance, legitimate interests (such as responding to enquiries and securing our systems), or consent where required.',
+                ],
+                [
+                    'heading' => 'Retention',
+                    'body' => 'We keep information only as long as needed for the purposes described, unless a longer period is required by law.',
+                ],
+                [
+                    'heading' => 'Your rights',
+                    'body' => 'Depending on applicable law, you may have rights to access, rectify, erase, restrict, or object to certain processing, and to lodge a complaint with a supervisory authority. Contact us to exercise your rights.',
+                ],
+                [
+                    'heading' => 'Updates',
+                    'body' => 'We may update this policy from time to time. The latest version will be published on this page with an updated effective date where appropriate.',
+                ],
+            ],
+        ],
+        'terms' => [
+            'nav_label' => 'Terms & Conditions',
+            'title' => 'ACPC Autos | Terms & Conditions',
+            'meta_description' => 'Terms and conditions for using the ACPC Autos website and purchasing vehicles from our dealership in Malaga.',
+            'hero_eyebrow' => 'Legal terms',
+            'hero_title' => 'Terms & Conditions',
+            'hero_lead' => 'These terms govern use of our website and set out important points relating to vehicle sales. They are written to be readable; please read them carefully.',
+            'sections' => [
+                [
+                    'heading' => 'Website use',
+                    'body' => 'You agree not to misuse the website, attempt unauthorised access, or use automated systems in a way that could harm availability or security. We may suspend access where necessary to protect our systems.',
+                ],
+                [
+                    'heading' => 'Information on the website',
+                    'body' => 'We aim for accuracy, but listings, photographs, and descriptions are for guidance. Vehicles should be inspected and specifications confirmed before purchase. Prices and availability may change.',
+                ],
+                [
+                    'heading' => 'Appointments and viewings',
+                    'body' => 'Viewings are typically by appointment. If you cannot attend, please let us know in good time so we can offer the slot to another customer.',
+                ],
+                [
+                    'heading' => 'Vehicle sales',
+                    'body' => 'A binding sale is created only when agreed in writing according to our sales process (including any order form, invoice, or contract you sign). Deposits, if taken, will be handled as agreed in writing.',
+                ],
+                [
+                    'heading' => 'Limitation of liability',
+                    'body' => 'To the extent permitted by law, we are not liable for indirect or consequential losses arising from website use. Nothing in these terms excludes liability that cannot be excluded under applicable law.',
+                ],
+                [
+                    'heading' => 'Governing law',
+                    'body' => 'Where mandatory rules do not require otherwise, these terms are governed by the laws of Spain and disputes may be subject to the courts of Spain.',
+                ],
+            ],
+        ],
+        'cookies' => [
+            'nav_label' => 'Cookie Policy',
+            'title' => 'ACPC Autos | Cookie Policy',
+            'meta_description' => 'How ACPC Autos uses cookies and similar technologies on this website.',
+            'hero_eyebrow' => 'Transparency',
+            'hero_title' => 'Cookie Policy',
+            'hero_lead' => 'This page explains what cookies are, which types we may use, and how you can control preferences.',
+            'sections' => [
+                [
+                    'heading' => 'What are cookies?',
+                    'body' => 'Cookies are small text files stored on your device when you visit a website. They can help the site work properly, remember preferences, or understand how pages are used.',
+                ],
+                [
+                    'heading' => 'Cookies we may use',
+                    'items' => [
+                        'Strictly necessary cookies required for core functionality (for example security or session management).',
+                        'Preference cookies to remember choices such as language where implemented.',
+                        'Analytics cookies, only where enabled, to understand aggregate traffic and improve the site.',
+                    ],
+                ],
+                [
+                    'heading' => 'Managing cookies',
+                    'body' => 'You can control cookies through your browser settings. Blocking some cookies may affect how parts of the website work.',
+                ],
+                [
+                    'heading' => 'Third parties',
+                    'body' => 'Where we embed third-party content or tools, those providers may set their own cookies. Their policies apply to that processing.',
+                ],
+            ],
+        ],
+        'faq' => [
+            'nav_label' => 'FAQ',
+            'title' => 'ACPC Autos | FAQ',
+            'meta_description' => 'Frequently asked questions about buying a used car from ACPC Autos in Malaga: appointments, stock, payments, and more.',
+            'hero_eyebrow' => 'Help centre',
+            'hero_title' => 'Frequently asked questions',
+            'hero_lead' => 'Quick answers to common questions. If you need something specific, contact us and we will be glad to help.',
+            'sections' => [
+                [
+                    'question' => 'Do I need an appointment to view a car?',
+                    'answer' => 'Yes. We typically work by appointment so we can give you focused time and have the vehicle ready for you.',
+                ],
+                [
+                    'question' => 'Can I reserve a vehicle?',
+                    'answer' => 'Depending on availability and agreed terms, a reservation may be possible. Please ask us for the current process and any deposit requirements.',
+                ],
+                [
+                    'question' => 'Do you buy cars or take part exchange?',
+                    'answer' => 'Policies can change over time. Contact us with details of your vehicle and we will advise what we can offer.',
+                ],
+                [
+                    'question' => 'What payment methods are accepted?',
+                    'answer' => 'Accepted methods will be confirmed during the sale process in line with compliance requirements. We will always explain options clearly before you commit.',
+                ],
+                [
+                    'question' => 'Are vehicles inspected?',
+                    'answer' => 'We curate stock carefully and aim to present vehicles transparently. Specific inspection reports or history depend on the vehicle—ask us for documentation available for the car you are interested in.',
+                ],
+                [
+                    'question' => 'I am not local to Malaga—can you help?',
+                    'answer' => 'We regularly support buyers with different logistics needs. Tell us your situation and we will outline practical options.',
+                ],
+            ],
+        ],
     ],
 ];

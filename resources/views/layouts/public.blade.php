@@ -203,11 +203,31 @@
 
         .brand-logo--footer {
             display: block;
-            height: clamp(2.5rem, 8.5vw, 7rem);
+            height: clamp(3.5rem, 11.9vw, 9.8rem);
             width: auto;
-            max-height: 7.25rem;
+            max-height: 10.15rem;
             max-width: 100%;
             object-fit: contain;
+        }
+
+        .footer-public .footer-brand-col {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 0.35rem;
+        }
+
+        .footer-public .footer-brand-col__logo-link {
+            display: block;
+            line-height: 0;
+            margin: 0;
+        }
+
+        .footer-public .footer-brand-tagline {
+            margin-top: 0;
+            line-height: 1.45;
+            max-width: 22rem;
         }
 
         .brand-logo--navbar,
@@ -296,6 +316,7 @@
         ============================================================ */
         .brand-dark-panel,
         .page-about .about-panel,
+        .page-static-doc .about-panel,
         .page-contact .contact-shell,
         .page-cars-show .show-info,
         .page-cars-show .show-section,
@@ -308,6 +329,7 @@
 
         .brand-dark-panel-soft,
         .page-about .about-hero,
+        .page-static-doc .about-hero,
         .page-contact .contact-hero,
         .page-cars-show .show-gallery {
             background: var(--brand-panel-bg-soft);
@@ -334,9 +356,18 @@
         .page-about .about-panel h4,
         .page-about .about-panel h5,
         .page-about .about-panel h6,
+        .page-static-doc .about-panel h1,
+        .page-static-doc .about-panel h2,
+        .page-static-doc .about-panel h3,
+        .page-static-doc .about-panel h4,
+        .page-static-doc .about-panel h5,
+        .page-static-doc .about-panel h6,
         .page-about .about-hero h1,
         .page-about .about-hero h2,
         .page-about .about-hero h3,
+        .page-static-doc .about-hero h1,
+        .page-static-doc .about-hero h2,
+        .page-static-doc .about-hero h3,
         .page-contact .contact-shell h1,
         .page-contact .contact-shell h2,
         .page-contact .contact-shell h3,
@@ -360,6 +391,8 @@
         .brand-dark-panel-soft .brand-muted,
         .page-about .about-panel .brand-muted,
         .page-about .about-hero .brand-muted,
+        .page-static-doc .about-panel .brand-muted,
+        .page-static-doc .about-hero .brand-muted,
         .page-contact .contact-shell .brand-muted,
         .page-contact .contact-hero .brand-muted,
         .page-cars-show .show-info .brand-muted,
@@ -372,6 +405,8 @@
         .brand-dark-panel-soft .text-brand-gold,
         .page-about .about-panel .text-brand-gold,
         .page-about .about-hero .text-brand-gold,
+        .page-static-doc .about-panel .text-brand-gold,
+        .page-static-doc .about-hero .text-brand-gold,
         .page-contact .contact-shell .text-brand-gold,
         .page-contact .contact-hero .text-brand-gold,
         .page-cars-show .show-info .text-brand-gold,
@@ -405,6 +440,36 @@
         .footer-link:focus {
             color: var(--brand-gold-light);
             text-decoration: underline;
+        }
+
+        .footer-public .footer-information-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.2rem;
+        }
+
+        .footer-public .footer-information-nav .footer-link {
+            padding: 0.12rem 0;
+            line-height: 1.35;
+        }
+
+        .page-static-doc .static-doc-eyebrow {
+            letter-spacing: 0.11em;
+        }
+
+        .page-static-doc .static-doc-faq-q {
+            letter-spacing: 0.08em;
+        }
+
+        .page-static-doc .static-doc-bullet {
+            width: 0.38rem;
+            height: 0.38rem;
+            border-radius: 999px;
+            background: var(--brand-gold-light);
+            margin-top: 0.42rem;
+            flex-shrink: 0;
+            opacity: 0.95;
         }
 
         .section-title {
@@ -972,22 +1037,36 @@
     <footer class="footer-public py-4 mt-4">
         <div class="container">
             <div class="row g-4 align-items-start">
-                <div class="col-md-4">
-                    @hasSection('footer_brand')
-                        @yield('footer_brand')
-                    @else
-                        <h2 class="h6 text-brand-gold mb-2">{{ __('public.brand') }}</h2>
-                    @endif
-                    <p class="mb-0 small">{{ __('public.footer.default_tagline') }}</p>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-brand-col">
+                        @hasSection('footer_brand')
+                            @yield('footer_brand')
+                        @else
+                            <h2 class="h6 text-brand-gold mb-0">{{ __('public.brand') }}</h2>
+                        @endif
+                        <p class="footer-brand-tagline mb-0 small">{{ __('public.footer.default_tagline') }}</p>
+                    </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-lg-3 col-md-6">
                     <h2 class="h6 text-brand-gold mb-2">{{ __('public.footer.contact') }}</h2>
                     <p class="mb-1 small">{{ __('public.forms.phone') }}: @include('public.partials.phone-cta', ['variant' => 'inline-link'])</p>
                     <p class="mb-0 small">{{ __('public.forms.email') }}: <a href="{{ $publicEmailMailto }}" class="footer-link">{{ $publicEmailDisplay }}</a></p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-lg-3 col-md-6">
                     <h2 class="h6 text-brand-gold mb-2">{{ __('public.footer.appointments') }}</h2>
                     <p class="mb-0 small">{{ $publicAppointmentsText }}</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h2 class="h6 text-brand-gold mb-2">{{ __('public.footer.information') }}</h2>
+                    <nav class="footer-information-nav small" aria-label="{{ __('public.footer.information_nav_aria') }}">
+                        <a href="{{ route('about') }}" class="footer-link">{{ __('public.nav.about_us') }}</a>
+                        <a href="{{ route('contact') }}" class="footer-link">{{ __('public.nav.contact_us') }}</a>
+                        <a href="{{ route('warranty') }}" class="footer-link">{{ __('public.pages.warranty.nav_label') }}</a>
+                        <a href="{{ route('privacy') }}" class="footer-link">{{ __('public.pages.privacy.nav_label') }}</a>
+                        <a href="{{ route('terms') }}" class="footer-link">{{ __('public.pages.terms.nav_label') }}</a>
+                        <a href="{{ route('cookies') }}" class="footer-link">{{ __('public.pages.cookies.nav_label') }}</a>
+                        <a href="{{ route('faq') }}" class="footer-link">{{ __('public.pages.faq.nav_label') }}</a>
+                    </nav>
                 </div>
             </div>
             <div class="mt-4 pt-3 border-top border-secondary-subtle">

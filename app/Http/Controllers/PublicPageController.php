@@ -23,6 +23,31 @@ class PublicPageController extends Controller
         return view('public.contact', compact('whatsAppUrl'));
     }
 
+    public function warranty(): View
+    {
+        return view('public.warranty');
+    }
+
+    public function privacyPolicy(): View
+    {
+        return view('public.privacy-policy');
+    }
+
+    public function termsAndConditions(): View
+    {
+        return view('public.terms-and-conditions');
+    }
+
+    public function cookiePolicy(): View
+    {
+        return view('public.cookie-policy');
+    }
+
+    public function faq(): View
+    {
+        return view('public.faq');
+    }
+
     public function submitContact(Request $request): RedirectResponse
     {
         $validated = $request->validate([

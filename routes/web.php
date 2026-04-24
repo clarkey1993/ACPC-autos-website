@@ -20,6 +20,11 @@ Route::get('/sitemap.xml', function () {
         ['loc' => route('home'), 'lastmod' => now()],
         ['loc' => route('about'), 'lastmod' => now()],
         ['loc' => route('contact'), 'lastmod' => now()],
+        ['loc' => route('warranty'), 'lastmod' => now()],
+        ['loc' => route('privacy'), 'lastmod' => now()],
+        ['loc' => route('terms'), 'lastmod' => now()],
+        ['loc' => route('cookies'), 'lastmod' => now()],
+        ['loc' => route('faq'), 'lastmod' => now()],
     ];
 
     if ($settings && $settings->enable_dedicated_cars_page) {
@@ -65,6 +70,11 @@ Route::post('/cars/{car:slug}/enquiries', [EnquiryController::class, 'store'])->
 Route::get('/about-us', [PublicPageController::class, 'about'])->name('about');
 Route::get('/contact-us', [PublicPageController::class, 'contact'])->name('contact');
 Route::post('/contact-us', [PublicPageController::class, 'submitContact'])->name('contact.submit');
+Route::get('/warranty', [PublicPageController::class, 'warranty'])->name('warranty');
+Route::get('/privacy-policy', [PublicPageController::class, 'privacyPolicy'])->name('privacy');
+Route::get('/terms-and-conditions', [PublicPageController::class, 'termsAndConditions'])->name('terms');
+Route::get('/cookie-policy', [PublicPageController::class, 'cookiePolicy'])->name('cookies');
+Route::get('/faq', [PublicPageController::class, 'faq'])->name('faq');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])
