@@ -55,6 +55,8 @@ return [
         'current_stock' => 'Stock actual',
         'showroom_intro' => 'Explora todo nuestro inventario en un solo lugar.',
         'no_cars' => 'No hay coches disponibles en este momento. Vuelve pronto.',
+        'parallax_heading' => 'Vehiculos de calidad seleccionados.',
+        'parallax_subheading' => 'Coches premium. Servicio personal.',
         'why_buy' => 'Por que comprarnos',
         'selection' => 'Seleccion',
         'selection_text' => 'Vehiculos de bajo kilometraje elegidos por calidad, estado y valor a largo plazo.',

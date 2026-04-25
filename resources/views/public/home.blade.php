@@ -77,6 +77,94 @@
             .page-home .featured-cards-row {
                 justify-content: center;
             }
+
+            .page-home .premium-parallax-section {
+                position: relative;
+                width: 100vw;
+                min-height: 52vh;
+                margin-left: calc(50% - 50vw);
+                margin-right: calc(50% - 50vw);
+                margin-top: 4rem;
+                margin-bottom: 4rem;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                overflow: hidden;
+                isolation: isolate;
+                background-image:
+                    linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+                    url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2400&q=85");
+                background-size: cover;
+                background-position: center 58%;
+                background-attachment: fixed;
+                border-top: 1px solid rgba(213, 183, 122, 0.38);
+                border-bottom: 1px solid rgba(213, 183, 122, 0.38);
+                box-shadow: 0 18px 44px rgba(10, 28, 18, 0.28);
+            }
+
+            .page-home .premium-parallax-content {
+                position: relative;
+                z-index: 1;
+                max-width: 760px;
+                width: min(760px, 100%);
+                margin-left: clamp(1.25rem, 12vw, 11rem);
+                padding: 2rem 1.25rem;
+                text-align: center;
+            }
+
+            .page-home .premium-parallax-accent {
+                width: 84px;
+                height: 2px;
+                margin: 0 auto 1.2rem;
+                border-radius: 999px;
+                background: var(--home-accent-line);
+            }
+
+            .page-home .premium-parallax-heading {
+                color: var(--brand-gold-light);
+                font-size: clamp(2rem, 4.1vw, 3.45rem);
+                font-weight: 700;
+                letter-spacing: -0.02em;
+                line-height: 1.05;
+                text-shadow: 0 3px 16px rgba(0, 0, 0, 0.5);
+            }
+
+            .page-home .premium-parallax-subheading {
+                color: #f5f1e8;
+                font-size: clamp(1rem, 2.1vw, 1.45rem);
+                letter-spacing: 0.06em;
+                text-shadow: 0 2px 12px rgba(0, 0, 0, 0.48);
+            }
+
+            @media (max-width: 991.98px) {
+                .page-home .premium-parallax-section {
+                    min-height: 48vh;
+                    background-attachment: scroll;
+                    background-position: center;
+                }
+
+                .page-home .premium-parallax-content {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+
+            @media (max-width: 575.98px) {
+                .page-home .premium-parallax-section {
+                    min-height: 38vh;
+                    margin-top: 2.75rem;
+                    margin-bottom: 2.75rem;
+                }
+
+                .page-home .premium-parallax-content {
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                }
+
+                .page-home .premium-parallax-subheading {
+                    letter-spacing: 0.035em;
+                }
+            }
         </style>
 
         <section id="featured-cars" class="py-3 py-md-4 mb-5 mb-md-6 featured-shell">
@@ -96,6 +184,14 @@
                         <div class="home-panel rounded-4 p-4 text-center home-muted">{{ __('public.home.no_cars') }}</div>
                     </div>
                 @endforelse
+            </div>
+        </section>
+
+        <section class="premium-parallax-section" aria-labelledby="premium-parallax-heading">
+            <div class="premium-parallax-content">
+                <div class="premium-parallax-accent"></div>
+                <h2 id="premium-parallax-heading" class="premium-parallax-heading mb-3">{{ __('public.home.parallax_heading') }}</h2>
+                <p class="premium-parallax-subheading mb-0">{{ __('public.home.parallax_subheading') }}</p>
             </div>
         </section>
 

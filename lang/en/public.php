@@ -55,6 +55,8 @@ return [
         'current_stock' => 'Current stock',
         'showroom_intro' => 'Browse our full showroom inventory in one place.',
         'no_cars' => 'No cars available right now. Please check back soon.',
+        'parallax_heading' => 'Quality hand-picked vehicles.',
+        'parallax_subheading' => 'Premium cars. Personal service.',
         'why_buy' => 'Why buy from us',
         'selection' => 'Selection',
         'selection_text' => 'Low mileage vehicles chosen for quality, condition, and long-term value.',
