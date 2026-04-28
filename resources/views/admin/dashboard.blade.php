@@ -384,7 +384,7 @@
                             <thead>
                                 <tr>
                                     <th>Customer</th>
-                                    <th>Car</th>
+                                    <th>Enquiry</th>
                                     <th>Date</th>
                                     <th></th>
                                 </tr>
@@ -400,7 +400,7 @@
                                                 <span class="admin-badge admin-badge--new">New</span>
                                             @endif
                                         </td>
-                                        <td class="admin-table__muted">{{ $enquiry->car?->title ?? '—' }}</td>
+                                        <td class="admin-table__muted">{{ $enquiry->car?->title ?? 'General enquiry' }}</td>
                                         <td class="text-nowrap admin-table__muted">{{ $enquiry->created_at->format('M j, Y') }}</td>
                                         <td class="text-end">
                                             <a href="{{ route('admin.enquiries.show', $enquiry) }}" class="btn btn-sm admin-table-action">View</a>

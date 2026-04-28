@@ -32,4 +32,13 @@ class EnquiryController extends Controller
             ->back()
             ->with('success', 'Enquiry marked as read.');
     }
+
+    public function destroy(Enquiry $enquiry)
+    {
+        $enquiry->delete();
+
+        return redirect()
+            ->route('admin.enquiries.index')
+            ->with('success', 'Enquiry deleted.');
+    }
 }

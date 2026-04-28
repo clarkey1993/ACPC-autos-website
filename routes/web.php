@@ -95,6 +95,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/enquiries', [AdminEnquiryController::class, 'index'])->name('enquiries.index');
     Route::get('/enquiries/{enquiry}', [AdminEnquiryController::class, 'show'])->name('enquiries.show');
     Route::patch('/enquiries/{enquiry}/read', [AdminEnquiryController::class, 'markAsRead'])->name('enquiries.read');
+    Route::delete('/enquiries/{enquiry}', [AdminEnquiryController::class, 'destroy'])->name('enquiries.destroy');
 });
 
 require __DIR__.'/auth.php';

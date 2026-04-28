@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enquiry;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -56,6 +57,8 @@ class PublicPageController extends Controller
             'phone' => ['nullable', 'string', 'max:50'],
             'message' => ['required', 'string', 'max:2000'],
         ]);
+
+        Enquiry::create($validated);
 
         $recipient = config('mail.enquiry_to');
 

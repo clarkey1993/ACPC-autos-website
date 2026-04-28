@@ -25,7 +25,7 @@
                 <tbody>
                     @forelse ($enquiries as $enquiry)
                         <tr class="{{ $enquiry->is_read ? '' : 'table-warning' }}">
-                            <td>{{ $enquiry->car?->title ?: 'Car not found' }}</td>
+                            <td>{{ $enquiry->car?->title ?? 'General enquiry' }}</td>
                             <td>{{ $enquiry->name }}</td>
                             <td>{{ $enquiry->email }}</td>
                             <td>{{ $enquiry->phone ?: 'N/A' }}</td>
@@ -47,6 +47,11 @@
                                         <button type="submit" class="btn btn-sm btn-outline-success">Mark as Read</button>
                                     </form>
                                 @endunless
+                                <form method="POST" action="{{ route('admin.enquiries.destroy', $enquiry) }}" class="d-inline" onsubmit="return confirm('Delete this enquiry? This cannot be undone.');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                </form>
                             </td>
                         </tr>
                     @empty
