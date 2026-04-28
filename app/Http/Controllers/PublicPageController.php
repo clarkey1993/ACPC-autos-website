@@ -58,7 +58,10 @@ class PublicPageController extends Controller
             'message' => ['required', 'string', 'max:2000'],
         ]);
 
-        Enquiry::create($validated);
+        Enquiry::create([
+            ...$validated,
+            'car_id' => null,
+        ]);
 
         $recipient = config('mail.enquiry_to');
 
