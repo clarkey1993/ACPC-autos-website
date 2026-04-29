@@ -556,7 +556,10 @@
                                     alt="{{ $car->title }} {{ __('public.cars.photos') }} {{ $loop->iteration }}"
                                     class="show-gallery__image js-open-lightbox"
                                     data-image-index="{{ $loop->index }}"
+                                    width="1200"
+                                    height="750"
                                     loading="{{ $loop->first ? 'eager' : 'lazy' }}"
+                                    @if ($loop->first) fetchpriority="high" @endif
                                     decoding="async"
                                 >
                             </div>
@@ -609,6 +612,8 @@
                     <img
                         src="{{ \Illuminate\Support\Facades\Storage::url($imagePath) }}"
                         alt="{{ $car->title }} {{ __('public.cars.photos') }} {{ $loop->iteration }}"
+                        width="320"
+                        height="240"
                         loading="lazy"
                         decoding="async"
                     >

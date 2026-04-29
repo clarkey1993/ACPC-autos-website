@@ -42,6 +42,8 @@
                                 src="{{ \Illuminate\Support\Facades\Storage::url($carCardImagePath) }}"
                                 class="car-card__image"
                                 alt="{{ $car->title }}"
+                                width="800"
+                                height="550"
                                 loading="lazy"
                                 decoding="async"
                             >
