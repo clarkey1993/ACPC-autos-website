@@ -57,6 +57,8 @@
         <select name="status" id="status" class="form-select" required>
             @php($selectedStatus = old('status', $car->status ?? 'available'))
             <option value="available" @selected($selectedStatus === 'available')>Available</option>
+            <option value="just_arrived" @selected($selectedStatus === 'just_arrived')>Just Arrived</option>
+            <option value="arriving_soon" @selected($selectedStatus === 'arriving_soon')>Arriving Soon</option>
             <option value="reserved" @selected($selectedStatus === 'reserved')>Reserved</option>
             <option value="sold" @selected($selectedStatus === 'sold')>Sold</option>
         </select>

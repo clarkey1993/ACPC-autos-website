@@ -778,7 +778,8 @@
         }
 
         /* ----------------------------------------------------------------
-           Diagonal status ribbon (Reserved / Sold) shown across vehicle images.
+           Diagonal status ribbon (reserved/sold/arriving soon/just arrived)
+           shown across vehicle images.
            Used on: public car cards (.car-card__media) and detail page gallery
            (.show-gallery__media). Pointer-events disabled so the card/gallery
            remain fully clickable.
@@ -818,6 +819,16 @@
         .car-ribbon--sold {
             background: linear-gradient(135deg, #6d0f0f 0%, #a61d1d 55%, #7a1212 100%);
             color: #fff;
+        }
+
+        .car-ribbon--arriving_soon {
+            background: linear-gradient(135deg, #0e6a7a 0%, #1399b0 55%, #0d788b 100%);
+            color: #f4fcff;
+        }
+
+        .car-ribbon--just_arrived {
+            background: linear-gradient(135deg, #1450a3 0%, #2e7be9 55%, #1f5fc4 100%);
+            color: #f4f8ff;
         }
 
         /* Smaller ribbon text inside compact card media */

@@ -44,7 +44,7 @@
                             <td>{{ $car->year }}</td>
                             <td>€{{ number_format($car->price) }}</td>
                             <td>
-                                <span class="badge text-bg-secondary">{{ ucfirst($car->status) }}</span>
+                                <span class="badge text-bg-secondary">{{ $car->cardStatusLabel() }}</span>
                             </td>
                             <td class="text-end">
                                 <a href="{{ route('admin.cars.edit', $car) }}" class="btn btn-sm btn-outline-primary">Edit</a>

@@ -507,6 +507,8 @@
                 'price' => $car->price !== null ? (float) $car->price : null,
                 'availability' => match ($car->status) {
                     'available' => 'https://schema.org/InStock',
+                    'just_arrived' => 'https://schema.org/InStock',
+                    'arriving_soon' => 'https://schema.org/PreOrder',
                     'reserved' => 'https://schema.org/PreOrder',
                     'sold' => 'https://schema.org/SoldOut',
                     default => 'https://schema.org/InStock',
@@ -585,7 +587,7 @@
                 <div class="show-gallery__empty">{{ __('public.cars.no_image_available') }}</div>
             @endif
 
-            @if ($car->status === 'reserved' || $car->status === 'sold')
+            @if (in_array($car->status, ['reserved', 'sold', 'arriving_soon', 'just_arrived'], true))
                 <div class="car-ribbon-layer" aria-hidden="true">
                     <div class="car-ribbon car-ribbon--{{ $car->status }}">{{ $car->cardStatusLabel() }}</div>
                 </div>

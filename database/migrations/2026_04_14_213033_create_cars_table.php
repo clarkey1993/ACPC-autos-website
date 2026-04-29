@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('transmission', 50)->nullable();
             $table->string('colour', 50)->nullable();
             $table->longText('description')->nullable();
-            $table->enum('status', ['available', 'reserved', 'sold'])->default('available');
+            $table->enum('status', ['available', 'reserved', 'sold', 'arriving_soon', 'just_arrived'])->default('available');
             $table->string('featured_image')->nullable();
             $table->string('slug')->unique();
             $table->timestamps();

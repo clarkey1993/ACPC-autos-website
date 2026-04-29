@@ -30,6 +30,8 @@ class Car extends Model
             'available' => 'Available',
             'reserved' => 'Reserved',
             'sold' => 'Sold',
+            'arriving_soon' => 'Arriving Soon',
+            'just_arrived' => 'Just Arrived',
             default => 'Available',
         };
     }
@@ -40,6 +42,8 @@ class Car extends Model
             'available' => 'text-bg-success',
             'reserved' => 'text-bg-warning',
             'sold' => 'text-bg-secondary',
+            'arriving_soon' => 'text-bg-info',
+            'just_arrived' => 'text-bg-primary',
             default => 'text-bg-success',
         };
     }

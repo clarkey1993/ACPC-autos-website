@@ -73,7 +73,7 @@
             </div>
         @endif
 
-        @if ($car->status === 'reserved' || $car->status === 'sold')
+        @if (in_array($car->status, ['reserved', 'sold', 'arriving_soon', 'just_arrived'], true))
             <div class="car-ribbon-layer" aria-hidden="true">
                 <div class="car-ribbon car-ribbon--{{ $car->status }}">{{ $car->cardStatusLabel() }}</div>
             </div>
