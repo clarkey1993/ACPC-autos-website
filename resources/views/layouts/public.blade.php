@@ -793,16 +793,16 @@
 
         .car-ribbon {
             position: absolute;
-            right: -2.8rem;
-            bottom: 1rem;
-            width: clamp(8.5rem, 22vw, 10.8rem);
+            right: -2.55rem;
+            bottom: 0.95rem;
+            width: clamp(10rem, 25vw, 13.2rem);
             transform: rotate(-36deg);
-            padding: 0.36rem 0.72rem;
+            padding: 0.5rem 0.95rem;
             text-align: center;
             text-transform: uppercase;
-            letter-spacing: 0.11em;
-            font-weight: 800;
-            font-size: clamp(0.58rem, 1.15vw, 0.72rem);
+            letter-spacing: 0.12em;
+            font-weight: 900;
+            font-size: clamp(0.68rem, 1.3vw, 0.88rem);
             line-height: 1;
             border-top: 1px solid rgba(255, 255, 255, 0.25);
             border-bottom: 1px solid rgba(0, 0, 0, 0.3);
@@ -833,22 +833,22 @@
 
         /* Smaller ribbon text inside compact card media */
         .car-card__media .car-ribbon {
-            right: -2.75rem;
-            bottom: 0.88rem;
-            width: clamp(8rem, 24vw, 10.2rem);
-            font-size: clamp(0.56rem, 1.05vw, 0.68rem);
-            letter-spacing: 0.1em;
-            padding: 0.34rem 0.64rem;
+            right: -2.3rem;
+            bottom: 0.78rem;
+            width: clamp(9.2rem, 25vw, 11.4rem);
+            font-size: clamp(0.64rem, 1.15vw, 0.78rem);
+            letter-spacing: 0.11em;
+            padding: 0.45rem 0.8rem;
         }
 
         /* Slightly larger corner ribbon for detail page hero */
         .show-gallery__media .car-ribbon {
-            right: -3.4rem;
-            bottom: 1.15rem;
-            width: clamp(10.5rem, 26vw, 13.8rem);
-            font-size: clamp(0.62rem, 1.25vw, 0.85rem);
-            letter-spacing: 0.11em;
-            padding: 0.42rem 0.8rem;
+            right: -3.05rem;
+            bottom: 1.05rem;
+            width: clamp(12.2rem, 25vw, 16.5rem);
+            font-size: clamp(0.78rem, 1.45vw, 1.05rem);
+            letter-spacing: 0.12em;
+            padding: 0.6rem 1.05rem;
         }
 
         .car-card__body {
