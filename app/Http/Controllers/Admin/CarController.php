@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreCarRequest;
 use App\Http\Requests\Admin\UpdateCarRequest;
 use App\Models\Car;
+use App\Services\CarImageVariantService;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -23,7 +24,7 @@ class CarController extends Controller
         return view('admin.cars.create');
     }
 
-    public function store(StoreCarRequest $request)
+    public function store(StoreCarRequest $request, CarImageVariantService $imageVariants)
     {
         $data = $request->validated();
         $featuredImageFile = $request->file('featured_image');
@@ -34,12 +35,18 @@ class CarController extends Controller
         $data['featured_image'] = $featuredImageFile
             ? $featuredImageFile->store('cars/featured', 'public')
             : null;
+        if ($data['featured_image']) {
+            $imageVariants->generateQuietly($data['featured_image']);
+        }
 
         $car = Car::create($data);
 
         foreach ($galleryImageFiles as $galleryImageFile) {
+            $galleryImagePath = $galleryImageFile->store('cars/gallery', 'public');
+            $imageVariants->generateQuietly($galleryImagePath);
+
             $car->images()->create([
-                'image_path' => $galleryImageFile->store('cars/gallery', 'public'),
+                'image_path' => $galleryImagePath,
             ]);
         }
 
@@ -60,7 +67,7 @@ class CarController extends Controller
         return view('admin.cars.edit', compact('car'));
     }
 
-    public function update(UpdateCarRequest $request, Car $car)
+    public function update(UpdateCarRequest $request, Car $car, CarImageVariantService $imageVariants)
     {
         $data = $request->validated();
         $featuredImageFile = $request->file('featured_image');
@@ -74,17 +81,22 @@ class CarController extends Controller
 
         if ($featuredImageFile) {
             if ($car->featured_image) {
+                $imageVariants->deleteVariants($car->featured_image);
                 Storage::disk('public')->delete($car->featured_image);
             }
 
             $data['featured_image'] = $featuredImageFile->store('cars/featured', 'public');
+            $imageVariants->generateQuietly($data['featured_image']);
         }
 
         $car->update($data);
 
         foreach ($galleryImageFiles as $galleryImageFile) {
+            $galleryImagePath = $galleryImageFile->store('cars/gallery', 'public');
+            $imageVariants->generateQuietly($galleryImagePath);
+
             $car->images()->create([
-                'image_path' => $galleryImageFile->store('cars/gallery', 'public'),
+                'image_path' => $galleryImagePath,
             ]);
         }
 
@@ -93,13 +105,15 @@ class CarController extends Controller
             ->with('success', 'Car updated successfully.');
     }
 
-    public function destroy(Car $car)
+    public function destroy(Car $car, CarImageVariantService $imageVariants)
     {
         if ($car->featured_image) {
+            $imageVariants->deleteVariants($car->featured_image);
             Storage::disk('public')->delete($car->featured_image);
         }
 
         foreach ($car->images as $image) {
+            $imageVariants->deleteVariants($image->image_path);
             Storage::disk('public')->delete($image->image_path);
         }
 

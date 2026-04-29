@@ -4,16 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CarImage;
+use App\Services\CarImageVariantService;
 use Illuminate\Support\Facades\Storage;
 
 class CarImageController extends Controller
 {
-    public function destroy(int $id)
+    public function destroy(int $id, CarImageVariantService $imageVariants)
     {
         $carImage = CarImage::query()->findOrFail($id);
         $car = $carImage->car;
 
         if ($carImage->image_path) {
+            $imageVariants->deleteVariants($carImage->image_path);
             Storage::disk('public')->delete($carImage->image_path);
         }
 

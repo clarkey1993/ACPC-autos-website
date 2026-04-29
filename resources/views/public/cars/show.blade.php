@@ -473,6 +473,7 @@
         }
         $mainCarouselId = 'showCarCarousel';
         $lightboxCarouselId = 'carLightboxCarousel';
+        $imageVariants = app(\App\Services\CarImageVariantService::class);
         $carFuel = $car->cardFuelText();
         $carTransmission = $car->cardTransmissionText();
         $carColour = $car->colour;
@@ -552,7 +553,7 @@
                         @foreach ($imagePaths as $imagePath)
                             <div class="carousel-item @if ($loop->first) active @endif">
                                 <img
-                                    src="{{ \Illuminate\Support\Facades\Storage::url($imagePath) }}"
+                                    src="{{ $imageVariants->url($imagePath, 'medium') }}"
                                     alt="{{ $car->title }} {{ __('public.cars.photos') }} {{ $loop->iteration }}"
                                     class="show-gallery__image js-open-lightbox"
                                     data-image-index="{{ $loop->index }}"
@@ -610,7 +611,7 @@
                     aria-label="{{ __('public.cars.show_image', ['number' => $loop->iteration]) }}"
                 >
                     <img
-                        src="{{ \Illuminate\Support\Facades\Storage::url($imagePath) }}"
+                        src="{{ $imageVariants->url($imagePath, 'thumb') }}"
                         alt="{{ $car->title }} {{ __('public.cars.photos') }} {{ $loop->iteration }}"
                         width="320"
                         height="240"
@@ -806,7 +807,7 @@
                                 @foreach ($imagePaths as $imagePath)
                                     <div class="carousel-item @if ($loop->first) active @endif">
                                         <img
-                                            src="{{ \Illuminate\Support\Facades\Storage::url($imagePath) }}"
+                                            src="{{ $imageVariants->url($imagePath, 'medium') }}"
                                             class="d-block mx-auto"
                                             alt="{{ $car->title }} {{ __('public.cars.photos') }} {{ $loop->iteration }}"
                                             loading="lazy"

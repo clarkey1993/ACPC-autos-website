@@ -13,6 +13,7 @@
         $carCardImagePaths->push($carCardImage->image_path);
     }
     $carCardCarouselId = ($carouselIdPrefix ?? 'carCard') . $car->id;
+    $carCardImageVariants = app(\App\Services\CarImageVariantService::class);
     $carCardFuel = $car->cardFuelText();
     $carCardTransmission = $car->cardTransmissionText();
     $carCardSummaryParts = [
@@ -39,7 +40,7 @@
                     @foreach ($carCardImagePaths as $carCardImagePath)
                         <div class="carousel-item @if ($loop->first) active @endif">
                             <img
-                                src="{{ \Illuminate\Support\Facades\Storage::url($carCardImagePath) }}"
+                                src="{{ $carCardImageVariants->url($carCardImagePath, 'medium') }}"
                                 class="car-card__image"
                                 alt="{{ $car->title }}"
                                 width="800"
