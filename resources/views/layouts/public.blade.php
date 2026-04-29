@@ -793,8 +793,8 @@
 
         .car-ribbon {
             position: absolute;
-            right: -4.9rem;
-            bottom: 1rem;
+            right: -4.25rem;
+            bottom: 1.55rem;
             width: clamp(13rem, 44vw, 19rem);
             transform: rotate(-35deg);
             padding: 0.72rem 1.4rem;
@@ -833,8 +833,8 @@
 
         /* Smaller ribbon text inside compact card media */
         .car-card__media .car-ribbon {
-            right: -4.35rem;
-            bottom: 0.82rem;
+            right: -3.8rem;
+            bottom: 1.25rem;
             width: clamp(12rem, 46vw, 16.5rem);
             font-size: clamp(0.82rem, 1.7vw, 1.08rem);
             letter-spacing: 0.09em;
@@ -843,8 +843,8 @@
 
         /* Slightly larger corner ribbon for detail page hero */
         .show-gallery__media .car-ribbon {
-            right: -5.5rem;
-            bottom: 1.15rem;
+            right: -4.85rem;
+            bottom: 1.75rem;
             width: clamp(15rem, 45vw, 23rem);
             font-size: clamp(1rem, 2vw, 1.55rem);
             letter-spacing: 0.1em;
