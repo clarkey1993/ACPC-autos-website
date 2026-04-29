@@ -546,7 +546,7 @@
                     class="carousel slide show-gallery__carousel"
                     data-bs-ride="false"
                     data-bs-interval="false"
-                    data-bs-touch="true"
+                    data-bs-touch="false"
                 >
                     <div class="carousel-inner">
                         @foreach ($imagePaths as $imagePath)
@@ -842,12 +842,13 @@
                 var mainCarousel = bootstrap.Carousel.getOrCreateInstance(mainCarouselEl, {
                     interval: false,
                     ride: false,
-                    touch: true
+                    touch: false
                 });
                 var lightboxModal = lightboxModalEl ? new bootstrap.Modal(lightboxModalEl) : null;
                 var lightboxCarousel = lightboxCarouselEl ? bootstrap.Carousel.getOrCreateInstance(lightboxCarouselEl, {
                     interval: false,
-                    ride: false
+                    ride: false,
+                    touch: false
                 }) : null;
 
                 function syncThumbnails(activeIndex) {
