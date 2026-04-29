@@ -88,7 +88,7 @@
                 margin-bottom: 4rem;
                 display: flex;
                 align-items: center;
-                justify-content: flex-start;
+                justify-content: center;
                 overflow: hidden;
                 isolation: isolate;
                 background-image:
@@ -107,7 +107,8 @@
                 z-index: 1;
                 max-width: 760px;
                 width: min(760px, 100%);
-                margin-left: clamp(1.25rem, 12vw, 11rem);
+                margin-left: auto;
+                margin-right: auto;
                 padding: 2rem 1.25rem;
                 text-align: center;
             }
