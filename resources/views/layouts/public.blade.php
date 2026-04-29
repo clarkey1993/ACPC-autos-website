@@ -778,11 +778,10 @@
         }
 
         /* ----------------------------------------------------------------
-           Diagonal status ribbon (reserved/sold/arriving soon/just arrived)
-           shown across vehicle images.
+           Compact diagonal corner ribbon for non-available statuses.
            Used on: public car cards (.car-card__media) and detail page gallery
-           (.show-gallery__media). Pointer-events disabled so the card/gallery
-           remain fully clickable.
+           (.show-gallery__media). Pointer-events disabled so media remains
+           fully interactive.
         -----------------------------------------------------------------*/
         .car-ribbon-layer {
             position: absolute;
@@ -794,26 +793,27 @@
 
         .car-ribbon {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 160%;
-            transform: translate(-50%, -50%) rotate(-18deg);
-            padding: 0.55rem 1rem;
+            right: -2.8rem;
+            bottom: 1rem;
+            width: clamp(8.5rem, 22vw, 10.8rem);
+            transform: rotate(-36deg);
+            padding: 0.36rem 0.72rem;
             text-align: center;
             text-transform: uppercase;
-            letter-spacing: 0.28em;
+            letter-spacing: 0.11em;
             font-weight: 800;
-            font-size: clamp(1rem, 2.2vw, 1.5rem);
+            font-size: clamp(0.58rem, 1.15vw, 0.72rem);
             line-height: 1;
             border-top: 1px solid rgba(255, 255, 255, 0.25);
             border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.35);
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+            white-space: nowrap;
         }
 
         .car-ribbon--reserved {
-            background: linear-gradient(135deg, #c8941e 0%, #e7c46a 55%, #b8860b 100%);
-            color: #1a1208;
+            background: linear-gradient(135deg, #c92020 0%, #f04d4d 50%, #a91616 100%);
+            color: #fff6f6;
         }
 
         .car-ribbon--sold {
@@ -833,16 +833,22 @@
 
         /* Smaller ribbon text inside compact card media */
         .car-card__media .car-ribbon {
-            font-size: clamp(0.78rem, 1.7vw, 1.05rem);
-            letter-spacing: 0.22em;
-            padding: 0.42rem 0.75rem;
+            right: -2.75rem;
+            bottom: 0.88rem;
+            width: clamp(8rem, 24vw, 10.2rem);
+            font-size: clamp(0.56rem, 1.05vw, 0.68rem);
+            letter-spacing: 0.1em;
+            padding: 0.34rem 0.64rem;
         }
 
-        /* Larger ribbon text for the big detail-page gallery */
+        /* Slightly larger corner ribbon for detail page hero */
         .show-gallery__media .car-ribbon {
-            font-size: clamp(1.15rem, 2.6vw, 1.9rem);
-            letter-spacing: 0.32em;
-            padding: 0.7rem 1.25rem;
+            right: -3.4rem;
+            bottom: 1.15rem;
+            width: clamp(10.5rem, 26vw, 13.8rem);
+            font-size: clamp(0.62rem, 1.25vw, 0.85rem);
+            letter-spacing: 0.11em;
+            padding: 0.42rem 0.8rem;
         }
 
         .car-card__body {
