@@ -234,7 +234,7 @@
         .page-cars-show .show-thumb {
             display: block;
             padding: 0;
-            background: transparent;
+            background: var(--brand-panel-media-bg);
             border: 2px solid transparent;
             border-radius: 0.55rem;
             overflow: hidden;
@@ -559,7 +559,7 @@
                                     width="1200"
                                     height="750"
                                     loading="{{ $loop->first ? 'eager' : 'lazy' }}"
-                                    @if ($loop->first) fetchpriority="high" @endif
+                                    fetchpriority="{{ $loop->first ? 'high' : 'low' }}"
                                     decoding="async"
                                 >
                             </div>
@@ -615,6 +615,7 @@
                         width="320"
                         height="240"
                         loading="lazy"
+                        fetchpriority="low"
                         decoding="async"
                     >
                 </button>
