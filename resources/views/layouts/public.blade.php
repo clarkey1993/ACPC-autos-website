@@ -786,27 +786,27 @@
         .car-ribbon-layer {
             position: absolute;
             inset: 0;
-            z-index: 5;
+            z-index: 14;
             pointer-events: none;
             overflow: hidden;
         }
 
         .car-ribbon {
             position: absolute;
-            right: -2.55rem;
-            bottom: 0.95rem;
-            width: clamp(10rem, 25vw, 13.2rem);
-            transform: rotate(-36deg);
-            padding: 0.5rem 0.95rem;
+            right: -4.9rem;
+            bottom: 1rem;
+            width: clamp(13rem, 44vw, 19rem);
+            transform: rotate(-35deg);
+            padding: 0.72rem 1.4rem;
             text-align: center;
             text-transform: uppercase;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.1em;
             font-weight: 900;
-            font-size: clamp(0.68rem, 1.3vw, 0.88rem);
-            line-height: 1;
+            font-size: clamp(0.86rem, 1.85vw, 1.3rem);
+            line-height: 1.05;
             border-top: 1px solid rgba(255, 255, 255, 0.25);
             border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.38);
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
             white-space: nowrap;
         }
@@ -833,22 +833,22 @@
 
         /* Smaller ribbon text inside compact card media */
         .car-card__media .car-ribbon {
-            right: -2.3rem;
-            bottom: 0.78rem;
-            width: clamp(9.2rem, 25vw, 11.4rem);
-            font-size: clamp(0.64rem, 1.15vw, 0.78rem);
-            letter-spacing: 0.11em;
-            padding: 0.45rem 0.8rem;
+            right: -4.35rem;
+            bottom: 0.82rem;
+            width: clamp(12rem, 46vw, 16.5rem);
+            font-size: clamp(0.82rem, 1.7vw, 1.08rem);
+            letter-spacing: 0.09em;
+            padding: 0.68rem 1.15rem;
         }
 
         /* Slightly larger corner ribbon for detail page hero */
         .show-gallery__media .car-ribbon {
-            right: -3.05rem;
-            bottom: 1.05rem;
-            width: clamp(12.2rem, 25vw, 16.5rem);
-            font-size: clamp(0.78rem, 1.45vw, 1.05rem);
-            letter-spacing: 0.12em;
-            padding: 0.6rem 1.05rem;
+            right: -5.5rem;
+            bottom: 1.15rem;
+            width: clamp(15rem, 45vw, 23rem);
+            font-size: clamp(1rem, 2vw, 1.55rem);
+            letter-spacing: 0.1em;
+            padding: 0.84rem 1.55rem;
         }
 
         .car-card__body {
