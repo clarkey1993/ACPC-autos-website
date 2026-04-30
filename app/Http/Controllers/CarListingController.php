@@ -13,8 +13,7 @@ class CarListingController extends Controller
     {
         $cars = Car::query()
             ->with('images')
-            ->orderByRaw("CASE WHEN status = 'just_arrived' THEN 1 WHEN status = 'available' THEN 2 WHEN status = 'arriving_soon' THEN 3 WHEN status = 'reserved' THEN 4 WHEN status = 'sold' THEN 5 ELSE 6 END")
-            ->latest()
+            ->orderedForDisplay()
             ->get();
 
         return view('public.home', compact('cars'));
@@ -29,8 +28,7 @@ class CarListingController extends Controller
 
         $cars = Car::query()
             ->with('images')
-            ->orderByRaw("CASE WHEN status = 'just_arrived' THEN 1 WHEN status = 'available' THEN 2 WHEN status = 'arriving_soon' THEN 3 WHEN status = 'reserved' THEN 4 WHEN status = 'sold' THEN 5 ELSE 6 END")
-            ->latest()
+            ->orderedForDisplay()
             ->paginate(12);
 
         return view('public.cars.index', compact('cars'));

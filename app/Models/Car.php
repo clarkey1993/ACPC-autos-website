@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -20,9 +21,19 @@ class Car extends Model
         'colour',
         'description',
         'status',
+        'sort_order',
         'featured_image',
         'slug',
     ];
+
+    public function scopeOrderedForDisplay(Builder $query): Builder
+    {
+        return $query
+            ->orderByRaw("CASE WHEN status = 'just_arrived' THEN 1 WHEN status = 'available' THEN 2 WHEN status = 'arriving_soon' THEN 3 WHEN status = 'reserved' THEN 4 WHEN status = 'sold' THEN 5 ELSE 6 END")
+            ->orderByRaw('sort_order IS NULL')
+            ->orderBy('sort_order')
+            ->latest();
+    }
 
     public function cardStatusLabel(): string
     {
