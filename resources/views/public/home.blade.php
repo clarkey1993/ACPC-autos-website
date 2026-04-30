@@ -177,7 +177,7 @@
 
             <div class="row g-3 g-md-4 featured-cards-row">
                 @forelse ($cars as $car)
-                    <div class="col-12 col-sm-6 col-xl-4">
+                    <div class="col-12 col-md-6">
                         @include('public.cars.partials.car-card', ['car' => $car, 'carouselIdPrefix' => 'homeCarCard'])
                     </div>
                 @empty
