@@ -64,12 +64,6 @@
         </select>
     </div>
 
-    <div class="col-md-4">
-        <label for="sort_order" class="form-label">Display Order</label>
-        <input type="number" name="sort_order" id="sort_order" class="form-control" value="{{ old('sort_order', $car->sort_order ?? '') }}" min="0" step="1">
-        <small class="text-muted">Lower numbers appear first. Leave blank for automatic ordering.</small>
-    </div>
-
     <div class="col-md-6">
         <label for="featured_image" class="form-label">Featured Image</label>
         <input type="file" name="featured_image" id="featured_image" class="form-control" accept="image/*">
@@ -93,6 +87,12 @@
                 {{ $car->images->count() }} gallery image(s) already uploaded.
             </small>
         @endif
+    </div>
+
+    <div class="col-md-6">
+        <label for="sort_order" class="form-label">Display Order</label>
+        <input type="number" name="sort_order" id="sort_order" class="form-control" value="{{ old('sort_order', $car->sort_order ?? '') }}" min="0" step="1">
+        <small class="text-muted">Lower numbers appear first. Leave blank for automatic ordering.</small>
     </div>
 
     <div class="col-12">
