@@ -1092,6 +1092,8 @@
         </div>
     </footer>
 
+    @include('public.partials.cookie-consent')
+
     <a
         class="whatsapp-float"
         href="https://wa.me/{{ $publicWhatsAppNumber }}?text={{ rawurlencode($publicWhatsAppMessage) }}"

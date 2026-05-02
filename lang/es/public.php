@@ -49,6 +49,13 @@ return [
         'view_current_stock' => 'Ver Stock Actual',
         'browse_cars' => 'Ver Coches',
     ],
+    'cookie_consent' => [
+        'message' => 'Usamos cookies para mejorar tu experiencia y analizar el trafico del sitio.',
+        'accept_all' => 'Aceptar todas',
+        'reject_non_essential' => 'Rechazar no esenciales',
+        'cookie_policy' => 'Politica de cookies',
+        'aria_banner' => 'Preferencias de cookies',
+    ],
     'home' => [
         'title' => 'ACPC Autos | Coches de Segunda Mano en Málaga',
         'meta_description' => 'Explora coches premium de segunda mano en Malaga con ACPC Autos. Vehiculos seleccionados, precios transparentes y servicio personal.',

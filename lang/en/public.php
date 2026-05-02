@@ -49,6 +49,13 @@ return [
         'view_current_stock' => 'View Current Stock',
         'browse_cars' => 'Browse Cars',
     ],
+    'cookie_consent' => [
+        'message' => 'We use cookies to improve your experience and analyse site traffic.',
+        'accept_all' => 'Accept All',
+        'reject_non_essential' => 'Reject Non-Essential',
+        'cookie_policy' => 'Cookie Policy',
+        'aria_banner' => 'Cookie preferences',
+    ],
     'home' => [
         'title' => 'ACPC Autos | Used Cars for Sale in Málaga',
         'meta_description' => 'Browse premium used cars for sale in Malaga at ACPC Autos. Discover hand-picked vehicles, transparent pricing, and personal service.',
