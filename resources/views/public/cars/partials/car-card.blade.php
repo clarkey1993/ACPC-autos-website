@@ -17,6 +17,7 @@
     $carCardFuel = $car->cardFuelText();
     $carCardTransmission = $car->cardTransmissionText();
     $carCardSummaryParts = [
+        (string) $car->year,
         '€' . number_format($car->price),
         $car->cardMileageText(),
     ];
