@@ -32,19 +32,33 @@
     </div>
 
     <div class="col-md-4">
-        <label for="location" class="form-label">Location</label>
-        <input type="text" name="location" id="location" class="form-control" value="{{ old('location', $car->location ?? '') }}" placeholder="e.g. Málaga">
-        <small class="text-muted">Shown on public listings. Leave blank to use the default showroom location.</small>
-    </div>
-
-    <div class="col-md-4">
         <label for="fuel_type" class="form-label">Fuel Type</label>
-        <input type="text" name="fuel_type" id="fuel_type" class="form-control" value="{{ old('fuel_type', $car->fuel_type ?? '') }}">
+        @php($selectedFuelType = old('fuel_type', isset($car->fuel_type) ? match (strtolower((string) $car->fuel_type)) {
+            'petrol' => 'Petrol',
+            'diesel' => 'Diesel',
+            'hybrid' => 'Hybrid',
+            default => '',
+        } : ''))
+        <select name="fuel_type" id="fuel_type" class="form-select">
+            <option value="">Select fuel type</option>
+            <option value="Petrol" @selected($selectedFuelType === 'Petrol')>Petrol</option>
+            <option value="Diesel" @selected($selectedFuelType === 'Diesel')>Diesel</option>
+            <option value="Hybrid" @selected($selectedFuelType === 'Hybrid')>Hybrid</option>
+        </select>
     </div>
 
     <div class="col-md-4">
         <label for="transmission" class="form-label">Transmission</label>
-        <input type="text" name="transmission" id="transmission" class="form-control" value="{{ old('transmission', $car->transmission ?? '') }}">
+        @php($selectedTransmission = old('transmission', isset($car->transmission) ? match (strtolower((string) $car->transmission)) {
+            'manual' => 'Manual',
+            'automatic' => 'Automatic',
+            default => '',
+        } : ''))
+        <select name="transmission" id="transmission" class="form-select">
+            <option value="">Select transmission</option>
+            <option value="Manual" @selected($selectedTransmission === 'Manual')>Manual</option>
+            <option value="Automatic" @selected($selectedTransmission === 'Automatic')>Automatic</option>
+        </select>
     </div>
 
     <div class="col-md-4">
