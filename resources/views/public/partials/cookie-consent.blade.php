@@ -5,19 +5,22 @@
 <style>
     .cookie-consent-banner {
         position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 1.25rem;
+        width: min(960px, calc(100% - 1.5rem));
         z-index: 1055;
         background: var(--brand-navbar-bg);
         color: var(--brand-footer-text);
-        border-top: 1px solid var(--brand-gold-border);
-        box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.22);
+        border: 1px solid var(--brand-panel-border-strong);
+        border-radius: 1rem;
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.34);
     }
 
     .cookie-consent-banner .cookie-consent-banner__text {
         color: var(--brand-footer-text);
         line-height: 1.45;
+        font-size: 1rem;
     }
 
     .cookie-consent-banner .cookie-consent-banner__link {
@@ -32,12 +35,46 @@
     }
 
     body.cookie-consent-visible main.py-5 {
-        padding-bottom: clamp(6rem, 18vw, 11rem);
+        padding-bottom: clamp(7rem, 20vw, 12rem);
     }
 
     @media (min-width: 992px) {
         body.cookie-consent-visible main.py-5 {
-            padding-bottom: 7.5rem;
+            padding-bottom: 9rem;
+        }
+    }
+
+    .cookie-consent-banner .cookie-consent-actions {
+        gap: 0.75rem !important;
+    }
+
+    .cookie-consent-banner .cookie-consent-actions .btn {
+        min-height: 2.75rem;
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+
+    @media (max-width: 575.98px) {
+        .cookie-consent-banner {
+            bottom: 0.9rem;
+            width: calc(100% - 1rem);
+            border-radius: 0.9rem;
+        }
+
+        .cookie-consent-banner .cookie-consent-banner__text {
+            font-size: 0.96rem;
+        }
+
+        .cookie-consent-banner .cookie-consent-actions {
+            width: 100%;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .cookie-consent-banner .cookie-consent-actions .btn {
+            width: 100%;
         }
     }
 </style>
@@ -50,19 +87,19 @@
     aria-label="{{ __('public.cookie_consent.aria_banner') }}"
     hidden
 >
-    <div class="container py-3 py-md-3">
+    <div class="container-fluid px-3 px-md-4 py-3 py-md-4">
         <div class="row align-items-center g-3">
             <div class="col-lg">
-                <p id="cookie-consent-desc" class="cookie-consent-banner__text small mb-2 mb-lg-0">
+                <p id="cookie-consent-desc" class="cookie-consent-banner__text mb-2 mb-lg-0">
                     {{ __('public.cookie_consent.message') }}
                     <a href="{{ route('cookies') }}" class="cookie-consent-banner__link ms-1">{{ __('public.cookie_consent.cookie_policy') }}</a>
                 </p>
             </div>
-            <div class="col-lg-auto d-flex flex-wrap gap-2 justify-content-lg-end">
-                <button type="button" class="btn btn-brand-outline btn-sm px-3" id="cookie-consent-reject">
+            <div class="col-lg-auto d-flex flex-wrap justify-content-lg-end cookie-consent-actions">
+                <button type="button" class="btn btn-brand-outline" id="cookie-consent-reject">
                     {{ __('public.cookie_consent.reject_non_essential') }}
                 </button>
-                <button type="button" class="btn btn-brand-primary btn-sm px-3" id="cookie-consent-accept">
+                <button type="button" class="btn btn-brand-primary" id="cookie-consent-accept">
                     {{ __('public.cookie_consent.accept_all') }}
                 </button>
             </div>
