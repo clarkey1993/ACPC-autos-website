@@ -92,6 +92,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::put('/site-settings', [SiteSettingController::class, 'update'])->name('site-settings.update');
     Route::resource('cars', CarController::class);
     Route::delete('/car-images/{id}', [CarImageController::class, 'destroy'])->name('car-images.destroy');
+    Route::post('/cars/{car}/images/reorder', [CarImageController::class, 'reorder'])->name('car-images.reorder');
     Route::get('/enquiries', [AdminEnquiryController::class, 'index'])->name('enquiries.index');
     Route::get('/enquiries/{enquiry}', [AdminEnquiryController::class, 'show'])->name('enquiries.show');
     Route::patch('/enquiries/{enquiry}/read', [AdminEnquiryController::class, 'markAsRead'])->name('enquiries.read');

@@ -38,15 +38,15 @@
             @if ($car->images->isEmpty())
                 <p class="text-muted mb-0">No gallery images uploaded yet.</p>
             @else
-                <div class="row g-3">
+                <div id="gallery" class="row g-3" data-car-id="{{ $car->id }}">
                     @foreach ($car->images as $image)
-                        <div class="col-6 col-md-4 col-lg-3">
+                        <div class="col-6 col-md-4 col-lg-3 draggable-item" data-image-id="{{ $image->id }}">
                             <div class="position-relative">
                                 <img
                                     src="{{ \Illuminate\Support\Facades\Storage::url($image->image_path) }}"
                                     alt="{{ $car->title }} gallery image"
                                     class="img-thumbnail w-100"
-                                    style="height: 140px; object-fit: cover;"
+                                    style="height: 140px; object-fit: cover; cursor: grab;"
                                 >
 
                                 <form
@@ -65,6 +65,48 @@
                         </div>
                     @endforeach
                 </div>
+
+                @push('styles')
+                    <style>
+                        .draggable-item.dragging { opacity: 0.6; }
+                    </style>
+                @endpush
+
+                @push('scripts')
+                    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+                    <script>
+                        (function () {
+                            const gallery = document.getElementById('gallery');
+                            if (!gallery) return;
+
+                            const tokenInput = document.querySelector('input[name="_token"]');
+                            const csrf = tokenInput ? tokenInput.value : '';
+
+                            const sortable = Sortable.create(gallery, {
+                                animation: 150,
+                                ghostClass: 'dragging',
+                                onEnd: function () {
+                                    const order = Array.from(gallery.querySelectorAll('.draggable-item')).map(el => el.dataset.imageId);
+                                    const carId = gallery.dataset.carId;
+
+                                    fetch(`{{ url('/admin/cars') }}/${carId}/images/reorder`, {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                            'X-Requested-With': 'XMLHttpRequest',
+                                            'X-CSRF-TOKEN': csrf,
+                                        },
+                                        body: JSON.stringify({ order })
+                                    }).then(resp => {
+                                        if (!resp.ok) {
+                                            alert('Failed to save order');
+                                        }
+                                    }).catch(() => alert('Failed to save order'));
+                                }
+                            });
+                        })();
+                    </script>
+                @endpush
             @endif
         </div>
     </div>
