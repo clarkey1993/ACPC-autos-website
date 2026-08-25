@@ -77,7 +77,7 @@ Route::get('/cookie-policy', [PublicPageController::class, 'cookiePolicy'])->nam
 Route::get('/faq', [PublicPageController::class, 'faq'])->name('faq');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware(['auth'])
+    ->middleware(['auth', 'admin'])
     ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -86,7 +86,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/site-settings', [SiteSettingController::class, 'edit'])->name('site-settings.edit');
     Route::put('/site-settings', [SiteSettingController::class, 'update'])->name('site-settings.update');
