@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'admin_emails' => array_values(array_filter(array_map(
+        'trim',
+        explode(',', (string) env('DEALER_ADMIN_EMAILS', ''))
+    ))),
+
     /*
     | Google Analytics 4 measurement ID (e.g. G-XXXXXXXXXX). Leave empty to disable.
     | Loaded only after the visitor accepts non-essential cookies (see cookie banner).
