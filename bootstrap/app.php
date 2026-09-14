@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Middleware\EnsureAdminEmail;
+use App\Http\Middleware\RedirectToCanonicalUrl;
+use App\Http\Middleware\SetLocale;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use App\Http\Middleware\EnsureAdminEmail;
-use App\Http\Middleware\SetLocale;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -17,9 +18,14 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin' => EnsureAdminEmail::class,
         ]);
 
-        $middleware->web(append: [
-            SetLocale::class,
-        ]);
+        $middleware->web(
+            prepend: [
+                RedirectToCanonicalUrl::class,
+            ],
+            append: [
+                SetLocale::class,
+            ],
+        );
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
