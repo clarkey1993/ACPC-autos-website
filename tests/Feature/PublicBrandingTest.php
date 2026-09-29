@@ -13,7 +13,7 @@ class PublicBrandingTest extends TestCase
         $response = $this->get('/cookie-policy');
 
         $response->assertOk();
-        $this->assertSame(1, substr_count(
+        $this->assertSame(2, substr_count(
             $response->getContent(),
             'src="'.asset('images/acpc-header-shield-gold-v1.webp').'"'
         ));
@@ -22,6 +22,7 @@ class PublicBrandingTest extends TestCase
             'src="'.asset('images/acpc-header-shield-gold-v2.webp').'"'
         ));
         $response->assertSee('footer-shield-frame', false);
+        $response->assertSee('header-shield-frame', false);
         $response->assertDontSee('navbar-brand-name', false);
         $this->assertFileExists(public_path('images/acpc-header-shield-gold-v1.webp'));
         $this->assertFileExists(public_path('images/acpc-header-shield-gold-v2.webp'));

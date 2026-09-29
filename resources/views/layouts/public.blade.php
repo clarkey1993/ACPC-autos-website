@@ -148,6 +148,40 @@
             height: auto;
             display: block;
             pointer-events: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            clip-path: polygon(30% 30%, 100% 30%, 100% 70%, 26.4733% 70%, 26.4733% 55%);
+            mask-image: linear-gradient(to right, transparent 26.4733%, black 27.5%), linear-gradient(to bottom, transparent 30%, black 37%, black 60%, transparent 70%);
+            mask-composite: intersect;
+        }
+
+        .header-brand-art {
+            position: relative;
+            display: block;
+            width: 100%;
+            aspect-ratio: 2172 / 506.8;
+        }
+
+        .header-shield-frame {
+            position: absolute;
+            top: 0;
+            left: 3.971%;
+            width: 18.5313%;
+            aspect-ratio: 575 / 724;
+            overflow: hidden;
+        }
+
+        .header-shield-image {
+            display: block;
+            width: calc(100% * 2172 / 575);
+            max-width: none;
+            height: auto;
+        }
+
+        .brand-logo-link:hover .brand-logo--navbar,
+        .brand-logo-link:focus-visible .brand-logo--navbar {
+            transform: translateY(-50%);
         }
 
         .navbar-public .navbar-brand.brand-logo-link {
@@ -983,7 +1017,12 @@
         <div class="container flex-column py-2 py-md-3">
             <div class="navbar-top-row w-100 d-flex align-items-center justify-content-center position-relative">
                 <a class="navbar-brand brand-logo-link d-inline-flex align-items-center gap-0 m-0 py-1" href="{{ route('home') }}">
-                    <img src="{{ asset('images/acpc-header-shield-gold-v2.webp') }}" alt="{{ __('public.brand') }}" class="brand-logo brand-logo--navbar" width="2172" height="724" decoding="async" fetchpriority="high">
+                    <span class="header-brand-art">
+                        <img src="{{ asset('images/acpc-header-shield-gold-v2.webp') }}" alt="{{ __('public.brand') }}" class="brand-logo brand-logo--navbar" width="2172" height="724" decoding="async" fetchpriority="high">
+                        <span class="header-shield-frame" aria-hidden="true">
+                            <img src="{{ asset('images/acpc-header-shield-gold-v1.webp') }}" alt="" class="header-shield-image" width="2172" height="724" decoding="async">
+                        </span>
+                    </span>
                 </a>
                 <button class="navbar-toggler position-absolute start-0 top-50 translate-middle-y" type="button" data-bs-toggle="collapse" data-bs-target="#publicNavbar" aria-controls="publicNavbar" aria-expanded="false" aria-label="{{ __('public.nav.toggle_navigation') }}">
                     <span class="navbar-toggler-icon"></span>
