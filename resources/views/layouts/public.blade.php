@@ -1018,7 +1018,7 @@
             <div class="navbar-top-row w-100 d-flex align-items-center justify-content-center position-relative">
                 <a class="navbar-brand brand-logo-link d-inline-flex align-items-center gap-0 m-0 py-1" href="{{ route('home') }}">
                     <span class="header-brand-art">
-                        <img src="{{ asset('images/acpc-header-shield-gold-v2.webp') }}" alt="{{ __('public.brand') }}" class="brand-logo brand-logo--navbar" width="2172" height="724" decoding="async" fetchpriority="high">
+                        <img src="{{ asset('images/acpc-header-shield-green-v3.webp') }}" alt="{{ __('public.brand') }}" class="brand-logo brand-logo--navbar" width="2172" height="724" decoding="async" fetchpriority="high">
                         <span class="header-shield-frame" aria-hidden="true">
                             <img src="{{ asset('images/acpc-header-shield-gold-v1.webp') }}" alt="" class="header-shield-image" width="2172" height="724" decoding="async">
                         </span>
