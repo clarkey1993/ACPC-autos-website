@@ -231,9 +231,3 @@
         </section>
     </div>
 @endsection
-
-@section('footer_brand')
-    <a href="{{ route('home') }}" class="brand-logo-link footer-brand-col__logo-link">
-        <img src="{{ asset('images/logo-full.png') }}" alt="{{ __('public.brand') }}" class="brand-logo brand-logo--footer" loading="lazy" decoding="async">
-    </a>
-@endsection

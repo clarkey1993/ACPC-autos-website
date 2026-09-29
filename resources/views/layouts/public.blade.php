@@ -144,15 +144,9 @@
         }
 
         .brand-logo--navbar {
-            height: clamp(2.5rem, 8.5vw, 7rem);
-            width: auto;
-            max-height: 7.25rem;
+            width: 100%;
+            height: auto;
             display: block;
-            position: absolute;
-            right: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-            margin-right: clamp(-1.4rem, -1.4vw, -0.7rem);
             pointer-events: none;
         }
 
@@ -162,21 +156,12 @@
             line-height: 1;
             z-index: 3;
             position: relative;
+            width: min(34rem, calc(100% - 7rem));
         }
 
-        .navbar-brand-name {
-            font-size: clamp(1.45rem, 4.6vw, 3.1rem);
-            font-weight: 800;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            line-height: 1.05;
-            align-self: center;
-            white-space: nowrap;
-        }
-
-        @media (min-width: 768px) {
-            .navbar-brand-name {
-                letter-spacing: 0.1em;
+        @media (min-width: 992px) {
+            .navbar-public .navbar-brand.brand-logo-link {
+                width: min(34rem, 100%);
             }
         }
 
@@ -190,11 +175,6 @@
             transform: scale(1.03);
         }
 
-        .brand-logo-link:hover .brand-logo--navbar,
-        .brand-logo-link:focus-visible .brand-logo--navbar {
-            transform: translateY(-50%) scale(1.03);
-        }
-
         .brand-logo-link:focus-visible {
             outline: 2px solid var(--brand-gold);
             outline-offset: 3px;
@@ -203,11 +183,22 @@
 
         .brand-logo--footer {
             display: block;
-            height: clamp(3.5rem, 11.9vw, 9.8rem);
-            width: auto;
-            max-height: 10.15rem;
+            width: calc(100% * 2172 / 575);
+            max-width: none;
+            height: auto;
+        }
+
+        .footer-shield-frame {
+            display: block;
+            width: 9rem;
             max-width: 100%;
-            object-fit: contain;
+            aspect-ratio: 575 / 724;
+            overflow: hidden;
+        }
+
+        .brand-logo-link:hover .brand-logo--footer,
+        .brand-logo-link:focus-visible .brand-logo--footer {
+            transform: none;
         }
 
         .footer-public .footer-brand-col {
@@ -228,11 +219,6 @@
             margin-top: 0;
             line-height: 1.45;
             max-width: 22rem;
-        }
-
-        .brand-logo--navbar,
-        .brand-logo--footer {
-            filter: brightness(1.08) contrast(1.04);
         }
 
         .brand-card {
@@ -997,8 +983,7 @@
         <div class="container flex-column py-2 py-md-3">
             <div class="navbar-top-row w-100 d-flex align-items-center justify-content-center position-relative">
                 <a class="navbar-brand brand-logo-link d-inline-flex align-items-center gap-0 m-0 py-1" href="{{ route('home') }}">
-                    <img src="{{ asset('images/logo-icon.png') }}" alt="{{ __('public.brand') }}" class="brand-logo brand-logo--navbar" decoding="async">
-                    <span class="navbar-brand-name text-brand-gold">{{ __('public.brand') }}</span>
+                    <img src="{{ asset('images/acpc-header-shield-gold-v1.webp') }}" alt="{{ __('public.brand') }}" class="brand-logo brand-logo--navbar" width="2172" height="724" decoding="async" fetchpriority="high">
                 </a>
                 <button class="navbar-toggler position-absolute start-0 top-50 translate-middle-y" type="button" data-bs-toggle="collapse" data-bs-target="#publicNavbar" aria-controls="publicNavbar" aria-expanded="false" aria-label="{{ __('public.nav.toggle_navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -1059,7 +1044,11 @@
                         @hasSection('footer_brand')
                             @yield('footer_brand')
                         @else
-                            <h2 class="h6 text-brand-gold mb-0">{{ __('public.brand') }}</h2>
+                            <a href="{{ route('home') }}" class="brand-logo-link footer-brand-col__logo-link">
+                                <span class="footer-shield-frame">
+                                    <img src="{{ asset('images/acpc-header-shield-gold-v1.webp') }}" alt="{{ __('public.brand') }}" class="brand-logo brand-logo--footer" width="2172" height="724" loading="lazy" decoding="async">
+                                </span>
+                            </a>
                         @endif
                         <p class="footer-brand-tagline mb-0 small">{{ __('public.footer.default_tagline') }}</p>
                     </div>
