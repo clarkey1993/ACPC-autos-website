@@ -150,7 +150,7 @@
             pointer-events: none;
             position: absolute;
             top: 50%;
-            transform: translateY(-50%);
+            transform: translateY(-50%) scaleY(1.2);
             clip-path: polygon(30% 30%, 100% 30%, 100% 70%, 26.4733% 70%, 26.4733% 55%);
             mask-image: linear-gradient(to right, transparent 26.4733%, black 27.5%), linear-gradient(to bottom, transparent 30%, black 37%, black 60%, transparent 70%);
             mask-composite: intersect;
@@ -181,7 +181,7 @@
 
         .brand-logo-link:hover .brand-logo--navbar,
         .brand-logo-link:focus-visible .brand-logo--navbar {
-            transform: translateY(-50%);
+            transform: translateY(-50%) scaleY(1.2);
         }
 
         .navbar-public .navbar-brand.brand-logo-link {
