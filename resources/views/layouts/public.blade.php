@@ -983,7 +983,7 @@
         <div class="container flex-column py-2 py-md-3">
             <div class="navbar-top-row w-100 d-flex align-items-center justify-content-center position-relative">
                 <a class="navbar-brand brand-logo-link d-inline-flex align-items-center gap-0 m-0 py-1" href="{{ route('home') }}">
-                    <img src="{{ asset('images/acpc-header-shield-gold-v1.webp') }}" alt="{{ __('public.brand') }}" class="brand-logo brand-logo--navbar" width="2172" height="724" decoding="async" fetchpriority="high">
+                    <img src="{{ asset('images/acpc-header-shield-gold-v2.webp') }}" alt="{{ __('public.brand') }}" class="brand-logo brand-logo--navbar" width="2172" height="724" decoding="async" fetchpriority="high">
                 </a>
                 <button class="navbar-toggler position-absolute start-0 top-50 translate-middle-y" type="button" data-bs-toggle="collapse" data-bs-target="#publicNavbar" aria-controls="publicNavbar" aria-expanded="false" aria-label="{{ __('public.nav.toggle_navigation') }}">
                     <span class="navbar-toggler-icon"></span>
