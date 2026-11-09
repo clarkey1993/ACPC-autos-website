@@ -171,7 +171,7 @@
         <section id="featured-cars" class="py-3 py-md-4 mb-5 mb-md-6 featured-shell">
             <div class="home-featured-intro text-center mb-4">
                 <div class="home-title-accent"></div>
-                <h2 class="home-featured-heading home-section-title mb-2">{{ __('public.home.current_stock') }}</h2>
+                <h1 class="home-featured-heading home-section-title mb-2">{{ __('public.home.current_stock') }}</h1>
                 <p class="home-muted small mb-0">{{ __('public.home.showroom_intro') }}</p>
             </div>
 

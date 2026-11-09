@@ -179,8 +179,9 @@
             height: auto;
         }
 
-        .brand-logo-link:hover .brand-logo--navbar,
-        .brand-logo-link:focus-visible .brand-logo--navbar {
+        /* Keep the wordmark centered when the generic logo hover style applies. */
+        .navbar-public .brand-logo-link:hover .brand-logo--navbar,
+        .navbar-public .brand-logo-link:focus-visible .brand-logo--navbar {
             transform: translateY(-50%) scaleY(1.2);
         }
 
