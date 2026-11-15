@@ -34,6 +34,17 @@
         color: #fff;
     }
 
+    .cookie-consent-banner .btn-brand-outline {
+        color: var(--brand-gold-light);
+        border-color: var(--brand-gold-light);
+    }
+
+    .cookie-consent-banner .btn-brand-outline:hover,
+    .cookie-consent-banner .btn-brand-outline:focus {
+        color: #1b1f22;
+        background-color: var(--brand-gold-light);
+    }
+
     body.cookie-consent-visible main.py-5 {
         padding-bottom: clamp(7rem, 20vw, 12rem);
     }

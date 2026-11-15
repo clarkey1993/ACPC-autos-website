@@ -39,6 +39,13 @@
                 letter-spacing: 0.03em;
             }
 
+            /* Keep the gold accent readable on the light page background. */
+            @media (prefers-color-scheme: light) {
+                .page-home .home-section-title.text-brand-gold {
+                    color: #876a2c !important;
+                }
+            }
+
             .page-home .home-title-accent {
                 height: 3px;
                 width: 56px;
@@ -178,7 +185,7 @@
             <div class="row g-3 g-md-4 featured-cards-row">
                 @forelse ($cars as $car)
                     <div class="col-12 col-md-6">
-                        @include('public.cars.partials.car-card', ['car' => $car, 'carouselIdPrefix' => 'homeCarCard'])
+                        @include('public.cars.partials.car-card', ['car' => $car, 'carouselIdPrefix' => 'homeCarCard', 'priorityImage' => $loop->first])
                     </div>
                 @empty
                     <div class="col-12">

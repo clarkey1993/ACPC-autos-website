@@ -42,7 +42,7 @@
         <div class="row g-4">
             @forelse ($cars as $car)
                 <div class="col-md-6 col-lg-4">
-                    @include('public.cars.partials.car-card', ['car' => $car, 'carouselIdPrefix' => 'indexCarCard'])
+                    @include('public.cars.partials.car-card', ['car' => $car, 'carouselIdPrefix' => 'indexCarCard', 'priorityImage' => $loop->first])
                 </div>
             @empty
                 <div class="col-12">

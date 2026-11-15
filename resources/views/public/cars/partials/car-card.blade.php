@@ -31,8 +31,6 @@
 
 <article class="card car-card car-inventory-card border-0 h-100"
          data-card-link="{{ route('cars.show', $car->slug) }}"
-         role="link"
-         tabindex="0"
          aria-label="{{ __('public.cars.view_details_aria', ['title' => $car->title]) }}">
     <div class="car-card__media">
         @if ($carCardImagePaths->isNotEmpty())
@@ -46,7 +44,8 @@
                                 alt="{{ $car->title }}"
                                 width="800"
                                 height="550"
-                                loading="lazy"
+                                loading="{{ ($priorityImage ?? false) && $loop->first ? 'eager' : 'lazy' }}"
+                                @if (($priorityImage ?? false) && $loop->first) fetchpriority="high" @endif
                                 decoding="async"
                             >
                         </div>
@@ -90,10 +89,10 @@
     </div>
 
     <div class="car-card__body">
-        <h3 class="car-card__title">{{ $car->title }}</h3>
+        <h2 class="car-card__title">{{ $car->title }}</h2>
         <p class="car-card__summary">{{ implode(' · ', $carCardSummaryParts) }}</p>
 
-        <a href="{{ route('cars.show', $car->slug) }}" class="car-card__cta">
+        <a href="{{ route('cars.show', $car->slug) }}" class="car-card__cta" aria-label="{{ __('public.cars.view_details_aria', ['title' => $car->title]) }}">
             {{ __('public.cars.view_details') }} →
         </a>
     </div>

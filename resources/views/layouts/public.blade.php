@@ -698,7 +698,7 @@
             cursor: pointer;
         }
 
-        .car-inventory-card[data-card-link]:focus-visible {
+        .car-inventory-card:focus-within {
             outline: 2px solid var(--brand-gold);
             outline-offset: 3px;
         }
@@ -906,8 +906,9 @@
 
         .car-card__cta {
             margin-top: auto;
+            min-height: 24px;
             padding-top: 0.15rem;
-            color: var(--brand-gold);
+            color: var(--brand-gold-light);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
