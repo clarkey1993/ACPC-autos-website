@@ -62,4 +62,4 @@ Artisan::command('cars:generate-image-variants {--force : Regenerate variants th
         });
 
     $this->info("Done. Originals processed: {$processed}. Variants generated: {$generated}. Existing variants skipped: {$skipped}. Missing originals: {$missing}. Errors: {$errors}.");
-})->purpose('Generate medium and thumbnail variants for car images');
+})->purpose('Generate responsive gallery, card and thumbnail variants for car images');

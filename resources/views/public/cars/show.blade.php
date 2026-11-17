@@ -60,6 +60,18 @@
             text-align: right;
         }
 
+        /* Preserve gold styling with readable contrast on the light page surface. */
+        @media (prefers-color-scheme: light) {
+            .page-cars-show .show-hero-price,
+            .page-cars-show .show-back .btn-brand-outline {
+                color: #876a2c;
+            }
+            .page-cars-show .show-back .btn-brand-outline:hover,
+            .page-cars-show .show-back .btn-brand-outline:focus {
+                color: #1b1f22;
+            }
+        }
+
         /* -------- Gallery (carousel on top) -------- */
         .page-cars-show .show-gallery {
             display: block;
@@ -554,6 +566,10 @@
                             <div class="carousel-item @if ($loop->first) active @endif">
                                 <img
                                     src="{{ $imageVariants->url($imagePath, 'medium') }}"
+                                    @if ($gallerySrcset = $imageVariants->srcset($imagePath))
+                                        srcset="{{ $gallerySrcset }}"
+                                        sizes="(min-width: 992px) 900px, calc(100vw - 24px)"
+                                    @endif
                                     alt="{{ $car->title }} {{ __('public.cars.photos') }} {{ $loop->iteration }}"
                                     class="show-gallery__image js-open-lightbox"
                                     data-image-index="{{ $loop->index }}"
@@ -612,6 +628,10 @@
                 >
                     <img
                         src="{{ $imageVariants->url($imagePath, 'thumb') }}"
+                        @if ($thumbSrcset = $imageVariants->srcset($imagePath, ['strip', 'thumb']))
+                            srcset="{{ $thumbSrcset }}"
+                            sizes="(min-width: 768px) 140px, 110px"
+                        @endif
                         alt="{{ $car->title }} {{ __('public.cars.photos') }} {{ $loop->iteration }}"
                         width="320"
                         height="240"

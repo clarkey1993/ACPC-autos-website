@@ -1020,9 +1020,9 @@
             <div class="navbar-top-row w-100 d-flex align-items-center justify-content-center position-relative">
                 <a class="navbar-brand brand-logo-link d-inline-flex align-items-center gap-0 m-0 py-1" href="{{ route('home') }}">
                     <span class="header-brand-art">
-                        <img src="{{ asset('images/acpc-header-shield-green-v3.webp') }}" alt="{{ __('public.brand') }}" class="brand-logo brand-logo--navbar" width="2172" height="724" decoding="async" fetchpriority="high">
+                        <img src="{{ asset('images/acpc-header-shield-green-v3-1200w.webp') }}" srcset="{{ asset('images/acpc-header-shield-green-v3-600w.webp') }} 600w, {{ asset('images/acpc-header-shield-green-v3-1200w.webp') }} 1200w, {{ asset('images/acpc-header-shield-green-v3-1800w.webp') }} 1800w" sizes="(min-width: 768px) 544px, calc(100vw - 112px)" alt="{{ __('public.brand') }}" class="brand-logo brand-logo--navbar" width="2172" height="724" decoding="async" fetchpriority="high">
                         <span class="header-shield-frame" aria-hidden="true">
-                            <img src="{{ asset('images/acpc-header-shield-gold-v1.webp') }}" alt="" class="header-shield-image" width="2172" height="724" decoding="async">
+                            <img src="{{ asset('images/acpc-header-shield-gold-v1-1200w.webp') }}" srcset="{{ asset('images/acpc-header-shield-gold-v1-600w.webp') }} 600w, {{ asset('images/acpc-header-shield-gold-v1-1200w.webp') }} 1200w, {{ asset('images/acpc-header-shield-gold-v1-1800w.webp') }} 1800w" sizes="544px" alt="" class="header-shield-image" width="2172" height="724" decoding="async">
                         </span>
                     </span>
                 </a>
@@ -1087,7 +1087,7 @@
                         @else
                             <a href="{{ route('home') }}" class="brand-logo-link footer-brand-col__logo-link">
                                 <span class="footer-shield-frame">
-                                    <img src="{{ asset('images/acpc-header-shield-gold-v1.webp') }}" alt="{{ __('public.brand') }}" class="brand-logo brand-logo--footer" width="2172" height="724" loading="lazy" decoding="async">
+                                    <img src="{{ asset('images/acpc-header-shield-gold-v1-1200w.webp') }}" srcset="{{ asset('images/acpc-header-shield-gold-v1-600w.webp') }} 600w, {{ asset('images/acpc-header-shield-gold-v1-1200w.webp') }} 1200w, {{ asset('images/acpc-header-shield-gold-v1-1800w.webp') }} 1800w" sizes="544px" alt="{{ __('public.brand') }}" class="brand-logo brand-logo--footer" width="2172" height="724" loading="lazy" decoding="async">
                                 </span>
                             </a>
                         @endif

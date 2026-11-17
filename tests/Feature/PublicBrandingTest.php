@@ -32,16 +32,16 @@ class PublicBrandingTest extends TestCase
         $response->assertOk();
         $this->assertSame(2, substr_count(
             $response->getContent(),
-            'src="'.asset('images/acpc-header-shield-gold-v1.webp').'"'
+            'src="'.asset('images/acpc-header-shield-gold-v1-1200w.webp').'"'
         ));
         $this->assertSame(1, substr_count(
             $response->getContent(),
-            'src="'.asset('images/acpc-header-shield-green-v3.webp').'"'
+            'src="'.asset('images/acpc-header-shield-green-v3-1200w.webp').'"'
         ));
         $response->assertSee('footer-shield-frame', false);
         $response->assertSee('header-shield-frame', false);
         $response->assertDontSee('navbar-brand-name', false);
-        $this->assertFileExists(public_path('images/acpc-header-shield-gold-v1.webp'));
-        $this->assertFileExists(public_path('images/acpc-header-shield-green-v3.webp'));
+        $this->assertFileExists(public_path('images/acpc-header-shield-gold-v1-1200w.webp'));
+        $this->assertFileExists(public_path('images/acpc-header-shield-green-v3-1200w.webp'));
     }
 }

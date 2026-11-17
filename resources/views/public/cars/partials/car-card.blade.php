@@ -40,6 +40,10 @@
                         <div class="carousel-item @if ($loop->first) active @endif">
                             <img
                                 src="{{ $carCardImageVariants->url($carCardImagePath, 'medium') }}"
+                                @if ($carCardSrcset = $carCardImageVariants->srcset($carCardImagePath))
+                                    srcset="{{ $carCardSrcset }}"
+                                    sizes="(min-width: 1200px) 400px, (min-width: 768px) 50vw, calc(100vw - 24px)"
+                                @endif
                                 class="car-card__image"
                                 alt="{{ $car->title }}"
                                 width="800"

@@ -14,6 +14,8 @@ class CarImageVariantService
 
     private const VARIANTS = [
         'medium' => 1200,
+        'card' => 800,
+        'strip' => 240,
         'thumb' => 480,
     ];
 
@@ -72,6 +74,34 @@ class CarImageVariantService
     public function url(string $originalPath, string $variant): string
     {
         return Storage::url($this->pathForDisplay($originalPath, $variant));
+    }
+
+    /** Existing local variants only: never generate or fetch remote images during a page request. */
+    public function srcset(string $originalPath, array $variants = ['thumb', 'card', 'medium']): string
+    {
+        if (config('filesystems.disks.'.self::DISK.'.driver') !== 'local') {
+            return '';
+        }
+
+        $candidates = [];
+        foreach ($variants as $variant) {
+            $path = $this->variantPath($originalPath, $variant);
+            if (! $this->disk()->exists($path)) {
+                continue;
+            }
+            try {
+                // Read the header, not the full image; actual width handles small originals.
+                $size = @getimagesize($this->disk()->path($path));
+                if ($size && $size[0] > 0) {
+                    $candidates[$size[0]] = $this->disk()->url($path).' '.$size[0].'w';
+                }
+            } catch (Throwable) {
+                // Keep the existing src fallback for missing/unsupported storage.
+            }
+        }
+        ksort($candidates);
+
+        return implode(', ', $candidates);
     }
 
     public function pathForDisplay(string $originalPath, string $variant): string
